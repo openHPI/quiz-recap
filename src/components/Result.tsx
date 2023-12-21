@@ -3,8 +3,14 @@ import { ResultType } from '../types';
 import { Context } from '../Context';
 
 const Result = () => {
-  const { results, numberOfQuestions, setQuizEnded, setQuizStarted } =
-    useContext(Context);
+  const {
+    results,
+    numberOfQuestions,
+    setQuizEnded,
+    setQuizStarted,
+    setResults,
+    setNumberOfQuestions,
+  } = useContext(Context);
 
   const correctAnswers = results.reduce(
     (accumulator: number, result: ResultType) =>
@@ -50,6 +56,8 @@ const Result = () => {
         onClick={() => {
           setQuizStarted(false);
           setQuizEnded(false);
+          setResults([]);
+          setNumberOfQuestions(0);
         }}
       >
         New Quiz

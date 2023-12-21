@@ -7,6 +7,7 @@ type ContextType = {
   results: ResultType[];
   setResults: React.Dispatch<React.SetStateAction<ResultType[]>>;
   numberOfQuestions: number;
+  setNumberOfQuestions: React.Dispatch<React.SetStateAction<number>>;
   setQuizStarted: React.Dispatch<React.SetStateAction<boolean>>;
 };
 

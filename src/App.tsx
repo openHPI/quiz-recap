@@ -5,14 +5,14 @@ import { Context } from './Context';
 
 function App(data: Data) {
   const [quizStarted, setQuizStarted] = useState(false);
-  const [numberOfQuestions, setNumberOfQuestion] = useState(
+  const [numberOfQuestions, setNumberOfQuestions] = useState(
     data.questions.length
   );
 
   const [quizEnded, setQuizEnded] = useState(false);
   const [results, setResults] = useState<ResultType[]>([]);
 
-  const completeSet = numberOfQuestions;
+  const completeSet = data.questions.length;
   const mediumSet = Math.floor(data.questions.length / 2);
   const quickSet = Math.floor(data.questions.length / 5);
 
@@ -25,6 +25,7 @@ function App(data: Data) {
         results,
         setResults,
         numberOfQuestions,
+        setNumberOfQuestions,
       }}
     >
       <div className="bg-gray-100 rounded p-5">
@@ -56,7 +57,7 @@ function App(data: Data) {
                     type="button"
                     className="bg-blue-300 rounded p-2 m-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500"
                     onClick={() => {
-                      setNumberOfQuestion(completeSet);
+                      setNumberOfQuestions(completeSet);
                       setQuizStarted(true);
                     }}
                   >
@@ -68,7 +69,7 @@ function App(data: Data) {
                     type="button"
                     className="bg-blue-300 rounded p-2 m-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500"
                     onClick={() => {
-                      setNumberOfQuestion(mediumSet);
+                      setNumberOfQuestions(mediumSet);
                       setQuizStarted(true);
                     }}
                   >
@@ -80,7 +81,7 @@ function App(data: Data) {
                     type="button"
                     className="bg-blue-300 rounded p-2 m-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500"
                     onClick={() => {
-                      setNumberOfQuestion(quickSet);
+                      setNumberOfQuestions(quickSet);
                       setQuizStarted(true);
                     }}
                   >

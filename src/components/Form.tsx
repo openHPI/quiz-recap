@@ -1,6 +1,7 @@
 import { FormEvent, useContext, useState } from 'react';
 import AppContext from '../AppContext';
 import { Question, Answer } from '../types';
+import Answers from './Answers';
 import QuestionText from './QuestionText';
 
 const Form = ({
@@ -12,9 +13,8 @@ const Form = ({
 }) => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [selectedAnswerValue, setSelectedAnswerValue] = useState<
-    boolean | null
-  >(null);
+  const [selectedAnswerValue, setSelectedAnswerValue] =
+    useState<boolean>(false);
   const { index, setIndex } = useContext(AppContext);
 
   const submitHandler = (event: FormEvent) => {
@@ -26,12 +26,8 @@ const Form = ({
     }
   };
 
-  const getBooleanValue = (value: string): boolean => {
-    return value.toLowerCase() === 'true' ? true : false;
-  };
-
-  const handleRadioChange = (event: any) => {
-    setSelectedAnswerValue(getBooleanValue(event.currentTarget.value));
+  const handleRadioChange = (value: boolean) => {
+    setSelectedAnswerValue(value);
   };
 
   const handleNextQuestion = () => {
@@ -43,20 +39,10 @@ const Form = ({
     <form onSubmit={submitHandler}>
       <fieldset disabled={submitted}>
         <QuestionText text={question.text}></QuestionText>
-        {answers.map((answer) => (
-          <div key={answer.id}>
-            <input
-              id={answer.id}
-              type="radio"
-              name={'answer'}
-              value={answer.correct.toString()}
-              onChange={handleRadioChange}
-              required
-              readOnly={submitted}
-            ></input>
-            <label htmlFor={answer.id}>{answer.text}</label>
-          </div>
-        ))}
+        <Answers
+          answers={answers}
+          handleSelection={handleRadioChange}
+        ></Answers>
         {!submitted && <button>Submit Answer</button>}
         {submitted && <p>{isCorrect ? 'Correct' : 'Not correct'}</p>}
       </fieldset>

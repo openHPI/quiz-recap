@@ -52,7 +52,7 @@ function App(data: Data) {
               <li>
                 <button
                   type="button"
-                  className="m-2 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500"
+                  className="mb-2 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500"
                   onClick={() => {
                     setNumberOfQuestions(completeSet);
                     setQuizStarted(true);
@@ -64,7 +64,7 @@ function App(data: Data) {
               <li>
                 <button
                   type="button"
-                  className="m-2 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500"
+                  className="mb-2 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500"
                   onClick={() => {
                     setNumberOfQuestions(mediumSet);
                     setQuizStarted(true);
@@ -76,7 +76,7 @@ function App(data: Data) {
               <li>
                 <button
                   type="button"
-                  className="m-2 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500"
+                  className="mb-2 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500"
                   onClick={() => {
                     setNumberOfQuestions(quickSet);
                     setQuizStarted(true);

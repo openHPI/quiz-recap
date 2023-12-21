@@ -16,7 +16,12 @@ function App(data: Data) {
       <h2>Quiz recap</h2>
       <div className={classes.content}>
         {quizStarted ? (
-          <Quiz data={data} set={numberOfQuestions} />
+          <>
+            <Quiz data={data} set={numberOfQuestions} />
+            <button type="button" onClick={() => setQuizStarted(false)}>
+              New Quiz
+            </button>
+          </>
         ) : (
           <div>
             <h3>Here you can practice your knowledge for the course!</h3>

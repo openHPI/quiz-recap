@@ -34,12 +34,6 @@ function Quiz({ data, set = 10 }: { data: Data; set?: number }) {
     setQuizEnded(true);
   };
 
-  const handleNewQuiz = () => {
-    setQuizEnded(false);
-    setResults([]);
-    setQuestionIndex(0);
-  };
-
   const addToResult = (question: Question, correctlyAnswered: boolean) => {
     setResults([
       ...results,
@@ -69,12 +63,7 @@ function Quiz({ data, set = 10 }: { data: Data; set?: number }) {
           </>
         )}
         {quizEnded && (
-          <>
-            <Result results={results} totalQuestions={questionSet.length} />
-            <button type="button" onClick={handleNewQuiz}>
-              New Quiz
-            </button>
-          </>
+          <Result results={results} totalQuestions={questionSet.length} />
         )}
       </div>
     </div>

@@ -2,11 +2,9 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import AppContext from './AppContext';
 import Form from './components/Form';
-import { exampleData } from './static/data';
 import { Data, Question, Answer } from './types';
 
-function App() {
-  const [data, setData] = useState<Data>({ questions: [], answers: [] });
+function App(data: Data) {
   const [question, setQuestion] = useState<Question>();
   const [answers, setAnswers] = useState<Answer[]>();
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -16,17 +14,6 @@ function App() {
       return allAnswers.find((answer) => answer.id === answerId)!;
     });
   };
-
-  const fetchData = async () => {
-    setData({
-      questions: exampleData.questions,
-      answers: exampleData.answers,
-    });
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   useEffect(() => {
     if (data.questions.length > 0 && data.answers.length > 0) {

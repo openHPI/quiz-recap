@@ -2650,3 +2650,66 @@ export const exampleData: Data = {
     },
   ],
 };
+
+export const testData: Data = {
+  questions: [
+    {
+      id: 'id-01',
+      points: 1,
+      type: 'Xikolo::Quiz::MultipleChoiceQuestion',
+      text: 'What is the answer?',
+      courseId: 'courseId-01',
+      quizId: 'quizId-01',
+      answers: ['answer_01', 'answer_02'],
+    },
+    {
+      id: 'id-02',
+      points: 1,
+      type: 'Xikolo::Quiz::MultipleChoiceQuestion',
+      text: 'What is the answer?',
+      courseId: 'courseId-01',
+      quizId: 'quizId-02',
+      answers: ['answer_03', 'answer_04'],
+    },
+    {
+      id: 'id-03',
+      points: 1,
+      type: 'Xikolo::Quiz::MultipleAnswerQuestion',
+      text: 'What is the answer?',
+      courseId: 'courseId-01',
+      quizId: 'quizId-03',
+      answers: ['answer_01', 'answer_02', 'answer_03', 'answer_04'],
+    },
+    {
+      id: 'id-04',
+      points: 1,
+      type: 'Xikolo::Quiz::MultipleAnswerQuestion',
+      text: 'What is the answer?',
+      courseId: 'courseId-01',
+      quizId: 'quizId-04',
+      answers: ['answer_01', 'answer_02', 'answer_03', 'answer_04'],
+    },
+  ],
+  answers: [
+    {
+      id: 'answer_01',
+      correct: true,
+      text: 'Answer 1',
+    },
+    {
+      id: 'answer_02',
+      correct: false,
+      text: 'Answer 2',
+    },
+    {
+      id: 'answer_03',
+      correct: true,
+      text: 'Answer 3',
+    },
+    {
+      id: 'answer_04',
+      correct: false,
+      text: 'Answer 4',
+    },
+  ],
+};

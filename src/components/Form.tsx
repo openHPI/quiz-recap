@@ -77,7 +77,7 @@ const Form = ({
 
   return (
     <form onSubmit={submitHandler}>
-      <fieldset className="bg-white rounded p-5">
+      <fieldset className="rounded bg-white p-5">
         <Question text={question.text} type={question.type}></Question>
         <Answers
           type={question.type}
@@ -86,11 +86,11 @@ const Form = ({
           handleSelection={handleSelections}
         ></Answers>
         {submitted ? (
-          <p className="bg-white p-2 rounded mt-2">
+          <p className="mt-2 rounded bg-white p-2">
             Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}
           </p>
         ) : (
-          <button className="bg-blue-300 rounded p-2 m7-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500">
+          <button className="m7-2 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500">
             Submit Answer
           </button>
         )}
@@ -99,7 +99,7 @@ const Form = ({
         <>
           <button
             type="button"
-            className="bg-blue-300 rounded p-2 mt-4 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500"
+            className="mt-4 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500"
             onClick={handleNextQuestion}
           >
             Next Question

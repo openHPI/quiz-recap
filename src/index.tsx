@@ -5,10 +5,10 @@ import App from './App';
 import { aiData as data } from './static/data';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('quiz-recap') as HTMLElement
+  document.getElementById('quiz-recap') as HTMLElement,
 );
 root.render(
   <React.StrictMode>
     <App questions={data.questions} answers={data.answers} />
-  </React.StrictMode>
+  </React.StrictMode>,
 );

@@ -2,7 +2,7 @@ import { AnswerType, QuestionType } from './types';
 
 export const validateSelectionIsCorrect = (
   answers: AnswerType[],
-  selections: AnswerType[]
+  selections: AnswerType[],
 ) => {
   if (
     selections.some((selection) => {
@@ -23,7 +23,7 @@ export const validateSelectionIsCorrect = (
 
 export const isAlreadySelected = (
   selections: AnswerType[],
-  selection: AnswerType
+  selection: AnswerType,
 ) => {
   return selections.find((item) => {
     return selection.id === item.id;
@@ -32,7 +32,7 @@ export const isAlreadySelected = (
 
 export const getAnswers = (
   question: QuestionType,
-  allAnswers: AnswerType[]
+  allAnswers: AnswerType[],
 ): AnswerType[] => {
   return question.answers.map((answerId) => {
     return allAnswers.find((answer) => answer.id === answerId)!;

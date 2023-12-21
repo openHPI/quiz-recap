@@ -7,7 +7,7 @@ import { Context } from '../Context';
 const customRender = (ui: any, { providerProps, ...renderOptions }: any) => {
   return render(
     <Context.Provider {...providerProps}>{ui}</Context.Provider>,
-    renderOptions
+    renderOptions,
   );
 };
 
@@ -88,7 +88,7 @@ describe('Conducting a single choice quiz', () => {
     fireEvent.click(screen.getByText('Submit Answer'));
 
     expect(
-      screen.getByText(/Your answer was not correct/i)
+      screen.getByText(/Your answer was not correct/i),
     ).toBeInTheDocument();
   });
 });
@@ -165,7 +165,7 @@ describe('Conducting a multiple answer quiz', () => {
     fireEvent.click(screen.getByText('Submit Answer'));
 
     expect(
-      screen.getByText(/Your answer was not correct/i)
+      screen.getByText(/Your answer was not correct/i),
     ).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('Next Question'));
@@ -178,7 +178,7 @@ describe('Conducting a multiple answer quiz', () => {
     fireEvent.click(screen.getByText('Submit Answer'));
 
     expect(
-      screen.getByText(/Your answer was not correct/i)
+      screen.getByText(/Your answer was not correct/i),
     ).toBeInTheDocument();
 
     fireEvent.click(screen.getByText('Next Question'));

@@ -8,7 +8,7 @@ describe('App component', () => {
       render(<App questions={data.questions} answers={data.answers}></App>);
 
       const startPage = screen.queryByText(
-        /Here you can practice your knowledge for the course!/i
+        /Here you can practice your knowledge for the course!/i,
       );
       expect(startPage).toBeInTheDocument();
     });
@@ -75,7 +75,7 @@ describe('App component', () => {
       const quizAfterEnding = screen.queryByTestId('quiz');
 
       const startPage = screen.queryByText(
-        /Here you can practice your knowledge for the course!/i
+        /Here you can practice your knowledge for the course!/i,
       );
 
       expect(quizAfterEnding).not.toBeInTheDocument();

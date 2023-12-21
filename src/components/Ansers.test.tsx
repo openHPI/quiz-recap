@@ -25,7 +25,7 @@ describe('Answers component', () => {
         answers={testData.answers}
         showCorrect={false}
         handleSelection={() => {}}
-      />
+      />,
     );
 
     const answers = await screen.findAllByRole('radio');
@@ -39,7 +39,7 @@ describe('Answers component', () => {
         answers={testData.answers}
         showCorrect={false}
         handleSelection={() => {}}
-      />
+      />,
     );
 
     const answers = await screen.findAllByRole('checkbox');

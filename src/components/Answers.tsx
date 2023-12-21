@@ -24,7 +24,7 @@ const Answers = ({
       {answers.map((answer: AnswerType) => {
         return (
           <div key={answer.id}>
-            <label className="block w-100 h-max bg-gray-100 p-2 mb-2 rounded">
+            <label className="w-100 mb-2 block h-max rounded bg-gray-100 p-2">
               <input
                 id={answer.id}
                 type={

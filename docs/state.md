@@ -20,13 +20,12 @@ Holds current selection
 - submitted `boolean`
 - selections `Answer[]`
 
-
 # Quiz
 
 TODO: Current question the user answers
 
 - quizEnded `boolean` (application state)
-- results `ResultType[]`  (application state)
+- results `ResultType[]` (application state)
 - questionIndex `number`
 - question `Question | null`
 - questionSet `Question[]`

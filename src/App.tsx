@@ -6,7 +6,7 @@ import { Context } from './Context';
 function App(data: Data) {
   const [quizStarted, setQuizStarted] = useState(false);
   const [numberOfQuestions, setNumberOfQuestions] = useState(
-    data.questions.length
+    data.questions.length,
   );
 
   const [quizEnded, setQuizEnded] = useState(false);
@@ -28,13 +28,13 @@ function App(data: Data) {
         setNumberOfQuestions,
       }}
     >
-      <div className="bg-gray-100 rounded p-5">
-        <h2 className="text-xl pb-4">Quiz recap</h2>
+      <div className="rounded bg-gray-100 p-5">
+        <h2 className="pb-4 text-xl">Quiz recap</h2>
         {quizStarted ? (
           <Quiz data={data} />
         ) : (
           <>
-            <h3 className="text-lg pb-2">
+            <h3 className="pb-2 text-lg">
               Here you can practice your knowledge for the course!
             </h3>
 
@@ -52,7 +52,7 @@ function App(data: Data) {
               <li>
                 <button
                   type="button"
-                  className="bg-blue-300 rounded p-2 m-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500"
+                  className="m-2 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500"
                   onClick={() => {
                     setNumberOfQuestions(completeSet);
                     setQuizStarted(true);
@@ -64,7 +64,7 @@ function App(data: Data) {
               <li>
                 <button
                   type="button"
-                  className="bg-blue-300 rounded p-2 m-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500"
+                  className="m-2 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500"
                   onClick={() => {
                     setNumberOfQuestions(mediumSet);
                     setQuizStarted(true);
@@ -76,7 +76,7 @@ function App(data: Data) {
               <li>
                 <button
                   type="button"
-                  className="bg-blue-300 rounded p-2 m-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500"
+                  className="m-2 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500"
                   onClick={() => {
                     setNumberOfQuestions(quickSet);
                     setQuizStarted(true);

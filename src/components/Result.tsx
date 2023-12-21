@@ -15,14 +15,14 @@ const Result = () => {
   const correctAnswers = results.reduce(
     (accumulator: number, result: ResultType) =>
       result.correctlyAnswered ? (accumulator = accumulator + 1) : accumulator,
-    0
+    0,
   );
   return (
     <>
-      <h3 className="text-lg pb-2">Result</h3>
+      <h3 className="pb-2 text-lg">Result</h3>
       {results.length ? (
         <table className="w-full">
-          <caption className="text-lg pb-4">
+          <caption className="pb-4 text-lg">
             You answered {correctAnswers} of {numberOfQuestions} correctly.
           </caption>
           <thead>
@@ -52,7 +52,7 @@ const Result = () => {
       )}
       <button
         type="button"
-        className="bg-green-300 rounded p-2 mt-4 w-full hover:bg-green-500 active:bg-green-500 focus:bg-green-500"
+        className="mt-4 w-full rounded bg-green-300 p-2 hover:bg-green-500 focus:bg-green-500 active:bg-green-500"
         onClick={() => {
           setQuizStarted(false);
           setQuizEnded(false);

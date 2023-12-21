@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { exampleData } from './static/data';
+import { webtechData } from './static/data';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('quiz-recap') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App questions={exampleData.questions} answers={exampleData.answers} />
+    <App questions={webtechData.questions} answers={webtechData.answers} />
   </React.StrictMode>
 );

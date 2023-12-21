@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
+import { useEffect, useState } from 'react';
+import classes from './App.module.css';
 import Form from './components/Form';
 import Result from './components/Result';
 import { Answer, Data, Question, ResultType } from './types';
@@ -61,30 +61,32 @@ function App(data: Data) {
   };
 
   return (
-    <main className="App">
-      <h1>Quiz recap</h1>
-      {question && data.answers && !quizEnded && (
-        <React.Fragment>
-          <Form
-            question={question}
-            answers={getAnswers(question, data.answers)}
-            nextQuestion={nextQuestion}
-            handleResult={addToResult}
-          ></Form>
-          <button type="button" onClick={handleEndQuiz}>
-            End Quiz
-          </button>
-        </React.Fragment>
-      )}
-      {quizEnded && (
-        <React.Fragment>
-          <Result results={results} totalQuestions={questionSet.length} />
-          <button type="button" onClick={handleNewQuiz}>
-            New Quiz
-          </button>
-        </React.Fragment>
-      )}
-    </main>
+    <div className={classes.app}>
+      <h2>Quiz recap</h2>
+      <div className={classes.content}>
+        {question && data.answers && !quizEnded && (
+          <>
+            <Form
+              question={question}
+              answers={getAnswers(question, data.answers)}
+              nextQuestion={nextQuestion}
+              handleResult={addToResult}
+            ></Form>
+            <button type="button" onClick={handleEndQuiz}>
+              End Quiz
+            </button>
+          </>
+        )}
+        {quizEnded && (
+          <>
+            <Result results={results} totalQuestions={questionSet.length} />
+            <button type="button" onClick={handleNewQuiz}>
+              New Quiz
+            </button>
+          </>
+        )}
+      </div>
+    </div>
   );
 }
 

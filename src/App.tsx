@@ -1,24 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { exampleData, Data, Question, Answer } from './static/data';
 
 function App() {
+  const [data, setData] = useState<Data>({ questions: [], answers: [] });
+  const [question, setQuestion] = useState<Question>();
+  const [answers, setAnswers] = useState<Answer[]>();
+
+  const getAnswers = (question: Question, allAnswers: Answer[]): Answer[] => {
+    return question.answers.map((answerId) => {
+      return allAnswers.find((answer) => answer.id === answerId)!;
+    });
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setData({
+        questions: exampleData.questions,
+        answers: exampleData.answers,
+      });
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (data.questions.length > 0 && data.answers.length > 0) {
+      setQuestion(data.questions[0]);
+      setAnswers(getAnswers(data.questions[0], data.answers));
+    }
+  }, [data]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Quiz recap</h1>
+      <p>{question && question.text}</p>
+      <ul>
+        {answers &&
+          answers.map((question) => {
+            return <li key={question.id}>{question?.text}</li>;
+          })}
+      </ul>
     </div>
   );
 }

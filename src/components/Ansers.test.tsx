@@ -23,6 +23,7 @@ describe('Answers component', () => {
       <Answers
         type={QuestionTypes.MultipleChoice}
         answers={testData.answers}
+        showCorrect={false}
         handleSelection={() => {}}
       />
     );
@@ -36,6 +37,7 @@ describe('Answers component', () => {
       <Answers
         type={QuestionTypes.MultipleAnswer}
         answers={testData.answers}
+        showCorrect={false}
         handleSelection={() => {}}
       />
     );

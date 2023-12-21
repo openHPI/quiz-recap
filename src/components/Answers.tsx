@@ -4,10 +4,12 @@ import './Answers.css';
 const Answers = ({
   type,
   answers,
+  showCorrect,
   handleSelection,
 }: {
   type: QuizType;
   answers: AnswerType[];
+  showCorrect: boolean;
   handleSelection: (answer: AnswerType) => void;
 }) => {
   const handleOnChange = (event: any): void => {
@@ -33,7 +35,11 @@ const Answers = ({
             ></input>
             <label htmlFor={answer.id}>
               {answer.text}
-              {/* <small>{'[' + answer.correct + ']'}</small> */}
+              {showCorrect && (
+                <small>
+                  {answer.correct ? ' (correct answer)' : ' (incorrect answer)'}
+                </small>
+              )}
             </label>
           </div>
         );

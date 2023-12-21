@@ -84,6 +84,7 @@ const Form = ({
         <Answers
           type={question.type}
           answers={answers}
+          showCorrect={submitted}
           handleSelection={handleSelections}
         ></Answers>
         {!submitted && <button>Submit Answer</button>}

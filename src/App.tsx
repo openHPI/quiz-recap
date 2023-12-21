@@ -6,12 +6,14 @@ import { Context } from './Context';
 
 function App(data: Data) {
   const [quizStarted, setQuizStarted] = useState(false);
-  const [numberOfQuestions, setNumberOfQuestion] = useState(0);
+  const [numberOfQuestions, setNumberOfQuestion] = useState(
+    data.questions.length
+  );
 
   const [quizEnded, setQuizEnded] = useState(false);
   const [results, setResults] = useState<ResultType[]>([]);
 
-  const completeSet = data.questions.length;
+  const completeSet = numberOfQuestions;
   const mediumSet = Math.floor(data.questions.length / 2);
   const quickSet = Math.floor(data.questions.length / 5);
 

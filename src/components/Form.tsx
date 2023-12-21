@@ -26,6 +26,7 @@ const Form = ({
     console.log(formState);
     setIsCorrect(formState.length === correctAnswers);
     setSubmitted(true);
+    setFormState([]);
   };
 
   const handleAnswersState = (selection: Answer) => {

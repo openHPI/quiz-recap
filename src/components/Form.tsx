@@ -76,12 +76,12 @@ const Form = ({
         {!submitted && <button>Submit Answer</button>}
       </fieldset>
       {submitted && (
-        <p>Your answer was {isCorrect ? ' correct' : ' not correct'}</p>
-      )}
-      {submitted && (
-        <button type="button" onClick={handleNextQuestion}>
-          Next Question
-        </button>
+        <>
+          <button type="button" onClick={handleNextQuestion}>
+            Next Question
+          </button>
+          <p>Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}</p>
+        </>
       )}
     </form>
   );

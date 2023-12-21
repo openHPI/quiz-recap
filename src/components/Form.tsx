@@ -77,7 +77,7 @@ const Form = ({
 
   return (
     <form onSubmit={submitHandler}>
-      <fieldset disabled={submitted} className="bg-white rounded p-5">
+      <fieldset className="bg-white rounded p-5">
         <Question text={question.text} type={question.type}></Question>
         <Answers
           type={question.type}
@@ -85,20 +85,21 @@ const Form = ({
           showCorrect={submitted}
           handleSelection={handleSelections}
         ></Answers>
-        {!submitted && (
-          <button className="bg-blue-300 rounded p-2 m-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500">
+        {submitted ? (
+          <p className="bg-white p-2 rounded mt-2">
+            Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}
+          </p>
+        ) : (
+          <button className="bg-blue-300 rounded p-2 m7-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500">
             Submit Answer
           </button>
         )}
       </fieldset>
       {submitted && (
         <>
-          <p className="bg-gray-300 p-6">
-            Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}
-          </p>
           <button
             type="button"
-            className="bg-blue-300 rounded p-2 m-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500"
+            className="bg-blue-300 rounded p-2 mt-4 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500"
             onClick={handleNextQuestion}
           >
             Next Question

@@ -33,6 +33,7 @@ const Answers = ({
                 name={'answer'}
                 className="mr-2 pb-2"
                 onChange={handleOnChange}
+                disabled={showCorrect}
               ></input>
               {answer.text}
               {showCorrect && (

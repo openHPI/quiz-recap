@@ -3,8 +3,8 @@ import { QuestionTypes, QuizType } from '../types';
 const Question = ({ text, type }: { text: string; type: QuizType }) => {
   return (
     <div>
-      <h3>{text}</h3>
-      <p>
+      <p className="text-lg pb-4">{text}</p>
+      <p className="text-m pb-4">
         <em>
           {type === QuestionTypes.MultipleAnswer
             ? 'Select all correct answers.'

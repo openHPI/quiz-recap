@@ -77,7 +77,7 @@ const Form = ({
 
   return (
     <form onSubmit={submitHandler}>
-      <fieldset disabled={submitted} className="bg-gray-200 rounded p-5">
+      <fieldset disabled={submitted} className="bg-white rounded p-5">
         <Question text={question.text} type={question.type}></Question>
         <Answers
           type={question.type}

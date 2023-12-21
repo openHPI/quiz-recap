@@ -1,21 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import classes from './Quiz.module.css';
 import Form from './Form';
 import Result from './Result';
-import { Data, Question, ResultType } from '../types';
+import { Data, Question } from '../types';
 import { getAnswers, getRandomSet } from '../util';
+import { Context } from '../Context';
 
-function Quiz({ data, set = 10 }: { data: Data; set?: number }) {
+function Quiz({ data }: { data: Data; set?: number }) {
+  const { quizEnded, setQuizEnded, numberOfQuestions } = useContext(Context);
+
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [quizEnded, setQuizEnded] = useState(false);
-  const [results, setResults] = useState<ResultType[]>([]);
   const [question, setQuestion] = useState<Question | null>(null);
   const [questionSet, setQuestionSet] = useState<Question[]>([]);
 
   useEffect(() => {
-    const setOfQuestions = getRandomSet(data.questions, set);
+    const setOfQuestions = getRandomSet(data.questions, numberOfQuestions);
     setQuestionSet(setOfQuestions);
-  }, [data, quizEnded, set]);
+  }, [data, quizEnded, numberOfQuestions]);
 
   useEffect(() => {
     setQuestion(questionSet[questionIndex]);
@@ -30,22 +31,6 @@ function Quiz({ data, set = 10 }: { data: Data; set?: number }) {
     }
   };
 
-  const handleEndQuiz = () => {
-    setQuizEnded(true);
-  };
-
-  const addToResult = (question: Question, correctlyAnswered: boolean) => {
-    setResults([
-      ...results,
-      {
-        question: question,
-        correctlyAnswered: correctlyAnswered,
-        attempts: 0,
-        link: 'link',
-      },
-    ]);
-  };
-
   return (
     <div className={classes.app} data-testid="quiz">
       <div className={classes.content}>
@@ -55,16 +40,18 @@ function Quiz({ data, set = 10 }: { data: Data; set?: number }) {
               question={question}
               answers={getAnswers(question, data.answers)}
               nextQuestion={nextQuestion}
-              handleResult={addToResult}
             ></Form>
-            <button type="button" onClick={handleEndQuiz}>
+            <button
+              type="button"
+              onClick={() => {
+                setQuizEnded(true);
+              }}
+            >
               End Quiz
             </button>
           </>
         )}
-        {quizEnded && (
-          <Result results={results} totalQuestions={questionSet.length} />
-        )}
+        {quizEnded && <Result />}
       </div>
     </div>
   );

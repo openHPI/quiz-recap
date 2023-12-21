@@ -1,21 +1,22 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import { Question, Answer, QuestionTypes } from '../types';
 import { isAlreadySelected, validateSelectionIsCorrect } from '../util';
 import Answers from './Answers';
 import QuestionText from './QuestionText';
 import './Form.css';
+import { Context } from '../Context';
 
 const Form = ({
   question,
   answers,
   nextQuestion,
-  handleResult,
 }: {
   question: Question;
   answers: Answer[];
   nextQuestion: Function;
-  handleResult: Function;
 }) => {
+  const { results, setResults } = useContext(Context);
+
   const [isCorrect, setIsCorrect] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [selections, setSelections] = useState<Answer[]>([]);
@@ -50,13 +51,25 @@ const Form = ({
     }
   };
 
+  const addToResult = (question: Question, correctlyAnswered: boolean) => {
+    setResults([
+      ...results,
+      {
+        question: question,
+        correctlyAnswered: correctlyAnswered,
+        attempts: 0,
+        link: 'link',
+      },
+    ]);
+  };
+
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
     const correctlyAnswered = validateSelectionIsCorrect(answers, selections);
     setIsCorrect(correctlyAnswered);
     setSubmitted(true);
     setSelections([]);
-    handleResult(question, correctlyAnswered);
+    addToResult(question, correctlyAnswered);
   };
 
   const handleNextQuestion = () => {

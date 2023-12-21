@@ -1,15 +1,13 @@
+import { useContext } from 'react';
 import { ResultType } from '../types';
 import './Result.css';
+import { Context } from '../Context';
 
-const Result = ({
-  results,
-  totalQuestions,
-}: {
-  results: ResultType[];
-  totalQuestions: number;
-}) => {
+const Result = () => {
+  const { results, numberOfQuestions } = useContext(Context);
+
   const correctAnswers = results.reduce(
-    (accumulator, result) =>
+    (accumulator: number, result: ResultType) =>
       result.correctlyAnswered ? (accumulator = accumulator + 1) : accumulator,
     0
   );
@@ -19,7 +17,7 @@ const Result = ({
       {results.length ? (
         <table>
           <caption>
-            You answered {correctAnswers} of {totalQuestions} correctly.
+            You answered {correctAnswers} of {numberOfQuestions} correctly.
           </caption>
           <thead>
             <tr>

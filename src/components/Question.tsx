@@ -1,6 +1,6 @@
 import { QuestionTypes, QuizType } from '../types';
 
-const QuestionText = ({ text, type }: { text: string; type: QuizType }) => {
+const Question = ({ text, type }: { text: string; type: QuizType }) => {
   return (
     <div>
       <h3>{text}</h3>
@@ -15,4 +15,4 @@ const QuestionText = ({ text, type }: { text: string; type: QuizType }) => {
   );
 };
 
-export default QuestionText;
+export default Question;

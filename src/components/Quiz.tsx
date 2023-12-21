@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import classes from './Quiz.module.css';
 import Form from './Form';
 import Result from './Result';
-import { Data, Question } from '../types';
+import { Data, QuestionType } from '../types';
 import { getAnswers, getRandomSet } from '../util';
 import { Context } from '../Context';
 
@@ -10,8 +10,8 @@ function Quiz({ data }: { data: Data; set?: number }) {
   const { quizEnded, setQuizEnded, numberOfQuestions } = useContext(Context);
 
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [question, setQuestion] = useState<Question | null>(null);
-  const [questionSet, setQuestionSet] = useState<Question[]>([]);
+  const [question, setQuestion] = useState<QuestionType | null>(null);
+  const [questionSet, setQuestionSet] = useState<QuestionType[]>([]);
 
   useEffect(() => {
     const setOfQuestions = getRandomSet(data.questions, numberOfQuestions);

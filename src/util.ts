@@ -1,8 +1,8 @@
-import { Answer, Question } from './types';
+import { AnswerType, QuestionType } from './types';
 
 export const validateSelectionIsCorrect = (
-  answers: Answer[],
-  selections: Answer[]
+  answers: AnswerType[],
+  selections: AnswerType[]
 ) => {
   if (
     selections.some((selection) => {
@@ -21,16 +21,19 @@ export const validateSelectionIsCorrect = (
   }
 };
 
-export const isAlreadySelected = (selections: Answer[], selection: Answer) => {
+export const isAlreadySelected = (
+  selections: AnswerType[],
+  selection: AnswerType
+) => {
   return selections.find((item) => {
     return selection.id === item.id;
   });
 };
 
 export const getAnswers = (
-  question: Question,
-  allAnswers: Answer[]
-): Answer[] => {
+  question: QuestionType,
+  allAnswers: AnswerType[]
+): AnswerType[] => {
   return question.answers.map((answerId) => {
     return allAnswers.find((answer) => answer.id === answerId)!;
   });

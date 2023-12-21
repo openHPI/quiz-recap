@@ -1,7 +1,7 @@
-export interface Data {
-  questions: Question[];
-  answers: Answer[];
-}
+export type Data = {
+  questions: QuestionType[];
+  answers: AnswerType[];
+};
 
 export enum QuestionTypes {
   MultipleChoice = 'Xikolo::Quiz::MultipleChoiceQuestion',
@@ -12,7 +12,7 @@ export type QuizType =
   | QuestionTypes.MultipleChoice
   | QuestionTypes.MultipleAnswer;
 
-export interface Question {
+export type QuestionType = {
   id: string;
   points: number;
   type: QuizType;
@@ -20,16 +20,16 @@ export interface Question {
   courseId: string;
   quizId: string;
   answers: string[];
-}
+};
 
-export interface Answer {
+export type AnswerType = {
   id: string;
   correct: boolean;
   text: string;
-}
+};
 
 export type ResultType = {
-  question: Question;
+  question: QuestionType;
   correctlyAnswered: boolean;
   attempts: number;
   link: string;

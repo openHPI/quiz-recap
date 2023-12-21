@@ -1,8 +1,8 @@
 import { FormEvent, useContext, useState } from 'react';
-import { Question, Answer, QuestionTypes } from '../types';
+import { QuestionType, AnswerType, QuestionTypes } from '../types';
 import { isAlreadySelected, validateSelectionIsCorrect } from '../util';
 import Answers from './Answers';
-import QuestionText from './QuestionText';
+import Question from './Question';
 import './Form.css';
 import { Context } from '../Context';
 
@@ -11,17 +11,17 @@ const Form = ({
   answers,
   nextQuestion,
 }: {
-  question: Question;
-  answers: Answer[];
+  question: QuestionType;
+  answers: AnswerType[];
   nextQuestion: Function;
 }) => {
   const { results, setResults } = useContext(Context);
 
   const [isCorrect, setIsCorrect] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [selections, setSelections] = useState<Answer[]>([]);
+  const [selections, setSelections] = useState<AnswerType[]>([]);
 
-  const deselectAnswer = (selection: Answer) => {
+  const deselectAnswer = (selection: AnswerType) => {
     setSelections((val) => {
       return val.filter((item) => {
         return item.id !== selection.id;
@@ -29,13 +29,13 @@ const Form = ({
     });
   };
 
-  const addToAnswers = (selection: Answer) => {
+  const addToAnswers = (selection: AnswerType) => {
     setSelections((oldValue) => {
       return [...oldValue, selection];
     });
   };
 
-  const handleMultipleAnswerSelection = (selection: Answer) => {
+  const handleMultipleAnswerSelection = (selection: AnswerType) => {
     if (isAlreadySelected(selections, selection)) {
       deselectAnswer(selection);
     } else {
@@ -43,7 +43,7 @@ const Form = ({
     }
   };
 
-  const handleSelections = (selection: Answer) => {
+  const handleSelections = (selection: AnswerType) => {
     if (question.type === QuestionTypes.MultipleChoice) {
       setSelections([selection]);
     } else {
@@ -51,7 +51,7 @@ const Form = ({
     }
   };
 
-  const addToResult = (question: Question, correctlyAnswered: boolean) => {
+  const addToResult = (question: QuestionType, correctlyAnswered: boolean) => {
     setResults([
       ...results,
       {
@@ -80,7 +80,7 @@ const Form = ({
   return (
     <form onSubmit={submitHandler}>
       <fieldset disabled={submitted}>
-        <QuestionText text={question.text} type={question.type}></QuestionText>
+        <Question text={question.text} type={question.type}></Question>
         <Answers
           type={question.type}
           answers={answers}

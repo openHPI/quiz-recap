@@ -1,4 +1,4 @@
-import { Answer, QuestionTypes, QuizType } from '../types';
+import { AnswerType, QuestionTypes, QuizType } from '../types';
 import './Answers.css';
 
 const Answers = ({
@@ -7,8 +7,8 @@ const Answers = ({
   handleSelection,
 }: {
   type: QuizType;
-  answers: Answer[];
-  handleSelection: (answer: Answer) => void;
+  answers: AnswerType[];
+  handleSelection: (answer: AnswerType) => void;
 }) => {
   const handleOnChange = (event: any): void => {
     const id = event.currentTarget.id;
@@ -20,7 +20,7 @@ const Answers = ({
 
   return (
     <div className="answers" data-testid="answers">
-      {answers.map((answer: Answer) => {
+      {answers.map((answer: AnswerType) => {
         return (
           <div key={answer.id} className="answers__answer">
             <input

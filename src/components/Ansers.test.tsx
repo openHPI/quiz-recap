@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { QuestionTypes } from '../types';
 import Answers from './Answers';
 

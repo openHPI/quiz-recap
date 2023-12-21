@@ -3,7 +3,7 @@ import classes from './App.module.css';
 import Form from './components/Form';
 import Result from './components/Result';
 import { Data, Question, ResultType } from './types';
-import { getAnswers } from './util';
+import { getAnswers, getRandomSet } from './util';
 
 function App(data: Data) {
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -13,10 +13,7 @@ function App(data: Data) {
   const [questionSet, setQuestionSet] = useState<Question[]>([]);
 
   useEffect(() => {
-    const setOfQuestions = data.questions
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 10);
-
+    const setOfQuestions = getRandomSet(data.questions, 10);
     setQuestionSet(setOfQuestions);
   }, [data, quizEnded]);
 

@@ -35,3 +35,7 @@ export const getAnswers = (
     return allAnswers.find((answer) => answer.id === answerId)!;
   });
 };
+
+export const getRandomSet = (set: Array<any>, count: number): any => {
+  return set.sort(() => 0.5 - Math.random()).slice(0, count);
+};

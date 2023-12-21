@@ -1,4 +1,4 @@
-import { QuizType } from '../types';
+import { QuestionTypes, QuizType } from '../types';
 
 const QuestionText = ({ text, type }: { text: string; type: QuizType }) => {
   return (
@@ -6,9 +6,9 @@ const QuestionText = ({ text, type }: { text: string; type: QuizType }) => {
       <h3>{text}</h3>
       <p>
         <em>
-          {type === 'Xikolo::Quiz::MultipleAnswerQuestion'
+          {type === QuestionTypes.MultipleAnswer
             ? 'Select all correct answers.'
-            : 'Select the correct answer'}
+            : 'Select the correct answer.'}
         </em>
       </p>
     </div>

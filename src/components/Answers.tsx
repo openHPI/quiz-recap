@@ -23,17 +23,17 @@ const Answers = ({
     <div className="p-2" data-testid="answers">
       {answers.map((answer: AnswerType) => {
         return (
-          <div key={answer.id} className="">
-            <input
-              id={answer.id}
-              type={
-                type === QuestionTypes.MultipleChoice ? 'radio' : 'checkbox'
-              }
-              name={'answer'}
-              className="mr-2 pb-2"
-              onChange={handleOnChange}
-            ></input>
-            <label htmlFor={answer.id}>
+          <div key={answer.id}>
+            <label className="block w-100 h-max bg-gray-100 p-2 mb-2 rounded">
+              <input
+                id={answer.id}
+                type={
+                  type === QuestionTypes.MultipleChoice ? 'radio' : 'checkbox'
+                }
+                name={'answer'}
+                className="mr-2 pb-2"
+                onChange={handleOnChange}
+              ></input>
               {answer.text}
               {showCorrect && (
                 <small>

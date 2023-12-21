@@ -4,13 +4,14 @@ import { Data, QuestionTypes } from '../types';
 import Quiz from './Quiz';
 
 test('renders Quiz recap components', async () => {
-  render(<Quiz questions={testData.questions} answers={testData.answers} />);
+  render(<Quiz data={testData} />);
 
-  const titleElement = screen.getByText(/Quiz recap/i);
+  const answers = screen.getByTestId('answers');
+
   const submitButton = screen.getByText('Submit Answer');
   const question = screen.getByText(/What is the answer?/i);
 
-  expect(titleElement).toBeInTheDocument();
+  expect(answers).toBeInTheDocument();
 
   expect(submitButton).toBeInTheDocument();
   expect(submitButton).not.toBeDisabled();
@@ -54,7 +55,7 @@ test('Conducting a multiple choice quiz', () => {
     ],
   };
 
-  render(<Quiz questions={testData.questions} answers={testData.answers} />);
+  render(<Quiz data={testData} />);
 
   fireEvent.click(screen.getByText('Answer 1'));
   fireEvent.click(screen.getByText('Submit Answer'));
@@ -123,7 +124,7 @@ test('Conducting a multiple answer quiz', () => {
       },
     ],
   };
-  render(<Quiz questions={testData.questions} answers={testData.answers} />);
+  render(<Quiz data={testData} />);
 
   // Selecting only one correct answer is not enough to succeed
   fireEvent.click(screen.getByText('Answer 1'));

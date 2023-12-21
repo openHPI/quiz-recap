@@ -27,7 +27,7 @@ const Answers = ({
   };
 
   return (
-    <div className="answers">
+    <div className="answers" data-testid="answers">
       {answers.map((answer: Answer) => {
         return (
           <div key={answer.id} className="answers__answer">

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import classes from './App.module.css';
+import classes from './Quiz.module.css';
 import Form from './Form';
 import Result from './Result';
 import { Data, Question, ResultType } from '../types';
 import { getAnswers, getRandomSet } from '../util';
 
-function Quiz(data: Data) {
+function Quiz({ data, set = 10 }: { data: Data; set?: number }) {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [quizEnded, setQuizEnded] = useState(false);
   const [results, setResults] = useState<ResultType[]>([]);
@@ -13,9 +13,9 @@ function Quiz(data: Data) {
   const [questionSet, setQuestionSet] = useState<Question[]>([]);
 
   useEffect(() => {
-    const setOfQuestions = getRandomSet(data.questions, 10);
+    const setOfQuestions = getRandomSet(data.questions, set);
     setQuestionSet(setOfQuestions);
-  }, [data, quizEnded]);
+  }, [data, quizEnded, set]);
 
   useEffect(() => {
     setQuestion(questionSet[questionIndex]);
@@ -54,7 +54,6 @@ function Quiz(data: Data) {
 
   return (
     <div className={classes.app}>
-      <h2>Quiz recap</h2>
       <div className={classes.content}>
         {question && data.answers && !quizEnded && (
           <>

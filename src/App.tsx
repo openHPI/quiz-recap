@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import Form from './components/Form';
 import { exampleData, Data, Question, Answer } from './static/data';
 
 function App() {
@@ -26,21 +27,19 @@ function App() {
 
   useEffect(() => {
     if (data.questions.length > 0 && data.answers.length > 0) {
-      setQuestion(data.questions[0]);
-      setAnswers(getAnswers(data.questions[0], data.answers));
+      setQuestion(data.questions[1]);
+      setAnswers(getAnswers(data.questions[1], data.answers));
     }
   }, [data]);
 
   return (
     <div className="App">
       <h1>Quiz recap</h1>
-      <p>{question && question.text}</p>
-      <ul>
-        {answers &&
-          answers.map((question) => {
-            return <li key={question.id}>{question?.text}</li>;
-          })}
-      </ul>
+      {question && answers ? (
+        <Form question={question} answers={answers}></Form>
+      ) : (
+        '...Loading'
+      )}
     </div>
   );
 }

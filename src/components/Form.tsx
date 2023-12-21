@@ -57,14 +57,13 @@ const Form = ({
       {
         question: question,
         correctlyAnswered: correctlyAnswered,
-        attempts: 0,
-        link: 'link',
       },
     ]);
   };
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
+
     const correctlyAnswered = validateSelectionIsCorrect(answers, selections);
     setIsCorrect(correctlyAnswered);
     setSubmitted(true);

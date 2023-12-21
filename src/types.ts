@@ -31,6 +31,4 @@ export type AnswerType = {
 export type ResultType = {
   question: QuestionType;
   correctlyAnswered: boolean;
-  attempts: number;
-  link: string;
 };

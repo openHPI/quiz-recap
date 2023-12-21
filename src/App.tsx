@@ -33,9 +33,7 @@ function App(data: Data) {
               After you decide for a quiz size you will get a random set of
               questions. Questions with one correct answer are indicated by a
               radio button. Those with multiple correct answers are indicated by
-              a checkbox. Questions will be evaluated right away so you get
-              instant feedback. The end of the quiz will suggest some videos you
-              may want to revise.
+              a checkbox.
             </p>
             <p>
               Choose a quiz type depending on how many questions you want to

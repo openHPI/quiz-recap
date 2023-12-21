@@ -17,28 +17,30 @@ const testData = {
   ],
 };
 
-test('renders radios with multiple choice question', async () => {
-  render(
-    <Answers
-      type={QuestionTypes.MultipleChoice}
-      answers={testData.answers}
-      handleSelection={() => {}}
-    />
-  );
+describe('Answers component', () => {
+  it('renders radios with multiple choice question', async () => {
+    render(
+      <Answers
+        type={QuestionTypes.MultipleChoice}
+        answers={testData.answers}
+        handleSelection={() => {}}
+      />
+    );
 
-  const answers = await screen.findAllByRole('radio');
-  expect(answers.length).toBeGreaterThanOrEqual(1);
-});
+    const answers = await screen.findAllByRole('radio');
+    expect(answers.length).toBeGreaterThanOrEqual(1);
+  });
 
-test('renders checkboxes with multiple answer question', async () => {
-  render(
-    <Answers
-      type={QuestionTypes.MultipleAnswer}
-      answers={testData.answers}
-      handleSelection={() => {}}
-    />
-  );
+  it('renders checkboxes with multiple answer question', async () => {
+    render(
+      <Answers
+        type={QuestionTypes.MultipleAnswer}
+        answers={testData.answers}
+        handleSelection={() => {}}
+      />
+    );
 
-  const answers = await screen.findAllByRole('checkbox');
-  expect(answers.length).toBeGreaterThanOrEqual(1);
+    const answers = await screen.findAllByRole('checkbox');
+    expect(answers.length).toBeGreaterThanOrEqual(1);
+  });
 });

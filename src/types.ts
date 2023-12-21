@@ -29,9 +29,8 @@ export interface Answer {
 }
 
 export type ResultType = {
-  id: string;
-  correct: boolean;
-  text: string;
+  question: Question;
+  correctlyAnswered: boolean;
   attempts: number;
   link: string;
 };

@@ -9,10 +9,12 @@ const Form = ({
   question,
   answers,
   nextQuestion,
+  handleResult,
 }: {
   question: Question;
   answers: Answer[];
   nextQuestion: Function;
+  handleResult: Function;
 }) => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -50,9 +52,11 @@ const Form = ({
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
-    setIsCorrect(validateSelectionIsCorrect(answers, selections));
+    const correctlyAnswered = validateSelectionIsCorrect(answers, selections);
+    setIsCorrect(correctlyAnswered);
     setSubmitted(true);
     setSelections([]);
+    handleResult(question, correctlyAnswered);
   };
 
   const handleNextQuestion = () => {

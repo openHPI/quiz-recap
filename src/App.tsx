@@ -20,22 +20,6 @@ function App(data: Data) {
   useEffect(() => {
     setQuestion(data.questions[questionIndex]);
     setAnswers(getAnswers(data.questions[questionIndex], data.answers));
-    setResults([
-      {
-        id: '1',
-        correct: true,
-        text: 'FooFoo',
-        attempts: 1,
-        link: 'link',
-      },
-      {
-        id: '2',
-        correct: false,
-        text: 'Barbar',
-        attempts: 3,
-        link: 'link',
-      },
-    ]);
   }, [data, questionIndex]);
 
   const nextQuestion = () => {
@@ -51,6 +35,18 @@ function App(data: Data) {
     setQuizEnded(true);
   };
 
+  const addToResult = (question: Question, correctlyAnswered: boolean) => {
+    setResults([
+      ...results,
+      {
+        question: question,
+        correctlyAnswered: correctlyAnswered,
+        attempts: 0,
+        link: 'link',
+      },
+    ]);
+  };
+
   return (
     <div className="App">
       <h1>Quiz recap</h1>
@@ -60,6 +56,7 @@ function App(data: Data) {
             question={question}
             answers={answers}
             nextQuestion={nextQuestion}
+            handleResult={addToResult}
           ></Form>
           <button type="button" onClick={handleEndQuiz}>
             End Quiz

@@ -38,19 +38,24 @@ const Form = ({
   return (
     <form onSubmit={submitHandler}>
       <fieldset disabled={submitted}>
-        <QuestionText text={question.text}></QuestionText>
+        <QuestionText text={question.text} type={question.type}></QuestionText>
         <Answers
+          type={question.type}
           answers={answers}
           handleSelection={handleRadioChange}
         ></Answers>
         {!submitted && <button>Submit Answer</button>}
-        {submitted && <p>{isCorrect ? 'Correct' : 'Not correct'}</p>}
       </fieldset>
-      {submitted && (
-        <button type="button" onClick={handleNextQuestion}>
-          Next Question
-        </button>
-      )}
+      <div>
+        {submitted && (
+          <p>Your answer was {isCorrect ? ' correct' : ' not correct'}</p>
+        )}
+        {submitted && (
+          <button type="button" onClick={handleNextQuestion}>
+            Next Question
+          </button>
+        )}
+      </div>
     </form>
   );
 };

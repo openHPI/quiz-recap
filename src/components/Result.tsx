@@ -1,18 +1,25 @@
 import { ResultType } from '../types';
 import './Result.css';
 
-const Result = ({ results }: { results: ResultType[] }) => {
+const Result = ({
+  results,
+  totalQuestions,
+}: {
+  results: ResultType[];
+  totalQuestions: number;
+}) => {
+  const correctAnswers = results.reduce(
+    (accumulator, result) =>
+      result.correctlyAnswered ? (accumulator = accumulator + 1) : accumulator,
+    0
+  );
   return (
     <div>
       <h2>Result</h2>
-      <p>
-        Quiz completed. You solved questions or not, the component does not know
-        yet. But probably you did stuff.
-      </p>
       <table>
         <caption>
           {results.length
-            ? 'You did stuff! See below.'
+            ? `You answered ${correctAnswers} of ${totalQuestions} correctly.`
             : 'You did not answer any questions'}
         </caption>
         <thead>

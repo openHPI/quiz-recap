@@ -78,7 +78,7 @@ function App(data: Data) {
       )}
       {quizEnded && (
         <React.Fragment>
-          <Result results={results} />
+          <Result results={results} totalQuestions={questionSet.length} />
           <button type="button" onClick={handleNewQuiz}>
             New Quiz
           </button>

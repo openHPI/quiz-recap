@@ -1,5 +1,4 @@
-import { FormEvent, useContext, useState } from 'react';
-import AppContext from '../AppContext';
+import { FormEvent, useState } from 'react';
 import { Question, Answer } from '../types';
 import Answers from './Answers';
 import QuestionText from './QuestionText';
@@ -7,13 +6,14 @@ import QuestionText from './QuestionText';
 const Form = ({
   question,
   answers,
+  nextQuestion,
 }: {
   question: Question;
   answers: Answer[];
+  nextQuestion: Function;
 }) => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const { index, setIndex } = useContext(AppContext);
 
   const [formState, setFormState] = useState<Answer[]>([]);
 
@@ -23,7 +23,6 @@ const Form = ({
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
-    console.log(formState);
     setIsCorrect(formState.length === correctAnswers);
     setSubmitted(true);
     setFormState([]);
@@ -59,7 +58,7 @@ const Form = ({
 
   const handleNextQuestion = () => {
     setSubmitted(false);
-    setIndex(index + 1);
+    nextQuestion();
   };
 
   return (

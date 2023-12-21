@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import AppContext from './AppContext';
 import Form from './components/Form';
 import { Data, Question, Answer } from './types';
 
@@ -16,25 +15,24 @@ function App(data: Data) {
   };
 
   useEffect(() => {
-    if (data.questions.length > 0 && data.answers.length > 0) {
-      setQuestion(data.questions[questionIndex]);
-      setAnswers(getAnswers(data.questions[questionIndex], data.answers));
-    }
+    setQuestion(data.questions[questionIndex]);
+    setAnswers(getAnswers(data.questions[questionIndex], data.answers));
   }, [data, questionIndex]);
 
-  const updateQuestionIndex = (value: number) => {
-    setQuestionIndex(value);
+  const nextQuestion = () => {
+    const nextQuestionIndex = questionIndex + 1;
+    setQuestionIndex(nextQuestionIndex);
   };
 
   return (
     <div className="App">
       <h1>Quiz recap</h1>
       {question && answers ? (
-        <AppContext.Provider
-          value={{ index: questionIndex, setIndex: updateQuestionIndex }}
-        >
-          <Form question={question} answers={answers}></Form>
-        </AppContext.Provider>
+        <Form
+          question={question}
+          answers={answers}
+          nextQuestion={nextQuestion}
+        ></Form>
       ) : (
         '...Loading'
       )}

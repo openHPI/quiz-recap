@@ -35,10 +35,16 @@ const Answers = ({
                 onChange={handleOnChange}
                 disabled={showCorrect}
               ></input>
-              {answer.text}
+              {answer.text + ' '}
               {showCorrect && (
-                <small>
-                  {answer.correct ? ' (correct answer)' : ' (incorrect answer)'}
+                <small
+                  className={
+                    showCorrect && answer.correct
+                      ? ' bg-green-100'
+                      : 'bg-red-100'
+                  }
+                >
+                  {answer.correct ? '(correct answer)' : '(incorrect answer)'}
                 </small>
               )}
             </label>

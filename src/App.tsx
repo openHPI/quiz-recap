@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Form from './components/Form';
 import Result from './components/Result';
-import { Data, Question, Answer } from './types';
+import { Data, Question, Answer, ResultType } from './types';
 
 function App(data: Data) {
   const [question, setQuestion] = useState<Question>();
   const [answers, setAnswers] = useState<Answer[]>();
   const [questionIndex, setQuestionIndex] = useState(0);
   const [quizEnded, setQuizEnded] = useState(false);
+  const [results, setResults] = useState<ResultType[]>([]);
 
   const getAnswers = (question: Question, allAnswers: Answer[]): Answer[] => {
     return question.answers.map((answerId) => {
@@ -19,6 +20,22 @@ function App(data: Data) {
   useEffect(() => {
     setQuestion(data.questions[questionIndex]);
     setAnswers(getAnswers(data.questions[questionIndex], data.answers));
+    setResults([
+      {
+        id: '1',
+        correct: true,
+        text: 'FooFoo',
+        attempts: 1,
+        link: 'link',
+      },
+      {
+        id: '2',
+        correct: false,
+        text: 'Barbar',
+        attempts: 3,
+        link: 'link',
+      },
+    ]);
   }, [data, questionIndex]);
 
   const nextQuestion = () => {
@@ -49,7 +66,7 @@ function App(data: Data) {
           </button>
         </div>
       )}
-      {quizEnded && <Result></Result>}
+      {quizEnded && <Result results={results}></Result>}
     </div>
   );
 }

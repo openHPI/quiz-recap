@@ -27,3 +27,11 @@ export interface Answer {
   correct: boolean;
   text: string;
 }
+
+export type ResultType = {
+  id: string;
+  correct: boolean;
+  text: string;
+  attempts: number;
+  link: string;
+};

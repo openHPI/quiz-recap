@@ -7,21 +7,14 @@ const Answers = ({
 }: {
   type: QuizType;
   answers: Answer[];
-  handleSelection: (event: any) => void;
+  handleSelection: (answer: Answer) => void;
 }) => {
-  const getBooleanValue = (value: string): boolean => {
-    return value.toLowerCase() === 'true' ? true : false;
-  };
-
-  const handleOnChange = (event: any) => {
-    // Has true or false
-    if (type === 'Xikolo::Quiz::MultipleChoiceQuestion') {
-      const value = getBooleanValue(event.currentTarget.value);
-      handleSelection(value);
-    } else {
-      // has more than one correct answers
-      throw new Error('Not implemented yet');
-    }
+  const handleOnChange = (event: any): void => {
+    const id = event.currentTarget.id;
+    const answer = answers.find((answer) => {
+      return answer.id === id;
+    })!;
+    handleSelection(answer);
   };
 
   const inputType = () => {

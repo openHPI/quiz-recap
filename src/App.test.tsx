@@ -3,7 +3,7 @@ import App from './App';
 import { testData as data } from './static/data';
 
 describe('App component', () => {
-  describe('basic workflow', () => {
+  describe('basic workflows', () => {
     it('shows start screen on startup', () => {
       render(<App questions={data.questions} answers={data.answers}></App>);
 
@@ -40,7 +40,22 @@ describe('App component', () => {
       expect(result).toBeInTheDocument();
     });
 
-    it.todo('after answering all questions, the result page is shown');
+    it('shows the result page after answering all questions', () => {
+      render(<App questions={data.questions} answers={data.answers}></App>);
+      const button = screen.getByText(/Complete set/i);
+      fireEvent.click(button);
+
+      // conduct a pseudo quiz
+      data.questions.forEach(() => {
+        fireEvent.click(screen.getAllByText(/Answer/i)[0]);
+        fireEvent.click(screen.getByText('Submit Answer'));
+        fireEvent.click(screen.getByText('Next Question'));
+      });
+
+      const result = screen.queryByText(/Result/i);
+
+      expect(result).toBeInTheDocument();
+    });
 
     it('shows the start page again starting a new quiz', () => {
       render(<App questions={data.questions} answers={data.answers}></App>);

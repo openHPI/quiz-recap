@@ -2,6 +2,14 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { testData } from '../static/data';
 import { Data, QuestionTypes } from '../types';
 import Quiz from './Quiz';
+import { Context } from '../Context';
+
+const customRender = (ui: any, { providerProps, ...renderOptions }: any) => {
+  return render(
+    <Context.Provider {...providerProps}>{ui}</Context.Provider>,
+    renderOptions
+  );
+};
 
 describe('Quiz component', () => {
   it('renders answer and submit button', () => {
@@ -58,7 +66,16 @@ describe('Conducting a single choice quiz', () => {
       ],
     };
 
-    render(<Quiz data={testData} />);
+    const providerProps = {
+      value: {
+        quizEnded: false,
+        setQuizEnded: () => {},
+        numberOfQuestions: 2,
+        results: [],
+        setResults: () => {},
+      },
+    };
+    customRender(<Quiz data={testData} />, { providerProps });
 
     fireEvent.click(screen.getByText('Answer 1'));
     fireEvent.click(screen.getByText('Submit Answer'));
@@ -131,7 +148,17 @@ describe('Conducting a multiple answer quiz', () => {
         },
       ],
     };
-    render(<Quiz data={testData} />);
+
+    const providerProps = {
+      value: {
+        quizEnded: false,
+        setQuizEnded: () => {},
+        numberOfQuestions: 2,
+        results: [],
+        setResults: () => {},
+      },
+    };
+    customRender(<Quiz data={testData} />, { providerProps });
 
     // Selecting only one correct answer is not enough to succeed
     fireEvent.click(screen.getByText('Answer 1'));

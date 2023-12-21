@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
 import { testData } from './static/data';
-import { Data } from './types';
+import { Data, QuestionTypes } from './types';
 
 test('renders Quiz recap components', async () => {
   render(<App questions={testData.questions} answers={testData.answers} />);
@@ -26,7 +26,7 @@ test('Conducting a multiple choice quiz', () => {
       {
         id: 'id-01',
         points: 1,
-        type: 'Xikolo::Quiz::MultipleChoiceQuestion',
+        type: QuestionTypes.MultipleChoice,
         text: 'What is the answer?',
         courseId: 'courseId-01',
         quizId: 'quizId-01',
@@ -35,7 +35,7 @@ test('Conducting a multiple choice quiz', () => {
       {
         id: 'id-02',
         points: 1,
-        type: 'Xikolo::Quiz::MultipleChoiceQuestion',
+        type: QuestionTypes.MultipleChoice,
         text: 'What is the answer?',
         courseId: 'courseId-01',
         quizId: 'quizId-02',
@@ -77,7 +77,7 @@ test('Conducting a multiple answer quiz', () => {
       {
         id: 'id-01',
         points: 1,
-        type: 'Xikolo::Quiz::MultipleAnswerQuestion',
+        type: QuestionTypes.MultipleAnswer,
         text: 'What is the answer?',
         courseId: 'courseId-01',
         quizId: 'quizId-01',
@@ -86,7 +86,7 @@ test('Conducting a multiple answer quiz', () => {
       {
         id: 'id-02',
         points: 1,
-        type: 'Xikolo::Quiz::MultipleAnswerQuestion',
+        type: QuestionTypes.MultipleAnswer,
         text: 'What is the answer?',
         courseId: 'courseId-01',
         quizId: 'quizId-02',
@@ -95,7 +95,7 @@ test('Conducting a multiple answer quiz', () => {
       {
         id: 'id-03',
         points: 1,
-        type: 'Xikolo::Quiz::MultipleAnswerQuestion',
+        type: QuestionTypes.MultipleAnswer,
         text: 'What is the answer?',
         courseId: 'courseId-01',
         quizId: 'quizId-03',

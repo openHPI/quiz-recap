@@ -3,9 +3,14 @@ export interface Data {
   answers: Answer[];
 }
 
+export enum QuestionTypes {
+  MultipleChoice = 'Xikolo::Quiz::MultipleChoiceQuestion',
+  MultipleAnswer = 'Xikolo::Quiz::MultipleAnswerQuestion',
+}
+
 export type QuizType =
-  | 'Xikolo::Quiz::MultipleChoiceQuestion'
-  | 'Xikolo::Quiz::MultipleAnswerQuestion';
+  | QuestionTypes.MultipleChoice
+  | QuestionTypes.MultipleAnswer;
 
 export interface Question {
   id: string;

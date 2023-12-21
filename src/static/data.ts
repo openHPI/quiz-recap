@@ -2649,7 +2649,7 @@ export const exampleData: Data = {
       text: 'lcol (line color) - Linienfarbe',
     },
   ],
-};
+} as Data;
 
 export const testData: Data = {
   questions: [
@@ -2712,4 +2712,4 @@ export const testData: Data = {
       text: 'Answer 4',
     },
   ],
-};
+} as Data;

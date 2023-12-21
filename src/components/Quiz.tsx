@@ -6,7 +6,7 @@ import { Data, QuestionType } from '../types';
 import { getAnswers, getRandomSet } from '../util';
 import { Context } from '../Context';
 
-function Quiz({ data }: { data: Data; set?: number }) {
+function Quiz({ data }: { data: Data }) {
   const { quizEnded, setQuizEnded, numberOfQuestions } = useContext(Context);
 
   const [questionIndex, setQuestionIndex] = useState(0);

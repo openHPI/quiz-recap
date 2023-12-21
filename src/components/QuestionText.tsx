@@ -3,7 +3,7 @@ import { QuizType } from '../types';
 const QuestionText = ({ text, type }: { text: string; type: QuizType }) => {
   return (
     <div>
-      <p>{text}</p>
+      <h2>{text}</h2>
       <p>
         <em>
           {type === 'Xikolo::Quiz::MultipleAnswerQuestion'

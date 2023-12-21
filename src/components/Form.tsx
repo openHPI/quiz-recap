@@ -3,6 +3,7 @@ import { Question, Answer, QuestionTypes } from '../types';
 import { isAlreadySelected, validateSelectionIsCorrect } from '../util';
 import Answers from './Answers';
 import QuestionText from './QuestionText';
+import './Form.css';
 
 const Form = ({
   question,
@@ -70,16 +71,14 @@ const Form = ({
         ></Answers>
         {!submitted && <button>Submit Answer</button>}
       </fieldset>
-      <div>
-        {submitted && (
-          <p>Your answer was {isCorrect ? ' correct' : ' not correct'}</p>
-        )}
-        {submitted && (
-          <button type="button" onClick={handleNextQuestion}>
-            Next Question
-          </button>
-        )}
-      </div>
+      {submitted && (
+        <p>Your answer was {isCorrect ? ' correct' : ' not correct'}</p>
+      )}
+      {submitted && (
+        <button type="button" onClick={handleNextQuestion}>
+          Next Question
+        </button>
+      )}
     </form>
   );
 };

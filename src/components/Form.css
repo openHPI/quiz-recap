@@ -1,0 +1,12 @@
+button {
+  font-size: 18px;
+}
+
+fieldset {
+  background-color: whitesmoke;
+  border: none;
+}
+
+fieldset > *:not(:last-child) {
+  margin-bottom: 20px;
+}

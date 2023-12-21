@@ -1,4 +1,5 @@
 import { Answer, QuizType } from '../types';
+import './Answers.css';
 
 const Answers = ({
   type,
@@ -26,10 +27,10 @@ const Answers = ({
   };
 
   return (
-    <div>
+    <div className="answers">
       {answers.map((answer: Answer) => {
         return (
-          <div key={answer.id}>
+          <div key={answer.id} className="answers__answer">
             <input
               id={answer.id}
               type={inputType()}

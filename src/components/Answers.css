@@ -1,0 +1,10 @@
+.answers {
+  margin-bottom: 10px;
+}
+.answers__answer {
+  margin-bottom: 5px;
+}
+
+.answers__answer input {
+  margin-right: 10px;
+}

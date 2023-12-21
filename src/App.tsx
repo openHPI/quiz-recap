@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Form from './components/Form';
-import { exampleData, Data, Question, Answer } from './static/data';
+import { exampleData } from './static/data';
+import { Data, Question, Answer } from './types';
 
 function App() {
   const [data, setData] = useState<Data>({ questions: [], answers: [] });
@@ -14,14 +15,14 @@ function App() {
     });
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setData({
-        questions: exampleData.questions,
-        answers: exampleData.answers,
-      });
-    };
+  const fetchData = async () => {
+    setData({
+      questions: exampleData.questions,
+      answers: exampleData.answers,
+    });
+  };
 
+  useEffect(() => {
     fetchData();
   }, []);
 

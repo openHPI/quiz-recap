@@ -1,9 +1,6 @@
-import { useState } from 'react';
-import { Answer } from '../static/data';
+import { Answer } from '../types';
 
 const Answers = ({ answers, name }: { answers: Answer[]; name: string }) => {
-  const [isCorrect, setIsCorrect] = useState(false);
-
   return (
     <div>
       {answers.map((answer) => (

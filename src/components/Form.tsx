@@ -1,13 +1,12 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { Answer, Question as IQuestion } from '../static/data';
-import Answers from './Answers';
-import Question from './Question';
+import { FormEvent, useState } from 'react';
+import { Question, Answer } from '../types';
+import QuestionText from './QuestionText';
 
 const Form = ({
   question,
   answers,
 }: {
-  question: IQuestion;
+  question: Question;
   answers: Answer[];
 }) => {
   const [isCorrect, setIsCorrect] = useState(false);
@@ -30,7 +29,7 @@ const Form = ({
 
   return (
     <form onSubmit={submitHandler}>
-      <Question text={question.text}></Question>
+      <QuestionText text={question.text}></QuestionText>
       {answers.map((answer) => (
         <div key={answer.id}>
           <input

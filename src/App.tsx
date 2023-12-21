@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import AppContext from './AppContext';
 import Form from './components/Form';
 import { exampleData } from './static/data';
 import { Data, Question, Answer } from './types';
@@ -8,6 +9,7 @@ function App() {
   const [data, setData] = useState<Data>({ questions: [], answers: [] });
   const [question, setQuestion] = useState<Question>();
   const [answers, setAnswers] = useState<Answer[]>();
+  const [questionIndex, setQuestionIndex] = useState(0);
 
   const getAnswers = (question: Question, allAnswers: Answer[]): Answer[] => {
     return question.answers.map((answerId) => {
@@ -28,16 +30,24 @@ function App() {
 
   useEffect(() => {
     if (data.questions.length > 0 && data.answers.length > 0) {
-      setQuestion(data.questions[1]);
-      setAnswers(getAnswers(data.questions[1], data.answers));
+      setQuestion(data.questions[questionIndex]);
+      setAnswers(getAnswers(data.questions[questionIndex], data.answers));
     }
-  }, [data]);
+  }, [data, questionIndex]);
+
+  const updateQuestionIndex = (value: number) => {
+    setQuestionIndex(value);
+  };
 
   return (
     <div className="App">
       <h1>Quiz recap</h1>
       {question && answers ? (
-        <Form question={question} answers={answers}></Form>
+        <AppContext.Provider
+          value={{ index: questionIndex, setIndex: updateQuestionIndex }}
+        >
+          <Form question={question} answers={answers}></Form>
+        </AppContext.Provider>
       ) : (
         '...Loading'
       )}

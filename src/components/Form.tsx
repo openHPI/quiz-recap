@@ -1,4 +1,5 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
+import AppContext from '../AppContext';
 import { Question, Answer } from '../types';
 import QuestionText from './QuestionText';
 
@@ -14,6 +15,7 @@ const Form = ({
   const [selectedAnswerValue, setSelectedAnswerValue] = useState<
     boolean | null
   >(null);
+  const { index, setIndex } = useContext(AppContext);
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
@@ -30,6 +32,11 @@ const Form = ({
 
   const handleRadioChange = (event: any) => {
     setSelectedAnswerValue(getBooleanValue(event.currentTarget.value));
+  };
+
+  const handleNextQuestion = () => {
+    setSubmitted(false);
+    setIndex(index + 1);
   };
 
   return (
@@ -53,7 +60,11 @@ const Form = ({
         {!submitted && <button>Submit Answer</button>}
         {submitted && <p>{isCorrect ? 'Correct' : 'Not correct'}</p>}
       </fieldset>
-      {submitted && <button type="button">Next Question</button>}
+      {submitted && (
+        <button type="button" onClick={handleNextQuestion}>
+          Next Question
+        </button>
+      )}
     </form>
   );
 };

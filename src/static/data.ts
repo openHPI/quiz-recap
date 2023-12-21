@@ -2678,7 +2678,7 @@ export const testData: Data = {
       text: 'What is the answer?',
       courseId: 'courseId-01',
       quizId: 'quizId-03',
-      answers: ['answer_01', 'answer_02', 'answer_03', 'answer_04'],
+      answers: ['answer_05', 'answer_06', 'answer_07', 'answer_08'],
     },
     {
       id: 'id-04',
@@ -2687,7 +2687,7 @@ export const testData: Data = {
       text: 'What is the answer?',
       courseId: 'courseId-01',
       quizId: 'quizId-04',
-      answers: ['answer_01', 'answer_02', 'answer_03', 'answer_04'],
+      answers: ['answer_09', 'answer_10', 'answer_11', 'answer_12'],
     },
   ],
   answers: [
@@ -2710,6 +2710,46 @@ export const testData: Data = {
       id: 'answer_04',
       correct: false,
       text: 'Answer 4',
+    },
+    {
+      id: 'answer_05',
+      correct: true,
+      text: 'Answer 5',
+    },
+    {
+      id: 'answer_06',
+      correct: false,
+      text: 'Answer 6',
+    },
+    {
+      id: 'answer_07',
+      correct: true,
+      text: 'Answer 7',
+    },
+    {
+      id: 'answer_08',
+      correct: false,
+      text: 'Answer 8',
+    },
+    {
+      id: 'answer_09',
+      correct: false,
+      text: 'Answer 9',
+    },
+    {
+      id: 'answer_10',
+      correct: false,
+      text: 'Answer 10',
+    },
+    {
+      id: 'answer_11',
+      correct: false,
+      text: 'Answer 11',
+    },
+    {
+      id: 'answer_12',
+      correct: false,
+      text: 'Answer 12',
     },
   ],
 } as Data;

@@ -47,7 +47,7 @@ function Quiz({ data, set = 10 }: { data: Data; set?: number }) {
   };
 
   return (
-    <div className={classes.app}>
+    <div className={classes.app} data-testid="quiz">
       <div className={classes.content}>
         {question && data.answers && !quizEnded && (
           <>

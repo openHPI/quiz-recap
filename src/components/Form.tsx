@@ -34,22 +34,26 @@ const Form = ({
 
   return (
     <form onSubmit={submitHandler}>
-      <QuestionText text={question.text}></QuestionText>
-      {answers.map((answer) => (
-        <div key={answer.id}>
-          <input
-            id={answer.id}
-            type="radio"
-            name={'answer'}
-            value={answer.correct.toString()}
-            onChange={handleRadioChange}
-            required
-          ></input>
-          <label htmlFor={answer.id}>{answer.text}</label>
-        </div>
-      ))}
-      <button>Submit Answer</button>
-      {submitted && <p>{isCorrect ? 'Correct' : 'Not correct'}</p>}
+      <fieldset disabled={submitted}>
+        <QuestionText text={question.text}></QuestionText>
+        {answers.map((answer) => (
+          <div key={answer.id}>
+            <input
+              id={answer.id}
+              type="radio"
+              name={'answer'}
+              value={answer.correct.toString()}
+              onChange={handleRadioChange}
+              required
+              readOnly={submitted}
+            ></input>
+            <label htmlFor={answer.id}>{answer.text}</label>
+          </div>
+        ))}
+        {!submitted && <button>Submit Answer</button>}
+        {submitted && <p>{isCorrect ? 'Correct' : 'Not correct'}</p>}
+      </fieldset>
+      {submitted && <button type="button">Next Question</button>}
     </form>
   );
 };

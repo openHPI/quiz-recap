@@ -1,4 +1,4 @@
-import { Answer, QuizType } from '../types';
+import { Answer, QuestionTypes, QuizType } from '../types';
 import './Answers.css';
 
 const Answers = ({
@@ -19,7 +19,7 @@ const Answers = ({
   };
 
   const inputType = () => {
-    if (type === 'Xikolo::Quiz::MultipleChoiceQuestion') {
+    if (type === QuestionTypes.MultipleChoice) {
       return 'radio';
     } else {
       return 'checkbox';
@@ -39,7 +39,7 @@ const Answers = ({
             ></input>
             <label htmlFor={answer.id}>
               {answer.text}
-              <small>{'[' + answer.correct + ']'}</small>
+              {/* <small>{'[' + answer.correct + ']'}</small> */}
             </label>
           </div>
         );

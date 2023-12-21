@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
-import { Question, Answer } from '../types';
+import { Question, Answer, QuestionTypes } from '../types';
+import { isAlreadySelected, validateSelectionIsCorrect } from '../util';
 import Answers from './Answers';
 import QuestionText from './QuestionText';
 
@@ -14,46 +15,43 @@ const Form = ({
 }) => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [selections, setSelections] = useState<Answer[]>([]);
 
-  const [formState, setFormState] = useState<Answer[]>([]);
+  const deselectAnswer = (selection: Answer) => {
+    setSelections((val) => {
+      return val.filter((item) => {
+        return item.id !== selection.id;
+      });
+    });
+  };
 
-  const correctAnswers: number = answers.filter((answer) => {
-    return answer.correct;
-  }).length;
+  const addToAnswers = (selection: Answer) => {
+    setSelections((oldValue) => {
+      return [...oldValue, selection];
+    });
+  };
+
+  const handleMultipleAnswerSelection = (selection: Answer) => {
+    if (isAlreadySelected(selections, selection)) {
+      deselectAnswer(selection);
+    } else {
+      addToAnswers(selection);
+    }
+  };
+
+  const handleSelections = (selection: Answer) => {
+    if (question.type === QuestionTypes.MultipleChoice) {
+      setSelections([selection]);
+    } else {
+      handleMultipleAnswerSelection(selection);
+    }
+  };
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
-    setIsCorrect(formState.length === correctAnswers);
+    setIsCorrect(validateSelectionIsCorrect(answers, selections));
     setSubmitted(true);
-    setFormState([]);
-  };
-
-  const handleAnswersState = (selection: Answer) => {
-    if (question.type === 'Xikolo::Quiz::MultipleChoiceQuestion') {
-      if (selection.correct) {
-        setFormState([selection]);
-      } else {
-        setFormState([]);
-      }
-    } else {
-      // is already in array => remove
-      if (
-        formState.find((item) => {
-          return selection.id === item.id;
-        })
-      ) {
-        setFormState((val) => {
-          return val.filter((item) => {
-            return item.id !== selection.id;
-          });
-        });
-      } else {
-        // add to array
-        setFormState((oldValue) => {
-          return [...oldValue, selection];
-        });
-      }
-    }
+    setSelections([]);
   };
 
   const handleNextQuestion = () => {
@@ -68,7 +66,7 @@ const Form = ({
         <Answers
           type={question.type}
           answers={answers}
-          handleSelection={handleAnswersState}
+          handleSelection={handleSelections}
         ></Answers>
         {!submitted && <button>Submit Answer</button>}
       </fieldset>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Form from './components/Form';
 import Result from './components/Result';
@@ -35,6 +35,12 @@ function App(data: Data) {
     setQuizEnded(true);
   };
 
+  const handleNewQuiz = () => {
+    setQuizEnded(false);
+    setResults([]);
+    setQuestionIndex(0);
+  };
+
   const addToResult = (question: Question, correctlyAnswered: boolean) => {
     setResults([
       ...results,
@@ -48,10 +54,10 @@ function App(data: Data) {
   };
 
   return (
-    <div className="App">
+    <main className="App">
       <h1>Quiz recap</h1>
       {question && answers && !quizEnded && (
-        <div>
+        <React.Fragment>
           <Form
             question={question}
             answers={answers}
@@ -61,10 +67,17 @@ function App(data: Data) {
           <button type="button" onClick={handleEndQuiz}>
             End Quiz
           </button>
-        </div>
+        </React.Fragment>
       )}
-      {quizEnded && <Result results={results}></Result>}
-    </div>
+      {quizEnded && (
+        <React.Fragment>
+          <Result results={results} />
+          <button type="button" onClick={handleNewQuiz}>
+            New Quiz
+          </button>
+        </React.Fragment>
+      )}
+    </main>
   );
 }
 

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import classes from './App.module.css';
 import Form from './components/Form';
 import Result from './components/Result';
-import { Answer, Data, Question, ResultType } from './types';
+import { Data, Question, ResultType } from './types';
+import { getAnswers } from './util';
 
 function App(data: Data) {
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -52,12 +53,6 @@ function App(data: Data) {
         link: 'link',
       },
     ]);
-  };
-
-  const getAnswers = (question: Question, allAnswers: Answer[]): Answer[] => {
-    return question.answers.map((answerId) => {
-      return allAnswers.find((answer) => answer.id === answerId)!;
-    });
   };
 
   return (

@@ -42,13 +42,20 @@ describe('App component', () => {
 
     it('shows the result page after answering all questions', () => {
       render(<App questions={data.questions} answers={data.answers}></App>);
+      const numberOfQuestions = data.questions.length;
       const button = screen.getByText(/Complete set/i);
       fireEvent.click(button);
 
       // conduct a pseudo quiz
-      data.questions.forEach(() => {
+      data.questions.forEach((_, index) => {
         fireEvent.click(screen.getAllByText(/Answer/i)[0]);
         fireEvent.click(screen.getByText('Submit Answer'));
+
+        // check if shows right progress
+        const indexText = `${index + 1} of ${numberOfQuestions}`;
+        const indexTextEl = screen.getByText(indexText);
+        expect(indexTextEl).toBeInTheDocument();
+
         fireEvent.click(screen.getByText('Next Question'));
       });
 

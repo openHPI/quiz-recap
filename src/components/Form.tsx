@@ -14,8 +14,9 @@ const Form = ({
   answers: AnswerType[];
   nextQuestion: Function;
 }) => {
-  const { results, setResults } = useContext(Context);
+  const { results, setResults, numberOfQuestions } = useContext(Context);
 
+  const [questionIndex, setQuestionIndex] = useState(1);
   const [isCorrect, setIsCorrect] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [selections, setSelections] = useState<AnswerType[]>([]);
@@ -71,6 +72,7 @@ const Form = ({
   };
 
   const handleNextQuestion = () => {
+    setQuestionIndex(questionIndex + 1);
     setSubmitted(false);
     nextQuestion();
   };
@@ -78,6 +80,9 @@ const Form = ({
   return (
     <form onSubmit={submitHandler}>
       <fieldset className="rounded bg-white p-5">
+        <legend className="rounded bg-white p-1">
+          {questionIndex} of {numberOfQuestions}
+        </legend>
         <Question text={question.text} type={question.type}></Question>
         <Answers
           type={question.type}

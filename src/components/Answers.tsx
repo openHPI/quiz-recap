@@ -18,14 +18,6 @@ const Answers = ({
     handleSelection(answer);
   };
 
-  const inputType = () => {
-    if (type === QuestionTypes.MultipleChoice) {
-      return 'radio';
-    } else {
-      return 'checkbox';
-    }
-  };
-
   return (
     <div className="answers" data-testid="answers">
       {answers.map((answer: Answer) => {
@@ -33,7 +25,9 @@ const Answers = ({
           <div key={answer.id} className="answers__answer">
             <input
               id={answer.id}
-              type={inputType()}
+              type={
+                type === QuestionTypes.MultipleChoice ? 'radio' : 'checkbox'
+              }
               name={'answer'}
               onChange={handleOnChange}
             ></input>

@@ -1,14 +1,35 @@
-# Application state
+# State
 
-##
+## App
 
-selection
+- numberOfQuestions `number` (application state)
+- results (application state)
+- showResult
+- quizStarted
 
-## From
+Decides on the number of questions the quiz will have
+
+## Form
+
+Responsible for conducting the quiz
+
+Collects results
+Holds current selection
 
 - isCorrect `boolean`
 - submitted `boolean`
-- selections `Answer[]``
+- selections `Answer[]`
+
+
+# Quiz
+
+TODO: Current question the user answers
+
+- quizEnded `boolean` (application state)
+- results `ResultType[]`  (application state)
+- questionIndex `number`
+- question `Question | null`
+- questionSet `Question[]`
 
 ## Answers
 
@@ -18,11 +39,6 @@ selection
 
 - no state
 
-## Quiz
+## Result
 
-questionIndex
-
-- quizEnded`boolean`
-- results `ResultType[]``
-- question `Question | null``
-- questionSet `Question[]``
+Displays results in table

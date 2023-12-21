@@ -1,5 +1,4 @@
 import { AnswerType, QuestionTypes, QuizType } from '../types';
-import './Answers.css';
 
 const Answers = ({
   type,
@@ -21,16 +20,17 @@ const Answers = ({
   };
 
   return (
-    <div className="answers" data-testid="answers">
+    <div className="p-2" data-testid="answers">
       {answers.map((answer: AnswerType) => {
         return (
-          <div key={answer.id} className="answers__answer">
+          <div key={answer.id} className="">
             <input
               id={answer.id}
               type={
                 type === QuestionTypes.MultipleChoice ? 'radio' : 'checkbox'
               }
               name={'answer'}
+              className="mr-2 pb-2"
               onChange={handleOnChange}
             ></input>
             <label htmlFor={answer.id}>

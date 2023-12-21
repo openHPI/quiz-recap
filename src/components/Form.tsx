@@ -3,7 +3,6 @@ import { QuestionType, AnswerType, QuestionTypes } from '../types';
 import { isAlreadySelected, validateSelectionIsCorrect } from '../util';
 import Answers from './Answers';
 import Question from './Question';
-import './Form.css';
 import { Context } from '../Context';
 
 const Form = ({
@@ -78,7 +77,7 @@ const Form = ({
 
   return (
     <form onSubmit={submitHandler}>
-      <fieldset disabled={submitted}>
+      <fieldset disabled={submitted} className="bg-gray-200 rounded p-5">
         <Question text={question.text} type={question.type}></Question>
         <Answers
           type={question.type}
@@ -86,14 +85,24 @@ const Form = ({
           showCorrect={submitted}
           handleSelection={handleSelections}
         ></Answers>
-        {!submitted && <button>Submit Answer</button>}
+        {!submitted && (
+          <button className="bg-blue-300 rounded p-2 m-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500">
+            Submit Answer
+          </button>
+        )}
       </fieldset>
       {submitted && (
         <>
-          <button type="button" onClick={handleNextQuestion}>
+          <p className="bg-gray-300 p-6">
+            Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}
+          </p>
+          <button
+            type="button"
+            className="bg-blue-300 rounded p-2 m-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500"
+            onClick={handleNextQuestion}
+          >
             Next Question
           </button>
-          <p>Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}</p>
         </>
       )}
     </form>

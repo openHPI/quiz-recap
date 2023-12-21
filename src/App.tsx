@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import classes from './App.module.css';
 import { Data, ResultType } from './types';
 import Quiz from './components/Quiz';
 import { Context } from './Context';
@@ -27,14 +26,15 @@ function App(data: Data) {
         numberOfQuestions,
       }}
     >
-      <div className={classes.app}>
-        <h2>Quiz recap</h2>
-        <div className={classes.content}>
+      <div className="bg-gray-100 rounded p-5">
+        <h2 className="text-xl pb-4">Quiz recap</h2>
+        <div className="">
           {quizStarted ? (
             <>
               <Quiz data={data} />
               <button
                 type="button"
+                className="bg-green-300 rounded p-2 m-2 w-full hover:bg-green-500 active:bg-green-500 focus:bg-green-500"
                 onClick={() => {
                   setQuizStarted(false);
                   setQuizEnded(false);
@@ -45,18 +45,17 @@ function App(data: Data) {
             </>
           ) : (
             <div>
-              <h3>Here you can practice your knowledge for the course!</h3>
-              <p>
-                Choose a quiz type depending on how many questions you want to
-                practice now:
-              </p>
-              <p>
+              <h3 className="text-lg pb-2">
+                Here you can practice your knowledge for the course!
+              </h3>
+
+              <p className="pb-2">
                 After you decide for a quiz size you will get a random set of
                 questions. Questions with one correct answer are indicated by a
                 radio button. Those with multiple correct answers are indicated
                 by a checkbox.
               </p>
-              <p>
+              <p className="pb-2">
                 Choose a quiz type depending on how many questions you want to
                 practice now:
               </p>
@@ -64,6 +63,7 @@ function App(data: Data) {
                 <li>
                   <button
                     type="button"
+                    className="bg-blue-300 rounded p-2 m-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500"
                     onClick={() => {
                       setNumberOfQuestion(completeSet);
                       setQuizStarted(true);
@@ -75,6 +75,7 @@ function App(data: Data) {
                 <li>
                   <button
                     type="button"
+                    className="bg-blue-300 rounded p-2 m-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500"
                     onClick={() => {
                       setNumberOfQuestion(mediumSet);
                       setQuizStarted(true);
@@ -86,6 +87,7 @@ function App(data: Data) {
                 <li>
                   <button
                     type="button"
+                    className="bg-blue-300 rounded p-2 m-2 w-full hover:bg-blue-500 active:bg-blue-500 focus:bg-blue-500"
                     onClick={() => {
                       setNumberOfQuestion(quickSet);
                       setQuizStarted(true);

@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import classes from './Quiz.module.css';
 import Form from './Form';
 import Result from './Result';
 import { Data, QuestionType } from '../types';
@@ -32,8 +31,8 @@ function Quiz({ data }: { data: Data }) {
   };
 
   return (
-    <div className={classes.app} data-testid="quiz">
-      <div className={classes.content}>
+    <div data-testid="quiz">
+      <div>
         {question && data.answers && !quizEnded && (
           <>
             <Form
@@ -43,6 +42,7 @@ function Quiz({ data }: { data: Data }) {
             ></Form>
             <button
               type="button"
+              className="bg-red-300 rounded p-2 m-2 w-full hover:bg-red-500 active:bg-red-500 focus:bg-red-500"
               onClick={() => {
                 setQuizEnded(true);
               }}

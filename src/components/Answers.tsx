@@ -35,7 +35,6 @@ const Answers = ({
               id={answer.id}
               type={inputType()}
               name={'answer'}
-              value={answer.correct.toString()}
               onChange={handleOnChange}
             ></input>
             <label htmlFor={answer.id}>

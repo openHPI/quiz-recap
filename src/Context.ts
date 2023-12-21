@@ -7,6 +7,7 @@ type ContextType = {
   results: ResultType[];
   setResults: React.Dispatch<React.SetStateAction<ResultType[]>>;
   numberOfQuestions: number;
+  setQuizStarted: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const Context = createContext({} as ContextType);

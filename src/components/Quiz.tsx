@@ -40,15 +40,17 @@ function Quiz({ data }: { data: Data }) {
               answers={getAnswers(question, data.answers)}
               nextQuestion={nextQuestion}
             ></Form>
-            <button
-              type="button"
-              className="bg-red-300 rounded p-2 m-2 w-full hover:bg-red-500 active:bg-red-500 focus:bg-red-500"
-              onClick={() => {
-                setQuizEnded(true);
-              }}
-            >
-              End Quiz
-            </button>
+            <div className="flex flex-row-reverse">
+              <button
+                type="button"
+                className="bg-red-300 rounded mt-4 p-2  hover:bg-red-500 active:bg-red-500 focus:bg-red-500"
+                onClick={() => {
+                  setQuizEnded(true);
+                }}
+              >
+                End Quiz
+              </button>
+            </div>
           </>
         )}
         {quizEnded && <Result />}

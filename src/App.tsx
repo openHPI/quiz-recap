@@ -21,6 +21,7 @@ function App(data: Data) {
       value={{
         quizEnded,
         setQuizEnded,
+        setQuizStarted,
         results,
         setResults,
         numberOfQuestions,
@@ -32,16 +33,6 @@ function App(data: Data) {
           {quizStarted ? (
             <>
               <Quiz data={data} />
-              <button
-                type="button"
-                className="bg-green-300 rounded p-2 m-2 w-full hover:bg-green-500 active:bg-green-500 focus:bg-green-500"
-                onClick={() => {
-                  setQuizStarted(false);
-                  setQuizEnded(false);
-                }}
-              >
-                New Quiz
-              </button>
             </>
           ) : (
             <div>

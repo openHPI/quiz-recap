@@ -4,7 +4,8 @@ import './Result.css';
 import { Context } from '../Context';
 
 const Result = () => {
-  const { results, numberOfQuestions } = useContext(Context);
+  const { results, numberOfQuestions, setQuizEnded, setQuizStarted } =
+    useContext(Context);
 
   const correctAnswers = results.reduce(
     (accumulator: number, result: ResultType) =>
@@ -43,6 +44,16 @@ const Result = () => {
       ) : (
         <p>You did not answer any questions.</p>
       )}
+      <button
+        type="button"
+        className="bg-green-300 rounded p-2 m-2 w-full hover:bg-green-500 active:bg-green-500 focus:bg-green-500"
+        onClick={() => {
+          setQuizStarted(false);
+          setQuizEnded(false);
+        }}
+      >
+        New Quiz
+      </button>
     </div>
   );
 };

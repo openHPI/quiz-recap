@@ -57,7 +57,7 @@ describe('App component', () => {
       expect(result).toBeInTheDocument();
     });
 
-    it('shows the start page again starting a new quiz', () => {
+    it('shows the start page again after ending the quiz when starting a new quiz', () => {
       render(<App questions={data.questions} answers={data.answers}></App>);
 
       const button = screen.getByText(/Complete set/i);
@@ -66,15 +66,20 @@ describe('App component', () => {
       const quiz = screen.queryByTestId('quiz');
       expect(quiz).toBeInTheDocument();
 
-      const endButton = screen.getByText(/New quiz/i);
+      const endButton = screen.getByText(/End quiz/i);
       fireEvent.click(endButton);
 
+      const newButton = screen.getByText(/New quiz/i);
+      fireEvent.click(newButton);
+
       const quizAfterEnding = screen.queryByTestId('quiz');
-      expect(quizAfterEnding).not.toBeInTheDocument();
 
       const startPage = screen.queryByText(
         /Here you can practice your knowledge for the course!/i
       );
+
+      expect(quizAfterEnding).not.toBeInTheDocument();
+      expect(newButton).not.toBeInTheDocument();
       expect(startPage).toBeInTheDocument();
     });
   });

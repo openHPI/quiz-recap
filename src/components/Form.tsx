@@ -11,12 +11,17 @@ const Form = ({
 }) => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [selectedAnswerValue, setSelectedAnswerValue] = useState(false);
+  const [selectedAnswerValue, setSelectedAnswerValue] = useState<
+    boolean | null
+  >(null);
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
-    setIsCorrect(selectedAnswerValue);
-    setSubmitted(true);
+
+    if (selectedAnswerValue !== null) {
+      setIsCorrect(selectedAnswerValue);
+      setSubmitted(true);
+    }
   };
 
   const getBooleanValue = (value: string): boolean => {
@@ -38,6 +43,7 @@ const Form = ({
             name={'answer'}
             value={answer.correct.toString()}
             onChange={handleRadioChange}
+            required
           ></input>
           <label htmlFor={answer.id}>{answer.text}</label>
         </div>

@@ -23,7 +23,7 @@ function App(data: Data) {
   }, [data, questionIndex]);
 
   const nextQuestion = () => {
-    if (questionIndex <= data.questions.length) {
+    if (questionIndex < data.questions.length - 1) {
       const nextQuestionIndex = questionIndex + 1;
       setQuestionIndex(nextQuestionIndex);
     } else {

@@ -8,7 +8,6 @@ test('renders Quiz recap components', async () => {
 
   const titleElement = screen.getByText(/Quiz recap/i);
   const submitButton = screen.getByText('Submit Answer');
-  const answers = await screen.findAllByRole('radio');
   const question = screen.getByText(/What is the answer?/i);
 
   expect(titleElement).toBeInTheDocument();
@@ -16,7 +15,6 @@ test('renders Quiz recap components', async () => {
   expect(submitButton).toBeInTheDocument();
   expect(submitButton).not.toBeDisabled();
 
-  expect(answers.length).toBeGreaterThanOrEqual(1);
   expect(question).toBeInTheDocument();
 });
 

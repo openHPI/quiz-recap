@@ -43,7 +43,7 @@ function Quiz({ data }: { data: Data }) {
             <div className="flex flex-row-reverse">
               <button
                 type="button"
-                className="mt-4 rounded bg-danger p-2  hover:bg-danger-light focus:bg-danger-light active:bg-danger-light"
+                className="bg-danger hover:bg-danger-light focus:bg-danger-light active:bg-danger-light  mt-4 rounded p-2"
                 onClick={() => {
                   setQuizEnded(true);
                 }}

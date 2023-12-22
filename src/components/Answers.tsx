@@ -24,7 +24,7 @@ const Answers = ({
       {answers.map((answer: AnswerType) => {
         return (
           <div key={answer.id}>
-            <label className="w-100 mb-2 block h-max rounded bg-gray-100 p-2">
+            <label className="w-100 mb-2 block h-max rounded bg-neutral-light p-2">
               <input
                 id={answer.id}
                 type={
@@ -40,8 +40,8 @@ const Answers = ({
                 <small
                   className={
                     showCorrect && answer.correct
-                      ? ' bg-green-100'
-                      : 'bg-red-100'
+                      ? ' bg-success-light'
+                      : 'bg-danger-light'
                   }
                 >
                   {answer.correct ? '(correct answer)' : '(incorrect answer)'}

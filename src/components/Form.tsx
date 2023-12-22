@@ -95,7 +95,7 @@ const Form = ({
             Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}
           </p>
         ) : (
-          <button className="m7-2 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500">
+          <button className="m7-2 w-full rounded bg-primary p-2 hover:bg-primary-light focus:bg-primary-light active:bg-primary-light">
             Submit Answer
           </button>
         )}
@@ -104,7 +104,7 @@ const Form = ({
         <>
           <button
             type="button"
-            className="mt-4 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500"
+            className="mt-4 w-full rounded bg-primary p-2 hover:bg-primary-light focus:bg-primary-light active:bg-primary-light"
             onClick={handleNextQuestion}
           >
             Next Question

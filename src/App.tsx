@@ -28,7 +28,7 @@ function App(data: Data) {
         setNumberOfQuestions,
       }}
     >
-      <div className="rounded bg-gray-100 p-5">
+      <div className="rounded bg-neutral-light p-5">
         <h2 className="pb-4 text-xl">Quiz recap</h2>
         {quizStarted ? (
           <Quiz data={data} />
@@ -52,7 +52,7 @@ function App(data: Data) {
               <li>
                 <button
                   type="button"
-                  className="mb-2 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500"
+                  className="mb-2 w-full rounded bg-primary p-2 hover:bg-primary-light focus:bg-primary-light active:bg-primary-light"
                   onClick={() => {
                     setNumberOfQuestions(completeSet);
                     setQuizStarted(true);
@@ -64,7 +64,7 @@ function App(data: Data) {
               <li>
                 <button
                   type="button"
-                  className="mb-2 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500"
+                  className="mb-2 w-full rounded bg-primary p-2 hover:bg-primary-light focus:bg-primary-light active:bg-primary-light"
                   onClick={() => {
                     setNumberOfQuestions(mediumSet);
                     setQuizStarted(true);
@@ -76,7 +76,7 @@ function App(data: Data) {
               <li>
                 <button
                   type="button"
-                  className="mb-2 w-full rounded bg-blue-300 p-2 hover:bg-blue-500 focus:bg-blue-500 active:bg-blue-500"
+                  className="mb-2 w-full rounded bg-primary p-2 hover:bg-primary-light focus:bg-primary-light active:bg-primary-light"
                   onClick={() => {
                     setNumberOfQuestions(quickSet);
                     setQuizStarted(true);

@@ -16,7 +16,7 @@ const Form = ({
 }) => {
   const { results, setResults, numberOfQuestions } = useContext(Context);
 
-  const [questionIndex, setQuestionIndex] = useState(1);
+  const [questionIndexText, setQuestionIndexText] = useState(1);
   const [isCorrect, setIsCorrect] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [selections, setSelections] = useState<AnswerType[]>([]);
@@ -55,8 +55,8 @@ const Form = ({
     setResults([
       ...results,
       {
-        question: question,
-        correctlyAnswered: correctlyAnswered,
+        question,
+        correctlyAnswered,
       },
     ]);
   };
@@ -72,7 +72,7 @@ const Form = ({
   };
 
   const handleNextQuestion = () => {
-    setQuestionIndex(questionIndex + 1);
+    setQuestionIndexText(questionIndexText + 1);
     setSubmitted(false);
     nextQuestion();
   };
@@ -81,7 +81,7 @@ const Form = ({
     <form onSubmit={submitHandler}>
       <fieldset className="rounded bg-white p-5">
         <legend className="rounded bg-white p-1">
-          {questionIndex} of {numberOfQuestions}
+          {questionIndexText} of {numberOfQuestions}
         </legend>
         <Question text={question.text} type={question.type}></Question>
         <Answers

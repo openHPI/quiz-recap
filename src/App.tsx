@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Data, ResultType } from './types';
 import Quiz from './components/Quiz';
 import { Context } from './Context';
+import { assignAnswersToQuestions } from './util';
 
 function App(data: Data) {
   const [quizStarted, setQuizStarted] = useState(false);
@@ -12,9 +13,11 @@ function App(data: Data) {
   const [quizEnded, setQuizEnded] = useState(false);
   const [results, setResults] = useState<ResultType[]>([]);
 
-  const completeSet = data.questions.length;
-  const mediumSet = Math.floor(data.questions.length / 2);
-  const quickSet = Math.floor(data.questions.length / 5);
+  const questions = assignAnswersToQuestions(data);
+
+  const completeSet = questions.length;
+  const mediumSet = Math.floor(completeSet / 2);
+  const quickSet = Math.floor(completeSet / 5);
 
   return (
     <Context.Provider
@@ -31,7 +34,7 @@ function App(data: Data) {
       <div className="rounded bg-neutral-light p-5">
         <h2 className="pb-4 text-xl">Quiz recap</h2>
         {quizStarted ? (
-          <Quiz data={data} />
+          <Quiz questions={questions} />
         ) : (
           <>
             <h3 className="pb-2 text-lg">

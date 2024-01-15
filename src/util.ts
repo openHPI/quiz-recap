@@ -1,4 +1,4 @@
-import { AnswerType, QuestionType } from './types';
+import { AnswerType, Data, QuestionDataType, QuestionType } from './types';
 
 export const validateSelectionIsCorrect = (
   answers: AnswerType[],
@@ -30,8 +30,12 @@ export const isAlreadySelected = (
   });
 };
 
-export const getAnswers = (
-  question: QuestionType,
+export const getRandomSet = (set: Array<any>, count: number): any => {
+  return set.sort(() => 0.5 - Math.random()).slice(0, count);
+};
+
+const getAnswers = (
+  question: QuestionDataType,
   allAnswers: AnswerType[],
 ): AnswerType[] => {
   return question.answers.map((answerId) => {
@@ -39,6 +43,20 @@ export const getAnswers = (
   });
 };
 
-export const getRandomSet = (set: Array<any>, count: number): any => {
-  return set.sort(() => 0.5 - Math.random()).slice(0, count);
+export const assignAnswersToQuestions = (data: Data) => {
+  const questions: QuestionType[] = [];
+
+  data.questions.forEach((question) => {
+    questions.push({
+      id: question.id,
+      points: question.points,
+      type: question.type,
+      text: question.text,
+      courseId: question.courseId,
+      quizId: question.quizId,
+      answers: getAnswers(question, data.answers),
+    });
+  });
+
+  return questions;
 };

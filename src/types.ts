@@ -1,5 +1,5 @@
 export type Data = {
-  questions: QuestionType[];
+  questions: QuestionDataType[];
   answers: AnswerType[];
 };
 
@@ -12,7 +12,7 @@ export type QuizType =
   | QuestionTypes.MultipleChoice
   | QuestionTypes.MultipleAnswer;
 
-export type QuestionType = {
+export type QuestionDataType = {
   id: string;
   points: number;
   type: QuizType;
@@ -20,6 +20,16 @@ export type QuestionType = {
   courseId: string;
   quizId: string;
   answers: string[];
+};
+
+export type QuestionType = {
+  id: string;
+  points: number;
+  type: QuizType;
+  text: string;
+  courseId: string;
+  quizId: string;
+  answers: AnswerType[];
 };
 
 export type AnswerType = {

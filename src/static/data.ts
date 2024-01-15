@@ -1,4 +1,4 @@
-import { Data } from '../types';
+import { Data, QuestionType } from '../types';
 
 export const exampleData: Data = {
   questions: [
@@ -2753,6 +2753,109 @@ export const testData: Data = {
     },
   ],
 } as Data;
+
+export const parsedData: QuestionType[] = [
+  {
+    id: 'id-01',
+    points: 1,
+    type: 'Xikolo::Quiz::MultipleChoiceQuestion',
+    text: 'What is the answer?',
+    courseId: 'courseId-01',
+    quizId: 'quizId-01',
+    answers: [
+      {
+        id: 'answer_01',
+        correct: true,
+        text: 'Answer 1',
+      },
+      {
+        id: 'answer_02',
+        correct: false,
+        text: 'Answer 2',
+      },
+    ],
+  },
+  {
+    id: 'id-02',
+    points: 1,
+    type: 'Xikolo::Quiz::MultipleChoiceQuestion',
+    text: 'What is the answer?',
+    courseId: 'courseId-01',
+    quizId: 'quizId-02',
+    answers: [
+      {
+        id: 'answer_03',
+        correct: true,
+        text: 'Answer 3',
+      },
+      {
+        id: 'answer_04',
+        correct: false,
+        text: 'Answer 4',
+      },
+    ],
+  },
+  {
+    id: 'id-03',
+    points: 1,
+    type: 'Xikolo::Quiz::MultipleAnswerQuestion',
+    text: 'What is the answer?',
+    courseId: 'courseId-01',
+    quizId: 'quizId-03',
+    answers: [
+      {
+        id: 'answer_05',
+        correct: true,
+        text: 'Answer 5',
+      },
+      {
+        id: 'answer_06',
+        correct: false,
+        text: 'Answer 6',
+      },
+      {
+        id: 'answer_07',
+        correct: true,
+        text: 'Answer 7',
+      },
+      {
+        id: 'answer_08',
+        correct: false,
+        text: 'Answer 8',
+      },
+    ],
+  },
+  {
+    id: 'id-04',
+    points: 1,
+    type: 'Xikolo::Quiz::MultipleAnswerQuestion',
+    text: 'What is the answer?',
+    courseId: 'courseId-01',
+    quizId: 'quizId-04',
+    answers: [
+      {
+        id: 'answer_09',
+        correct: false,
+        text: 'Answer 9',
+      },
+      {
+        id: 'answer_10',
+        correct: false,
+        text: 'Answer 10',
+      },
+      {
+        id: 'answer_11',
+        correct: false,
+        text: 'Answer 11',
+      },
+      {
+        id: 'answer_12',
+        correct: false,
+        text: 'Answer 12',
+      },
+    ],
+  },
+] as QuestionType[];
 
 export const webtechData = {
   questions: [

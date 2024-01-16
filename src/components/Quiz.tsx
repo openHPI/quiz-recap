@@ -1,11 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import Form from './Form';
 import Result from './Result';
-import { Data, QuestionType } from '../types';
-import { getAnswers, getRandomSet } from '../util';
+import { QuestionType } from '../types';
 import { Context } from '../Context';
 
-function Quiz({ data }: { data: Data }) {
+function Quiz({ questions }: { questions: QuestionType[] }) {
   const { quizEnded, setQuizEnded, numberOfQuestions } = useContext(Context);
 
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -13,9 +12,8 @@ function Quiz({ data }: { data: Data }) {
   const [questionSet, setQuestionSet] = useState<QuestionType[]>([]);
 
   useEffect(() => {
-    const setOfQuestions = getRandomSet(data.questions, numberOfQuestions);
-    setQuestionSet(setOfQuestions);
-  }, [data, quizEnded, numberOfQuestions]);
+    setQuestionSet(questions);
+  }, [questions, quizEnded, numberOfQuestions]);
 
   useEffect(() => {
     setQuestion(questionSet[questionIndex]);
@@ -33,17 +31,13 @@ function Quiz({ data }: { data: Data }) {
   return (
     <div data-testid="quiz">
       <div>
-        {question && data.answers && !quizEnded && (
+        {question && !quizEnded && (
           <>
-            <Form
-              question={question}
-              answers={getAnswers(question, data.answers)}
-              nextQuestion={nextQuestion}
-            ></Form>
+            <Form question={question} nextQuestion={nextQuestion}></Form>
             <div className="flex flex-row-reverse">
               <button
                 type="button"
-                className="bg-danger hover:bg-danger-light focus:bg-danger-light active:bg-danger-light  mt-4 rounded p-2"
+                className="mt-4 rounded bg-danger p-2 hover:bg-danger-light focus:bg-danger-light active:bg-danger-light"
                 onClick={() => {
                   setQuizEnded(true);
                 }}

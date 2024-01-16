@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Data, ResultType } from './types';
 import Quiz from './components/Quiz';
 import { Context } from './Context';
-import { assignAnswersToQuestions } from './util';
+import { assignAnswersToQuestions, getRandomSet } from './util';
 
 function App(data: Data) {
   const [quizStarted, setQuizStarted] = useState(false);
@@ -34,7 +34,7 @@ function App(data: Data) {
       <div className="rounded bg-neutral-light p-5">
         <h2 className="pb-4 text-xl">Quiz recap</h2>
         {quizStarted ? (
-          <Quiz questions={questions} />
+          <Quiz questions={getRandomSet(questions, numberOfQuestions)} />
         ) : (
           <>
             <h3 className="pb-2 text-lg">

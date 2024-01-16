@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { parsedData } from '../static/data';
+import { QuestionType, QuestionTypes } from '../types';
 import Quiz from './Quiz';
 import { Context } from '../Context';
 
@@ -12,7 +12,49 @@ const customRender = (ui: any, { providerProps, ...renderOptions }: any) => {
 
 describe('Quiz component', () => {
   it('renders answer and submit button', () => {
-    render(<Quiz questions={parsedData} />);
+    const testData: QuestionType[] = [
+      {
+        id: 'id-01',
+        points: 1,
+        type: QuestionTypes.MultipleChoice,
+        text: 'What is the answer?',
+        courseId: 'courseId-01',
+        quizId: 'quizId-01',
+        answers: [
+          {
+            id: 'answer_01',
+            correct: true,
+            text: 'Answer 1',
+          },
+          {
+            id: 'answer_02',
+            correct: false,
+            text: 'Answer 2',
+          },
+        ],
+      },
+      {
+        id: 'id-02',
+        points: 1,
+        type: QuestionTypes.MultipleChoice,
+        text: 'What is the answer?',
+        courseId: 'courseId-01',
+        quizId: 'quizId-02',
+        answers: [
+          {
+            id: 'answer_01',
+            correct: true,
+            text: 'Answer 1',
+          },
+          {
+            id: 'answer_02',
+            correct: false,
+            text: 'Answer 2',
+          },
+        ],
+      },
+    ];
+    render(<Quiz questions={testData} />);
 
     const answers = screen.getByTestId('answers');
 
@@ -30,6 +72,49 @@ describe('Quiz component', () => {
 
 describe('Conducting a single choice quiz', () => {
   it('shows that the answer was correct or not', () => {
+    const testData: QuestionType[] = [
+      {
+        id: 'id-01',
+        points: 1,
+        type: QuestionTypes.MultipleChoice,
+        text: 'What is the answer?',
+        courseId: 'courseId-01',
+        quizId: 'quizId-01',
+        answers: [
+          {
+            id: 'answer_01',
+            correct: true,
+            text: 'Answer 1',
+          },
+          {
+            id: 'answer_02',
+            correct: false,
+            text: 'Answer 2',
+          },
+        ],
+      },
+      {
+        id: 'id-02',
+        points: 1,
+        type: QuestionTypes.MultipleChoice,
+        text: 'What is the answer?',
+        courseId: 'courseId-01',
+        quizId: 'quizId-02',
+        answers: [
+          {
+            id: 'answer_01',
+            correct: true,
+            text: 'Answer 1',
+          },
+          {
+            id: 'answer_02',
+            correct: false,
+            text: 'Answer 2',
+          },
+        ],
+      },
+    ];
+
     const providerProps = {
       value: {
         quizEnded: false,
@@ -39,7 +124,7 @@ describe('Conducting a single choice quiz', () => {
         setResults: () => {},
       },
     };
-    customRender(<Quiz questions={parsedData} />, { providerProps });
+    customRender(<Quiz questions={testData} />, { providerProps });
 
     fireEvent.click(screen.getByText('Answer 1'));
     fireEvent.click(screen.getByText('Submit Answer'));
@@ -59,6 +144,98 @@ describe('Conducting a single choice quiz', () => {
 
 describe('Conducting a multiple answer quiz', () => {
   it('shows that the answer was correct or not', () => {
+    const testData: QuestionType[] = [
+      {
+        id: 'id-01',
+        points: 1,
+        type: QuestionTypes.MultipleAnswer,
+        text: 'What is the answer?',
+        courseId: 'courseId-01',
+        quizId: 'quizId-01',
+        answers: [
+          {
+            id: 'answer_01',
+            correct: true,
+            text: 'Answer 1',
+          },
+          {
+            id: 'answer_02',
+            correct: false,
+            text: 'Answer 2',
+          },
+          {
+            id: 'answer_03',
+            correct: true,
+            text: 'Answer 3',
+          },
+          {
+            id: 'answer_04',
+            correct: false,
+            text: 'Answer 4',
+          },
+        ],
+      },
+      {
+        id: 'id-02',
+        points: 1,
+        type: QuestionTypes.MultipleAnswer,
+        text: 'What is the answer?',
+        courseId: 'courseId-01',
+        quizId: 'quizId-02',
+        answers: [
+          {
+            id: 'answer_01',
+            correct: true,
+            text: 'Answer 1',
+          },
+          {
+            id: 'answer_02',
+            correct: false,
+            text: 'Answer 2',
+          },
+          {
+            id: 'answer_03',
+            correct: true,
+            text: 'Answer 3',
+          },
+          {
+            id: 'answer_04',
+            correct: false,
+            text: 'Answer 4',
+          },
+        ],
+      },
+      {
+        id: 'id-03',
+        points: 1,
+        type: QuestionTypes.MultipleAnswer,
+        text: 'What is the answer?',
+        courseId: 'courseId-01',
+        quizId: 'quizId-03',
+        answers: [
+          {
+            id: 'answer_01',
+            correct: true,
+            text: 'Answer 1',
+          },
+          {
+            id: 'answer_02',
+            correct: false,
+            text: 'Answer 2',
+          },
+          {
+            id: 'answer_03',
+            correct: true,
+            text: 'Answer 3',
+          },
+          {
+            id: 'answer_04',
+            correct: false,
+            text: 'Answer 4',
+          },
+        ],
+      },
+    ];
     const providerProps = {
       value: {
         quizEnded: false,
@@ -68,7 +245,7 @@ describe('Conducting a multiple answer quiz', () => {
         setResults: () => {},
       },
     };
-    customRender(<Quiz questions={parsedData} />, { providerProps });
+    customRender(<Quiz questions={testData} />, { providerProps });
 
     // Selecting only one correct answer is not enough to succeed
     fireEvent.click(screen.getByText('Answer 1'));

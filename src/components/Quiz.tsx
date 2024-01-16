@@ -5,24 +5,21 @@ import { QuestionType } from '../types';
 import { Context } from '../Context';
 
 function Quiz({ questions }: { questions: QuestionType[] }) {
-  const { quizEnded, setQuizEnded, numberOfQuestions } = useContext(Context);
+  const { quizEnded, setQuizEnded } = useContext(Context);
 
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [question, setQuestion] = useState<QuestionType | null>(null);
+  const [question, setQuestion] = useState<QuestionType | null>(questions[0]);
   const [questionSet, setQuestionSet] = useState<QuestionType[]>([]);
 
   useEffect(() => {
     setQuestionSet(questions);
-  }, [questions, quizEnded, numberOfQuestions]);
-
-  useEffect(() => {
-    setQuestion(questionSet[questionIndex]);
-  }, [questionSet, questionIndex]);
+  }, [questions]);
 
   const nextQuestion = () => {
     if (questionIndex < questionSet.length - 1) {
       const nextQuestionIndex = questionIndex + 1;
       setQuestionIndex(nextQuestionIndex);
+      setQuestion(questionSet[nextQuestionIndex]);
     } else {
       setQuizEnded(true);
     }

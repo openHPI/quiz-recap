@@ -53,6 +53,7 @@ const Form = ({
     setResults([
       ...results,
       {
+        id: `{${question.id}}-${new Date().getTime()}`,
         question,
         correctlyAnswered,
       },

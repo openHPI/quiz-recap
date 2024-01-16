@@ -39,6 +39,7 @@ export type AnswerType = {
 };
 
 export type ResultType = {
+  id: string;
   question: QuestionType;
   correctlyAnswered: boolean;
 };

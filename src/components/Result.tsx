@@ -9,7 +9,7 @@ const Result = () => {
     setQuizEnded,
     setQuizStarted,
     setResults,
-    setNumberOfQuestions,
+    // setNumberOfQuestions,
   } = useContext(Context);
 
   const correctAnswers = results.reduce(
@@ -34,10 +34,7 @@ const Result = () => {
           <tbody>
             {results.map((result: ResultType) => {
               return (
-                <tr
-                  key={result.question.id}
-                  className="border-b border-neutral"
-                >
+                <tr key={result.id} className="border-b border-neutral">
                   <td className="px-2 py-2">
                     {result.correctlyAnswered ? '✅' : '❌'}
                   </td>
@@ -57,7 +54,7 @@ const Result = () => {
           setQuizStarted(false);
           setQuizEnded(false);
           setResults([]);
-          setNumberOfQuestions(0);
+          // setNumberOfQuestions(0);
         }}
       >
         New Quiz

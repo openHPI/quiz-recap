@@ -7,11 +7,9 @@ import { Context } from '../Context';
 
 const Form = ({
   question,
-  answers,
   nextQuestion,
 }: {
   question: QuestionType;
-  answers: AnswerType[];
   nextQuestion: Function;
 }) => {
   const { results, setResults, numberOfQuestions } = useContext(Context);
@@ -64,7 +62,10 @@ const Form = ({
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
 
-    const correctlyAnswered = validateSelectionIsCorrect(answers, selections);
+    const correctlyAnswered = validateSelectionIsCorrect(
+      question.answers,
+      selections,
+    );
     setIsCorrect(correctlyAnswered);
     setSubmitted(true);
     setSelections([]);
@@ -86,7 +87,7 @@ const Form = ({
         <Question text={question.text} type={question.type}></Question>
         <Answers
           type={question.type}
-          answers={answers}
+          answers={question.answers}
           showCorrect={submitted}
           handleSelection={handleSelections}
         ></Answers>

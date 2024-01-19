@@ -75,6 +75,7 @@ There are four colors, each must have a base and a lighter shade.
 - Break free from `create-react-app`
 - "Widget setup" with bundler
 - Release as npm package
+- Consider changing data structure
 
 ### Features
 

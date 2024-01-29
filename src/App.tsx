@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Data, ResultType } from './types';
 import Quiz from './components/Quiz';
+import Button from './components/Button';
 import { Context } from './Context';
 import { assignAnswersToQuestions, getRandomSet } from './util';
 
@@ -14,6 +15,11 @@ function App(data: Data) {
   const [results, setResults] = useState<ResultType[]>([]);
 
   const questions = assignAnswersToQuestions(data);
+
+  const startQuiz = (questionsCount: number) => {
+    setNumberOfQuestions(questionsCount);
+    setQuizStarted(true);
+  };
 
   const completeSet = questions.length;
   const mediumSet = Math.floor(completeSet / 2);
@@ -53,40 +59,22 @@ function App(data: Data) {
             </p>
             <ul>
               <li>
-                <button
-                  type="button"
-                  className="mb-2 w-full rounded bg-primary p-2 hover:bg-primary-light focus:bg-primary-light active:bg-primary-light"
-                  onClick={() => {
-                    setNumberOfQuestions(completeSet);
-                    setQuizStarted(true);
-                  }}
-                >
-                  Complete set (all {completeSet} questions)
-                </button>
+                <Button
+                  text={`Complete set (all ${completeSet} questions)`}
+                  onClickAction={() => startQuiz(completeSet)}
+                />
               </li>
               <li>
-                <button
-                  type="button"
-                  className="mb-2 w-full rounded bg-primary p-2 hover:bg-primary-light focus:bg-primary-light active:bg-primary-light"
-                  onClick={() => {
-                    setNumberOfQuestions(mediumSet);
-                    setQuizStarted(true);
-                  }}
-                >
-                  Medium set ({mediumSet} questions)
-                </button>
+                <Button
+                  text={`Medium set (all ${mediumSet} questions)`}
+                  onClickAction={() => startQuiz(mediumSet)}
+                />
               </li>
               <li>
-                <button
-                  type="button"
-                  className="mb-2 w-full rounded bg-primary p-2 hover:bg-primary-light focus:bg-primary-light active:bg-primary-light"
-                  onClick={() => {
-                    setNumberOfQuestions(quickSet);
-                    setQuizStarted(true);
-                  }}
-                >
-                  Quick set ({quickSet} questions)
-                </button>
+                <Button
+                  text={`Quick set (all ${quickSet} questions)`}
+                  onClickAction={() => startQuiz(quickSet)}
+                />
               </li>
             </ul>
           </>

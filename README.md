@@ -71,7 +71,7 @@ There are four colors, each must have a base and a lighter shade.
 
 ### Technical
 
-- "Library setup" with bundler
+- Build types
 - Release as npm package
 - Consider changing data structure
 

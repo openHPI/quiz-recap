@@ -45,7 +45,7 @@ Ensure the inclusion of the following options:
 
 1. Check out repo
 2. `npm install`
-3. `npm run start`
+3. `npm run dev`
 
 ### Tests
 
@@ -71,7 +71,6 @@ There are four colors, each must have a base and a lighter shade.
 
 ### Technical
 
-- Break free from `create-react-app` => use `vite`
 - "Library setup" with bundler
 - Release as npm package
 - Consider changing data structure

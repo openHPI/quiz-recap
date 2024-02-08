@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import Form from './Form';
 import Result from './Result';
 import { Data, QuestionType } from '../types';
@@ -9,17 +9,12 @@ function Quiz({ questions }: { questions: Data }) {
 
   const [questionIndex, setQuestionIndex] = useState(0);
   const [question, setQuestion] = useState<QuestionType | null>(questions[0]);
-  const [questionSet, setQuestionSet] = useState<Data>([]);
-
-  useEffect(() => {
-    setQuestionSet(questions);
-  }, [questions]);
 
   const nextQuestion = () => {
-    if (questionIndex < questionSet.length - 1) {
+    if (questionIndex < questions.length - 1) {
       const nextQuestionIndex = questionIndex + 1;
       setQuestionIndex(nextQuestionIndex);
-      setQuestion(questionSet[nextQuestionIndex]);
+      setQuestion(questions[nextQuestionIndex]);
     } else {
       setQuizEnded(true);
     }

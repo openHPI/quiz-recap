@@ -1,8 +1,18 @@
 {
   "name": "quiz-recap",
-  "private": true,
   "version": "0.1.0",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/quiz-recap.umd.cjs",
+  "module": "./dist/quiz-recap.js",
+  "exports": {
+    ".": {
+      "import": "./dist/quiz-recap.js",
+      "require": "./dist/quiz-recap.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

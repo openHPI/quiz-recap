@@ -23,7 +23,7 @@ const Answers = ({
 
   return (
     <div className="p-2" data-testid="answers">
-      {answers.map((answer: AnswerType, index: number) => {
+      {answers.map((answer: AnswerType) => {
         return (
           <div key={answer.id + '_' + quizId}>
             <label className="w-100 mb-2 block h-max rounded bg-neutral-light p-2">

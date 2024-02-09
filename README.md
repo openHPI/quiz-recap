@@ -24,7 +24,7 @@ A concise summary of your quiz performance on the results page upon completion.
 
 ### Data Specification
 
-Refer to src/types.ts for a detailed specification of the expected data format by the application.
+Refer to `src/types.ts` for a detailed specification of the expected data format by the application.
 
 ### Options Configuration
 
@@ -36,9 +36,12 @@ Ensure the inclusion of the following options:
 ### Example
 
 ```JS
-  const data = { ... };
-  const options = { elementId: 'selector', lang: 'en' };
-  const quizRecap = new QuizRecap(data, options);
+  import quizRecap from `quizRecap`;
+
+  const selector = 'selector'; // id of DOM element
+  const data = [ ... ]; // see `src/types.ts`
+
+  quizRecap(selector, data);
 ```
 
 ## Setup

@@ -10,7 +10,7 @@ const Form = ({
   nextQuestion,
 }: {
   question: QuestionType;
-  nextQuestion: Function;
+  nextQuestion: () => void;
 }) => {
   const { results, setResults, numberOfQuestions } = useContext(Context);
 

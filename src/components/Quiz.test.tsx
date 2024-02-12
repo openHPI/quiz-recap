@@ -3,6 +3,7 @@ import { Data, QuestionTypes } from '../types';
 import Quiz from './Quiz';
 import { Context } from '../Context';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const customRender = (ui: any, { providerProps, ...renderOptions }: any) => {
   return render(
     <Context.Provider {...providerProps}>{ui}</Context.Provider>,

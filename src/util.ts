@@ -30,6 +30,6 @@ export const isAlreadySelected = (
   });
 };
 
-export const getRandomSet = (set: Data, count: number): any => {
+export const getRandomSet = (set: Data, count: number): Data => {
   return set.sort(() => 0.5 - Math.random()).slice(0, count);
 };

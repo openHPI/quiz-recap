@@ -13,7 +13,7 @@ const Answers = ({
   showCorrect: boolean;
   handleSelection: (answer: AnswerType) => void;
 }) => {
-  const handleOnChange = (event: any): void => {
+  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const id = event.currentTarget.id;
     const answer = answers.find((answer) => {
       return answer.id === id;

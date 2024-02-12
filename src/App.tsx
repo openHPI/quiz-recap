@@ -62,13 +62,13 @@ function App({ data }: { data: Data }) {
               </li>
               <li>
                 <Button
-                  text={`Medium set (all ${mediumSet} questions)`}
+                  text={`Medium set (${mediumSet} questions)`}
                   onClickAction={() => startQuiz(mediumSet)}
                 />
               </li>
               <li>
                 <Button
-                  text={`Quick set (all ${quickSet} questions)`}
+                  text={`Quick set (${quickSet} questions)`}
                   onClickAction={() => startQuiz(quickSet)}
                 />
               </li>

@@ -33,7 +33,7 @@ function App({ data }: { data: Data }) {
         setNumberOfQuestions,
       }}
     >
-      <div className="rounded bg-neutral-light p-5">
+      <div className="quiz-recap rounded bg-neutral-light p-5">
         <h2 className="pb-4 text-xl">Quiz recap</h2>
         {quizStarted ? (
           <Quiz questions={getRandomSet(data, numberOfQuestions)} />

@@ -20,3 +20,4 @@ if (import.meta.env.DEV) {
 }
 
 export default renderQuizRecap;
+export type * from './types';

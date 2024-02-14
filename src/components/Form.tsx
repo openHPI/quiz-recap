@@ -81,8 +81,8 @@ const Form = ({
 
   return (
     <form onSubmit={submitHandler}>
-      <fieldset className="rounded bg-white p-5">
-        <legend className="rounded bg-white p-1">
+      <fieldset className="qr-rounded qr-bg-white qr-p-5">
+        <legend className="qr-rounded qr-bg-white qr-p-1 qr-text-sm">
           {questionIndexText} of {numberOfQuestions}
         </legend>
         <Question text={question.text} type={question.type}></Question>
@@ -94,11 +94,11 @@ const Form = ({
           handleSelection={handleSelections}
         ></Answers>
         {submitted ? (
-          <p className="mt-2 rounded bg-white p-2">
+          <p className="qr-mt-2 qr-rounded qr-bg-white qr-p-2">
             Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}
           </p>
         ) : (
-          <button className="m7-2 w-full rounded bg-primary p-2 hover:bg-primary-light focus:bg-primary-light active:bg-primary-light">
+          <button className="qr-m7-2 qr-w-full qr-rounded qr-bg-primary qr-p-2 hover:qr-bg-primary-light focus:qr-bg-primary-light active:qr-bg-primary-light">
             Submit Answer
           </button>
         )}
@@ -107,7 +107,7 @@ const Form = ({
         <>
           <button
             type="button"
-            className="mt-4 w-full rounded bg-primary p-2 hover:bg-primary-light focus:bg-primary-light active:bg-primary-light"
+            className="qr-mt-4 qr-w-full qr-rounded qr-bg-primary qr-p-2 hover:qr-bg-primary-light focus:qr-bg-primary-light active:qr-bg-primary-light"
             onClick={handleNextQuestion}
           >
             Next Question

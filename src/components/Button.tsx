@@ -8,7 +8,7 @@ const Button = ({
   return (
     <button
       type="button"
-      className="mb-2 w-full rounded bg-primary p-2 hover:bg-primary-light focus:bg-primary-light active:bg-primary-light"
+      className="qr-mb-2 qr-w-full qr-rounded qr-bg-primary qr-p-2 hover:qr-bg-primary-light focus:qr-bg-primary-light active:qr-bg-primary-light"
       onClick={() => {
         onClickAction();
       }}

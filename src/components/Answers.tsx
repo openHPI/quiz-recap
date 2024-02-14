@@ -22,18 +22,18 @@ const Answers = ({
   };
 
   return (
-    <div className="p-2" data-testid="answers">
+    <div className="qr-p-2" data-testid="answers">
       {answers.map((answer: AnswerType) => {
         return (
           <div key={answer.id + '_' + quizId}>
-            <label className="w-100 mb-2 block h-max rounded bg-neutral-light p-2">
+            <label className="qr-w-100 qr-mb-2 qr-block qr-h-max qr-rounded qr-bg-neutral-light qr-p-2">
               <input
                 id={answer.id}
                 type={
                   type === QuestionTypes.SingleChoice ? 'radio' : 'checkbox'
                 }
                 name={'answer'}
-                className="mr-2 pb-2"
+                className="qr-mr-2 qr-pb-2"
                 onChange={handleOnChange}
                 disabled={showCorrect}
               ></input>
@@ -42,8 +42,8 @@ const Answers = ({
                 <small
                   className={
                     showCorrect && answer.correct
-                      ? ' bg-success-light'
-                      : 'bg-danger-light'
+                      ? ' qr-bg-success-light'
+                      : ' qr-bg-danger-light'
                   }
                 >
                   {answer.correct ? '(correct answer)' : '(incorrect answer)'}

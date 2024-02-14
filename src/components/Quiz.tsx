@@ -26,10 +26,10 @@ function Quiz({ questions }: { questions: Data }) {
         {question && !quizEnded && (
           <>
             <Form question={question} nextQuestion={nextQuestion}></Form>
-            <div className="flex flex-row-reverse">
+            <div className="qr-flex qr-flex-row-reverse">
               <button
                 type="button"
-                className="mt-4 rounded bg-danger p-2 hover:bg-danger-light focus:bg-danger-light active:bg-danger-light"
+                className="qr-mt-4 qr-rounded qr-bg-danger qr-p-2 hover:qr-bg-danger-light focus:qr-bg-danger-light active:qr-bg-danger-light"
                 onClick={() => {
                   setQuizEnded(true);
                 }}

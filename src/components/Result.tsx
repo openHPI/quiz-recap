@@ -19,14 +19,14 @@ const Result = () => {
   );
   return (
     <>
-      <h3 className="pb-2 text-lg">Result</h3>
+      <h3 className="qr-pb-2 qr-text-lg">Result</h3>
       {results.length ? (
-        <table className="w-full">
-          <caption className="pb-4 text-lg">
+        <table className="qr-w-full">
+          <caption className="pb-4 qr-text-lg">
             You answered {correctAnswers} of {numberOfQuestions} correctly.
           </caption>
           <thead>
-            <tr className="border-b border-neutral">
+            <tr className="qr-border-b qr-border-neutral">
               <th aria-label="Correctly answered"></th>
               <th aria-label="Question Text"></th>
             </tr>
@@ -34,11 +34,11 @@ const Result = () => {
           <tbody>
             {results.map((result: ResultType) => {
               return (
-                <tr key={result.id} className="border-b border-neutral">
-                  <td className="px-2 py-2">
+                <tr key={result.id} className="qr-border-b qr-border-neutral">
+                  <td className="qr-px-2 qr-py-2">
                     {result.correctlyAnswered ? '✅' : '❌'}
                   </td>
-                  <td className="px-2 py-2">{result.question.text}</td>
+                  <td className="qr-px-2 qr-py-2">{result.question.text}</td>
                 </tr>
               );
             })}
@@ -49,7 +49,7 @@ const Result = () => {
       )}
       <button
         type="button"
-        className="mt-4 w-full rounded bg-success p-2 hover:bg-success-light focus:bg-success-light active:bg-success-light"
+        className="qr-mt-4 qr-w-full qr-rounded qr-bg-success qr-p-2 hover:qr-bg-success-light focus:qr-bg-success-light active:qr-bg-success-light"
         onClick={() => {
           setQuizStarted(false);
           setQuizEnded(false);

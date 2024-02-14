@@ -2,6 +2,7 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   important: '.quiz-recap',
+  prefix: 'qr-',
   theme: {
     extend: {
       colors: {

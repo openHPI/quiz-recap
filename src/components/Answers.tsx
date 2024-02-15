@@ -42,8 +42,8 @@ const Answers = ({
                 <small
                   className={
                     showCorrect && answer.correct
-                      ? ' qr-bg-success-light'
-                      : ' qr-bg-danger-light'
+                      ? ' qr-bg-success'
+                      : ' qr-bg-danger'
                   }
                 >
                   {answer.correct ? '(correct answer)' : '(incorrect answer)'}

@@ -98,7 +98,7 @@ const Form = ({
             Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}
           </p>
         ) : (
-          <button className="qr-m7-2 qr-w-full qr-rounded qr-bg-primary qr-p-2 hover:qr-bg-primary-light focus:qr-bg-primary-light active:qr-bg-primary-light">
+          <button className="qr-m7-2 qr-w-full qr-rounded qr-bg-primary qr-p-2 qr-text-white hover:qr-bg-primary-dark focus:qr-bg-primary-dark active:qr-bg-primary-dark">
             Submit Answer
           </button>
         )}
@@ -107,7 +107,7 @@ const Form = ({
         <>
           <button
             type="button"
-            className="qr-mt-4 qr-w-full qr-rounded qr-bg-primary qr-p-2 hover:qr-bg-primary-light focus:qr-bg-primary-light active:qr-bg-primary-light"
+            className="qr-mt-4 qr-w-full qr-rounded qr-bg-primary qr-p-2 qr-text-white hover:qr-bg-primary-dark focus:qr-bg-primary-dark active:qr-bg-primary-dark"
             onClick={handleNextQuestion}
           >
             Next Question

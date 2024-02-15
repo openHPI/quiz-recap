@@ -29,7 +29,7 @@ function Quiz({ questions }: { questions: Data }) {
             <div className="qr-flex qr-flex-row-reverse">
               <button
                 type="button"
-                className="qr-mt-4 qr-rounded qr-bg-danger qr-p-2 hover:qr-bg-danger-light focus:qr-bg-danger-light active:qr-bg-danger-light"
+                className="qr-mt-4 qr-rounded qr-bg-danger qr-p-2 qr-text-white hover:qr-bg-danger-dark focus:qr-bg-danger-dark active:qr-bg-danger-dark"
                 onClick={() => {
                   setQuizEnded(true);
                 }}

@@ -7,16 +7,16 @@ module.exports = {
     extend: {
       colors: {
         primary: 'var(--color-primary)',
-        'primary-light': 'var(--color-primary-light)',
+        'primary-dark': 'var(--color-primary-dark)',
 
         neutral: 'var(--color-neutral)',
         'neutral-light': 'var(--color-neutral-light)',
 
         success: 'var(--color-success)',
-        'success-light': 'var(--color-success-light)',
+        'success-dark': 'var(--color-success-dark)',
 
         danger: 'var(--color-danger)',
-        'danger-light': 'var(--color-danger-light)',
+        'danger-dark': 'var(--color-danger-dark)',
       },
     },
   },

@@ -8,7 +8,7 @@ const Button = ({
   return (
     <button
       type="button"
-      className="qr-mb-2 qr-w-full qr-rounded qr-bg-primary qr-p-2 hover:qr-bg-primary-light focus:qr-bg-primary-light active:qr-bg-primary-light"
+      className="qr-mb-2 qr-w-full qr-rounded qr-bg-primary qr-p-2 qr-text-white hover:qr-bg-primary-dark focus:qr-bg-primary-dark active:qr-bg-primary-dark"
       onClick={() => {
         onClickAction();
       }}

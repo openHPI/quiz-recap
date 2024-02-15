@@ -49,7 +49,7 @@ const Result = () => {
       )}
       <button
         type="button"
-        className="qr-mt-4 qr-w-full qr-rounded qr-bg-success qr-p-2 hover:qr-bg-success-light focus:qr-bg-success-light active:qr-bg-success-light"
+        className="qr-mt-4 qr-w-full qr-rounded qr-bg-success qr-p-2 qr-text-white hover:qr-bg-success-dark focus:qr-bg-success-dark  active:qr-bg-success-dark"
         onClick={() => {
           setQuizStarted(false);
           setQuizEnded(false);

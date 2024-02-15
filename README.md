@@ -76,14 +76,17 @@ There are four colors, each must have a base and a lighter shade.
 
 ```css
 .quiz-recap {
-  --color-primary: #45aaed;
-  --color-primary-light: #85c1e9;
-  --color-neutral: #ecf0f1;
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+
+  --color-neutral: #737373;
   --color-neutral-light: #f5f5f5;
-  --color-success: #2ecc71;
-  --color-success-light: #a9dfbf;
-  --color-danger: #e74c3c;
-  --color-danger-light: #f2dede;
+
+  --color-success: #22c55e;
+  --color-success-dark: #16a34a;
+
+  --color-danger: #ef4444;
+  --color-danger-dark: #dc2626;
 }
 ```
 

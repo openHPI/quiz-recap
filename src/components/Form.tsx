@@ -81,8 +81,8 @@ const Form = ({
 
   return (
     <form onSubmit={submitHandler}>
-      <fieldset className="qr-rounded qr-bg-white qr-p-5">
-        <legend className="qr-rounded qr-bg-white qr-p-1 qr-text-sm">
+      <fieldset className="qr-rounded qr-bg-white">
+        <legend className="qr-rounded qr-bg-white qr-text-right qr-text-sm">
           {questionIndexText} of {numberOfQuestions}
         </legend>
         <Question text={question.text} type={question.type}></Question>
@@ -98,7 +98,7 @@ const Form = ({
             Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}
           </p>
         ) : (
-          <button className="qr-m7-2 qr-w-full qr-rounded qr-bg-primary qr-p-2 qr-text-white hover:qr-bg-primary-dark focus:qr-bg-primary-dark active:qr-bg-primary-dark">
+          <button className="qr-m7-2 qr-rounded qr-bg-primary qr-p-2 qr-text-white hover:qr-bg-primary-dark focus:qr-bg-primary-dark active:qr-bg-primary-dark">
             Submit Answer
           </button>
         )}
@@ -107,7 +107,7 @@ const Form = ({
         <>
           <button
             type="button"
-            className="qr-mt-4 qr-w-full qr-rounded qr-bg-primary qr-p-2 qr-text-white hover:qr-bg-primary-dark focus:qr-bg-primary-dark active:qr-bg-primary-dark"
+            className="qr-mt-4 qr-rounded qr-bg-primary qr-p-2 qr-text-white hover:qr-bg-primary-dark focus:qr-bg-primary-dark active:qr-bg-primary-dark"
             onClick={handleNextQuestion}
           >
             Next Question

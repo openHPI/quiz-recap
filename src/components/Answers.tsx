@@ -22,7 +22,7 @@ const Answers = ({
   };
 
   return (
-    <div className="qr-p-2" data-testid="answers">
+    <div className="qr-pb-2" data-testid="answers">
       {answers.map((answer: AnswerType) => {
         return (
           <div key={answer.id + '_' + quizId}>

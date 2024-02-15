@@ -22,7 +22,7 @@ const Result = () => {
       <h3 className="qr-pb-2 qr-text-lg">Result</h3>
       {results.length ? (
         <table className="qr-w-full">
-          <caption className="pb-4 qr-text-lg">
+          <caption className="qr-pb-4 qr-text-lg">
             You answered {correctAnswers} of {numberOfQuestions} correctly.
           </caption>
           <thead>
@@ -49,12 +49,11 @@ const Result = () => {
       )}
       <button
         type="button"
-        className="qr-mt-4 qr-w-full qr-rounded qr-bg-success qr-p-2 qr-text-white hover:qr-bg-success-dark focus:qr-bg-success-dark  active:qr-bg-success-dark"
+        className="qr-mt-8 qr-rounded qr-bg-success qr-p-2 qr-text-white hover:qr-bg-success-dark focus:qr-bg-success-dark active:qr-bg-success-dark"
         onClick={() => {
           setQuizStarted(false);
           setQuizEnded(false);
           setResults([]);
-          // setNumberOfQuestions(0);
         }}
       >
         New Quiz

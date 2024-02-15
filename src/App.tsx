@@ -35,16 +35,16 @@ function App({ data }: { data: Data }) {
     >
       <div className="quiz-recap">
         <div className="qr-rounded qr-bg-white qr-p-5">
-          <h2 className="qr-pb-4 qr-text-xl">Quiz recap</h2>
+          <h2 className="qr-pb-8 qr-text-xl">Quiz recap</h2>
           {quizStarted ? (
             <Quiz questions={getRandomSet(data, numberOfQuestions)} />
           ) : (
             <>
-              <h3 className="qr-pb-2 qr-text-lg">
+              <h3 className="qr-pb-4 qr-text-lg">
                 Here you can practice your knowledge for the course!
               </h3>
 
-              <p className="qr-pb-2">
+              <p className="qr-pb-4">
                 After you decide for a quiz size you will get a random set of
                 questions. Questions with one correct answer are indicated by a
                 radio button. Those with multiple correct answers are indicated
@@ -54,7 +54,7 @@ function App({ data }: { data: Data }) {
                 Choose a quiz type below depending on how many questions you
                 want to practice.
               </p>
-              <ul>
+              <ul className="qr-pt-4 qr-text-center">
                 <li>
                   <Button
                     text={`Complete set (all ${completeSet} questions)`}

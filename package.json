@@ -18,7 +18,8 @@
     ".": {
       "import": "./dist/quiz-recap.js",
       "require": "./dist/quiz-recap.umd.cjs"
-    }
+    },
+    "./dist/style.css": "./dist/style.css"
   },
   "main": "./dist/quiz-recap.umd.cjs",
   "module": "./dist/quiz-recap.js",

@@ -22,25 +22,10 @@ function Quiz({ questions }: { questions: Data }) {
 
   return (
     <div data-testid="quiz">
-      <div>
-        {question && !quizEnded && (
-          <>
-            <Form question={question} nextQuestion={nextQuestion}></Form>
-            <div className="qr-flex qr-flex-row-reverse">
-              <button
-                type="button"
-                className="qr-rounded qr-bg-danger qr-p-2 qr-text-white hover:qr-bg-danger-dark focus:qr-bg-danger-dark active:qr-bg-danger-dark"
-                onClick={() => {
-                  setQuizEnded(true);
-                }}
-              >
-                End Quiz
-              </button>
-            </div>
-          </>
-        )}
-        {quizEnded && <Result />}
-      </div>
+      {question && !quizEnded && (
+        <Form question={question} nextQuestion={nextQuestion}></Form>
+      )}
+      {quizEnded && <Result />}
     </div>
   );
 }

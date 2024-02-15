@@ -12,7 +12,8 @@ const Form = ({
   question: QuestionType;
   nextQuestion: () => void;
 }) => {
-  const { results, setResults, numberOfQuestions } = useContext(Context);
+  const { results, setResults, setQuizEnded, numberOfQuestions } =
+    useContext(Context);
 
   const [questionIndexText, setQuestionIndexText] = useState(1);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -93,27 +94,37 @@ const Form = ({
           showCorrect={submitted}
           handleSelection={handleSelections}
         ></Answers>
-        {submitted ? (
-          <p className="qr-mt-2 qr-rounded qr-bg-white qr-p-2">
+        {submitted && (
+          <p className="qr-rounded qr-bg-white qr-pb-6">
             Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}
           </p>
-        ) : (
-          <button className="qr-m7-2 qr-rounded qr-bg-primary qr-p-2 qr-text-white hover:qr-bg-primary-dark focus:qr-bg-primary-dark active:qr-bg-primary-dark">
-            Submit Answer
-          </button>
         )}
       </fieldset>
-      {submitted && (
-        <>
+      <div className="qr-flex qr-flex-row qr-justify-between">
+        {submitted && (
           <button
             type="button"
-            className="qr-mt-4 qr-rounded qr-bg-primary qr-p-2 qr-text-white hover:qr-bg-primary-dark focus:qr-bg-primary-dark active:qr-bg-primary-dark"
+            className="qr-rounded qr-bg-primary qr-p-2 qr-text-white hover:qr-bg-primary-dark focus:qr-bg-primary-dark active:qr-bg-primary-dark"
             onClick={handleNextQuestion}
           >
             Next Question
           </button>
-        </>
-      )}
+        )}
+        {!submitted && (
+          <button className="qr-m7-2 qr-rounded qr-bg-primary qr-p-2 qr-text-white hover:qr-bg-primary-dark focus:qr-bg-primary-dark active:qr-bg-primary-dark">
+            Submit Answer
+          </button>
+        )}
+        <button
+          type="button"
+          className="qr-rounded qr-bg-danger qr-p-2 qr-text-white hover:qr-bg-danger-dark focus:qr-bg-danger-dark active:qr-bg-danger-dark"
+          onClick={() => {
+            setQuizEnded(true);
+          }}
+        >
+          End Quiz
+        </button>
+      </div>
     </form>
   );
 };

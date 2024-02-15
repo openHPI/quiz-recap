@@ -56,7 +56,7 @@ export const exampleData: Data = [
     text: 'In which year did the Titanic sink?',
     answers: [
       { id: 'a', correct: false, text: '1905' },
-      { id: 'b', correct: false, text: '1912' },
+      { id: 'b', correct: false, text: '1922' },
       { id: 'c', correct: true, text: '1912' },
       { id: 'd', correct: false, text: '1920' },
     ],
@@ -65,7 +65,7 @@ export const exampleData: Data = [
     id: '6',
     points: 2,
     type: QuestionTypes.MultipleChoice,
-    text: 'What are cities Japan?',
+    text: 'What are cities in Japan?',
     answers: [
       { id: 'a', correct: false, text: 'Seoul' },
       { id: 'b', correct: false, text: 'Beijing' },

@@ -72,6 +72,21 @@ There are four colors, each must have a base and a lighter shade.
 - `success` for indicating correct answers and starting a new quiz
 - `danger` for destructive actions and indicating a wrong answer
 
+### Example
+
+```css
+.quiz-recap {
+  --color-primary: #45aaed;
+  --color-primary-light: #85c1e9;
+  --color-neutral: #ecf0f1;
+  --color-neutral-light: #f5f5f5;
+  --color-success: #2ecc71;
+  --color-success-light: #a9dfbf;
+  --color-danger: #e74c3c;
+  --color-danger-light: #f2dede;
+}
+```
+
 ## Todo
 
 ### Technical

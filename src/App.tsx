@@ -6,6 +6,7 @@ import { Context } from './Context';
 import { getRandomSet } from './util';
 
 function App({ data }: { data: Data }) {
+  const [questions, setQuestions] = useState([] as Data);
   const [quizStarted, setQuizStarted] = useState(false);
   const [numberOfQuestions, setNumberOfQuestions] = useState(data.length);
 
@@ -15,6 +16,7 @@ function App({ data }: { data: Data }) {
   const startQuiz = (questionsCount: number) => {
     setNumberOfQuestions(questionsCount);
     setQuizStarted(true);
+    setQuestions(getRandomSet(data, numberOfQuestions));
   };
 
   const completeSet = data.length;
@@ -37,7 +39,7 @@ function App({ data }: { data: Data }) {
         <div className="qr-rounded qr-bg-white qr-p-5">
           <h2 className="qr-pb-8 qr-text-xl">Quiz recap</h2>
           {quizStarted ? (
-            <Quiz questions={getRandomSet(data, numberOfQuestions)} />
+            <Quiz questions={questions} />
           ) : (
             <>
               <h3 className="qr-pb-4 qr-text-lg">

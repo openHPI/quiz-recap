@@ -4,6 +4,9 @@ Educational app for quiz recapitulation.
 
 ![Screenshot showing the component](./docs/assets//quiz-recap.png)
 
+> [!NOTE]
+> This version is a pre-release and breaking changes may be introduced at any time.
+
 ## Features
 
 ### Choose between set of questions

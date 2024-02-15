@@ -39,14 +39,8 @@ const Answers = ({
               ></input>
               {answer.text + ' '}
               {showCorrect && (
-                <small
-                  className={
-                    showCorrect && answer.correct
-                      ? ' qr-bg-success'
-                      : ' qr-bg-danger'
-                  }
-                >
-                  {answer.correct ? '(correct answer)' : '(incorrect answer)'}
+                <small>
+                  {answer.correct ? '- correct answer' : '- incorrect answer'}
                 </small>
               )}
             </label>

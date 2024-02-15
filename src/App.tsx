@@ -33,48 +33,50 @@ function App({ data }: { data: Data }) {
         setNumberOfQuestions,
       }}
     >
-      <div className="quiz-recap qr-rounded qr-bg-neutral-light qr-p-5">
-        <h2 className="qr-pb-4 qr-text-xl">Quiz recap</h2>
-        {quizStarted ? (
-          <Quiz questions={getRandomSet(data, numberOfQuestions)} />
-        ) : (
-          <>
-            <h3 className="qr-pb-2 qr-text-lg">
-              Here you can practice your knowledge for the course!
-            </h3>
+      <div className="quiz-recap">
+        <div className="qr-rounded qr-bg-white qr-p-5">
+          <h2 className="qr-pb-4 qr-text-xl">Quiz recap</h2>
+          {quizStarted ? (
+            <Quiz questions={getRandomSet(data, numberOfQuestions)} />
+          ) : (
+            <>
+              <h3 className="qr-pb-2 qr-text-lg">
+                Here you can practice your knowledge for the course!
+              </h3>
 
-            <p className="qr-pb-2">
-              After you decide for a quiz size you will get a random set of
-              questions. Questions with one correct answer are indicated by a
-              radio button. Those with multiple correct answers are indicated by
-              a checkbox.
-            </p>
-            <p className="qr-pb-4">
-              Choose a quiz type below depending on how many questions you want
-              to practice.
-            </p>
-            <ul>
-              <li>
-                <Button
-                  text={`Complete set (all ${completeSet} questions)`}
-                  onClickAction={() => startQuiz(completeSet)}
-                />
-              </li>
-              <li>
-                <Button
-                  text={`Medium set (${mediumSet} questions)`}
-                  onClickAction={() => startQuiz(mediumSet)}
-                />
-              </li>
-              <li>
-                <Button
-                  text={`Quick set (${quickSet} questions)`}
-                  onClickAction={() => startQuiz(quickSet)}
-                />
-              </li>
-            </ul>
-          </>
-        )}
+              <p className="qr-pb-2">
+                After you decide for a quiz size you will get a random set of
+                questions. Questions with one correct answer are indicated by a
+                radio button. Those with multiple correct answers are indicated
+                by a checkbox.
+              </p>
+              <p className="qr-pb-4">
+                Choose a quiz type below depending on how many questions you
+                want to practice.
+              </p>
+              <ul>
+                <li>
+                  <Button
+                    text={`Complete set (all ${completeSet} questions)`}
+                    onClickAction={() => startQuiz(completeSet)}
+                  />
+                </li>
+                <li>
+                  <Button
+                    text={`Medium set (${mediumSet} questions)`}
+                    onClickAction={() => startQuiz(mediumSet)}
+                  />
+                </li>
+                <li>
+                  <Button
+                    text={`Quick set (${quickSet} questions)`}
+                    onClickAction={() => startQuiz(quickSet)}
+                  />
+                </li>
+              </ul>
+            </>
+          )}{' '}
+        </div>
       </div>
     </Context.Provider>
   );

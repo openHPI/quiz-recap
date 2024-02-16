@@ -37,7 +37,7 @@ function App({ data }: { data: Data }) {
     >
       <div className="quiz-recap">
         <div className="qr-rounded qr-bg-white qr-p-5">
-          <h2 className="qr-pb-8 qr-text-xl">Quiz recap</h2>
+          <h2 className="qr-pb-4 qr-text-xl">Quiz recap</h2>
           {quizStarted ? (
             <Quiz questions={questions} />
           ) : (

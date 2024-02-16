@@ -16,7 +16,8 @@ function App({ data }: { data: Data }) {
   const startQuiz = (questionsCount: number) => {
     setNumberOfQuestions(questionsCount);
     setQuizStarted(true);
-    setQuestions(getRandomSet(data, numberOfQuestions));
+    setQuestions(getRandomSet(data, questionsCount));
+    // setQuestions(getRandomSet(data, numberOfQuestions));
   };
 
   const completeSet = data.length;

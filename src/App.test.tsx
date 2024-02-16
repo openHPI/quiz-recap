@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
-import { testData as data } from './static/data';
+import { testData as data, testDataWithFourQuestions } from './static/data';
 
 describe('App component', () => {
   describe('basic workflows', () => {
@@ -58,6 +58,32 @@ describe('App component', () => {
 
         fireEvent.click(screen.getByText('Next Question'));
       });
+
+      const result = screen.queryByText(/Result/i);
+
+      expect(result).toBeInTheDocument();
+    });
+
+    it('shows the result page after answering a quick set of questions', () => {
+      render(<App data={testDataWithFourQuestions}></App>);
+      const button = screen.getByText(/Quick set/i);
+      fireEvent.click(button);
+
+      // quick set only contains one question
+      // We conduct the quiz with exactly one question
+      // To test if the App respects the number of questions
+      const numberOfQuestions = 1;
+      for (let index = 0; index < numberOfQuestions; index++) {
+        fireEvent.click(screen.getAllByText(/Answer/i)[0]);
+        fireEvent.click(screen.getByText('Submit Answer'));
+
+        // check if shows right progress
+        const indexText = `${index + 1} of ${numberOfQuestions}`;
+        const indexTextEl = screen.getByText(indexText);
+        expect(indexTextEl).toBeInTheDocument();
+
+        fireEvent.click(screen.getByText('Next Question'));
+      }
 
       const result = screen.queryByText(/Result/i);
 

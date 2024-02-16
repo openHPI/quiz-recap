@@ -95,12 +95,6 @@ There are four colors, each must have a base and a lighter shade.
 
 ## Todo
 
-### Technical
-
-- Build types
-- Release as npm package
-- Consider changing data structure
-
 ### Outstanding Features
 
 The feature set is not complete for release.

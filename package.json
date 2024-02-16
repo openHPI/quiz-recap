@@ -23,6 +23,7 @@
   },
   "main": "./dist/quiz-recap.umd.cjs",
   "module": "./dist/quiz-recap.js",
+  "types": "dist/quiz-recap.d.ts",
   "files": [
     "dist"
   ],

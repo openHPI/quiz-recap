@@ -65,17 +65,15 @@ Ensure the inclusion of the following options:
 
 The App comes with a standard color scheme.
 
-However, you can theme the App e.g. to fit a corporate design.
-To do so, CSS variables defined in `src/index.css` must be overridden.
-
-There are four colors, each must have a base and a lighter shade.
+However, you can customize the app's theme to align with corporate design preferences. There are four key colors:
 
 - `primary` for action buttons such as submitting an answer
 - `neutral` for backgrounds
 - `success` for indicating correct answers and starting a new quiz
 - `danger` for destructive actions and indicating a wrong answer
 
-### Example
+Below, you can find an example.
+It outlines the various shades that need to be defined for each color.
 
 ```css
 .quiz-recap {
@@ -86,9 +84,11 @@ There are four colors, each must have a base and a lighter shade.
   --color-neutral-light: #f5f5f5;
 
   --color-success: #22c55e;
+  --color-success-light: #86efac;
   --color-success-dark: #16a34a;
 
   --color-danger: #ef4444;
+  --color-danger-light: #fca5a5;
   --color-danger-dark: #dc2626;
 }
 ```

@@ -6,17 +6,24 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: 'var(--color-primary)',
-        'primary-dark': 'var(--color-primary-dark)',
-
-        neutral: 'var(--color-neutral)',
-        'neutral-light': 'var(--color-neutral-light)',
-
-        success: 'var(--color-success)',
-        'success-dark': 'var(--color-success-dark)',
-
-        danger: 'var(--color-danger)',
-        'danger-dark': 'var(--color-danger-dark)',
+        primary: {
+          DEFAULT: 'var(--color-primary)',
+          dark: 'var(--color-primary-dark)',
+        },
+        neutral: {
+          DEFAULT: 'var(--color-neutral)',
+          light: 'var(--color-neutral-light)',
+        },
+        success: {
+          DEFAULT: 'var(--color-success)',
+          light: 'var(--color-success-light)',
+          dark: 'var(--color-success-dark)',
+        },
+        danger: {
+          DEFAULT: 'var(--color-danger)',
+          light: 'var(--color-danger-light)',
+          dark: 'var(--color-danger-dark)',
+        },
       },
     },
   },

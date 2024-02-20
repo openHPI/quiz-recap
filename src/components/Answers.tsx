@@ -24,19 +24,28 @@ const Answers = ({
   return (
     <div className="qr-pb-2" data-testid="answers">
       {answers.map((answer: AnswerType) => {
+        const indicatorClass = showCorrect
+          ? answer.correct
+            ? ' qr-bg-success-light'
+            : ' qr-bg-danger-light'
+          : ' qr-bg-neutral-light';
         return (
-          <div key={answer.id + '_' + quizId}>
-            <label className="qr-w-100 qr-mb-2 qr-block qr-h-max qr-rounded qr-bg-neutral-light qr-p-2">
-              <input
-                id={answer.id}
-                type={
-                  type === QuestionTypes.SingleChoice ? 'radio' : 'checkbox'
-                }
-                name={'answer'}
-                className="qr-mr-2 qr-pb-2"
-                onChange={handleOnChange}
-                disabled={showCorrect}
-              ></input>
+          <div
+            key={answer.id + '_' + quizId}
+            className={'qr-mb-2 qr-flex qr-rounded qr-p-2 ' + indicatorClass}
+          >
+            <input
+              id={answer.id}
+              type={type === QuestionTypes.SingleChoice ? 'radio' : 'checkbox'}
+              className="qr-peer qr-accent-primary"
+              name={'answer'}
+              onChange={handleOnChange}
+              disabled={showCorrect}
+            ></input>
+            <label
+              className="qr-w-100 qr-ml-2 qr-grow peer-checked:qr-font-bold"
+              htmlFor={answer.id}
+            >
               {answer.text + ' '}
               {showCorrect && (
                 <small>

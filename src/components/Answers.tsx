@@ -32,7 +32,10 @@ const Answers = ({
         return (
           <div
             key={answer.id + '_' + quizId}
-            className={'qr-mb-2 qr-flex qr-rounded qr-p-2 ' + indicatorClass}
+            className={
+              'qr-mb-2 qr-flex qr-items-center qr-rounded qr-p-2' +
+              indicatorClass
+            }
           >
             <input
               id={answer.id}

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { AnswerType, QuestionTypes, QuizType } from '../types';
 
 const Answers = ({
@@ -13,6 +14,13 @@ const Answers = ({
   showCorrect: boolean;
   handleSelection: (answer: AnswerType) => void;
 }) => {
+  const [shuffledAnswers, setShuffledAnswers] = useState(answers);
+
+  useEffect(() => {
+    const shuffledAnswers = [...answers].sort(() => Math.random() - 0.5);
+    setShuffledAnswers(shuffledAnswers);
+  }, [answers]);
+
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const id = event.currentTarget.id;
     const answer = answers.find((answer) => {
@@ -23,7 +31,7 @@ const Answers = ({
 
   return (
     <div className="qr-pb-2" data-testid="answers">
-      {answers.map((answer: AnswerType) => {
+      {shuffledAnswers.map((answer: AnswerType) => {
         const indicatorClass = showCorrect
           ? answer.correct
             ? ' qr-bg-success-light'

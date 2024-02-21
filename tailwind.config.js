@@ -13,6 +13,7 @@ module.exports = {
         neutral: {
           DEFAULT: 'var(--color-neutral)',
           light: 'var(--color-neutral-light)',
+          dark: 'var(--color-neutral-dark)',
         },
         success: {
           DEFAULT: 'var(--color-success)',

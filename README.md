@@ -82,6 +82,7 @@ It outlines the various shades that need to be defined for each color.
 
   --color-neutral: #737373;
   --color-neutral-light: #f5f5f5;
+  --color-neutral-dark: #525252;
 
   --color-success: #22c55e;
   --color-success-light: #86efac;

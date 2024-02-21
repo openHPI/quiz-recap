@@ -47,17 +47,19 @@ const Result = () => {
       ) : (
         <p>You did not answer any questions.</p>
       )}
-      <button
-        type="button"
-        className="qr-mt-8 qr-rounded qr-bg-success qr-p-2 qr-text-white hover:qr-bg-success-dark focus:qr-bg-success-dark active:qr-bg-success-dark"
-        onClick={() => {
-          setQuizStarted(false);
-          setQuizEnded(false);
-          setResults([]);
-        }}
-      >
-        New Quiz
-      </button>
+      <div className="qr-flex qr-justify-end">
+        <button
+          type="button"
+          className="qr-mt-8 qr-rounded qr-bg-success qr-p-2 qr-text-white hover:qr-bg-success-dark focus:qr-bg-success-dark active:qr-bg-success-dark"
+          onClick={() => {
+            setQuizStarted(false);
+            setQuizEnded(false);
+            setResults([]);
+          }}
+        >
+          New Quiz
+        </button>
+      </div>
     </>
   );
 };

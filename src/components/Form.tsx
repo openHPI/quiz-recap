@@ -100,7 +100,21 @@ const Form = ({
           </p>
         )}
       </fieldset>
-      <div className="qr-flex qr-flex-row qr-justify-between">
+      <div className="flex-row qr-flex qr-justify-end">
+        <button
+          type="button"
+          className="qr-mr-2 qr-rounded qr-bg-neutral qr-p-2 qr-text-white hover:qr-bg-neutral-dark focus:qr-bg-neutral-dark active:qr-bg-neutral-dark"
+          onClick={() => {
+            setQuizEnded(true);
+          }}
+        >
+          End Quiz
+        </button>
+        {!submitted && (
+          <button className="qr-m7-2 qr-rounded qr-bg-primary qr-p-2 qr-text-white hover:qr-bg-primary-dark focus:qr-bg-primary-dark active:qr-bg-primary-dark">
+            Submit Answer
+          </button>
+        )}
         {submitted && (
           <button
             type="button"
@@ -110,20 +124,6 @@ const Form = ({
             Next Question
           </button>
         )}
-        {!submitted && (
-          <button className="qr-m7-2 qr-rounded qr-bg-primary qr-p-2 qr-text-white hover:qr-bg-primary-dark focus:qr-bg-primary-dark active:qr-bg-primary-dark">
-            Submit Answer
-          </button>
-        )}
-        <button
-          type="button"
-          className="qr-rounded qr-bg-danger qr-p-2 qr-text-white hover:qr-bg-danger-dark focus:qr-bg-danger-dark active:qr-bg-danger-dark"
-          onClick={() => {
-            setQuizEnded(true);
-          }}
-        >
-          End Quiz
-        </button>
       </div>
     </form>
   );

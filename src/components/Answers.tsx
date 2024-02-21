@@ -30,7 +30,7 @@ const Answers = ({
   };
 
   return (
-    <div className="qr-pb-2" data-testid="answers">
+    <div className="qr-pb-4" data-testid="answers">
       {shuffledAnswers.map((answer: AnswerType) => {
         const indicatorClass = showCorrect
           ? answer.correct

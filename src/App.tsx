@@ -43,7 +43,7 @@ function App({ data }: { data: Data }) {
             <>
               <h2 className="qr-pb-4 qr-text-xl">Quiz recap</h2>
               <h3 className="qr-pb-4 qr-text-lg">
-                Here you can practice your knowledge for the course!
+                Here you can practice your knowledge!
               </h3>
 
               <p className="qr-pb-4">

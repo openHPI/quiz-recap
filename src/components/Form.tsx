@@ -88,7 +88,12 @@ const Form = ({
         <legend className="qr-rounded qr-bg-white qr-text-right qr-text-sm">
           {questionIndexText} of {numberOfQuestions}
         </legend>
-        <Question text={question.text} type={question.type}></Question>
+        <Question
+          text={question.text}
+          type={question.type}
+          showResult={submitted}
+          isCorrect={isCorrect}
+        />
         <Answers
           type={question.type}
           quizId={+question.id}
@@ -96,13 +101,9 @@ const Form = ({
           showCorrect={submitted}
           handleSelection={handleSelections}
         ></Answers>
-        {submitted && (
-          <p className="qr-rounded qr-bg-white qr-pb-6">
-            Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}
-          </p>
-        )}
       </fieldset>
-      <div className="flex-row qr-flex qr-justify-end">
+
+      <div className="qr-flex qr-justify-end">
         {!showConfirmation && (
           <>
             <Button
@@ -117,6 +118,7 @@ const Form = ({
             {!submitted && <Button text="Submit Answer" type="submit" />}
           </>
         )}
+
         {!showConfirmation && submitted && (
           <Button
             text="Next Question"
@@ -125,7 +127,6 @@ const Form = ({
           />
         )}
       </div>
-
       {showConfirmation && (
         <div className="flex-row qr-flex qr-items-center qr-justify-end">
           <h2 className="qr-mr-5">Are you sure you want to end the quiz?</h2>

@@ -36,12 +36,12 @@ function App({ data }: { data: Data }) {
       }}
     >
       <div className="quiz-recap">
-        <div className="qr-rounded qr-bg-white qr-p-5">
-          <h2 className="qr-pb-4 qr-text-xl">Quiz recap</h2>
+        <div className="qr-rounded qr-bg-white qr-px-5 qr-py-4">
           {quizStarted ? (
             <Quiz questions={questions} />
           ) : (
             <>
+              <h2 className="qr-pb-4 qr-text-xl">Quiz recap</h2>
               <h3 className="qr-pb-4 qr-text-lg">
                 Here you can practice your knowledge for the course!
               </h3>
@@ -68,14 +68,14 @@ function App({ data }: { data: Data }) {
                   <Button
                     text={`Medium set (${mediumSet} questions)`}
                     onClickAction={() => startQuiz(mediumSet)}
-                    additionalClasses={'qr-w-1/2 qr-mb-2 '}
+                    additionalClasses={'qr-w-1/2 qr-mb-2'}
                   />
                 </li>
                 <li>
                   <Button
                     text={`Quick set (${quickSet} questions)`}
                     onClickAction={() => startQuiz(quickSet)}
-                    additionalClasses={'qr-w-1/2 qr-mb-2 '}
+                    additionalClasses={'qr-w-1/2'}
                   />
                 </li>
               </ul>

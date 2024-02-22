@@ -13,7 +13,7 @@ const Question = ({
 }) => {
   return (
     <div className="qr-pb-4">
-      <p className="qr-pb-4">{text}</p>
+      <p className="qr-pb-4 qr-text-lg">{text}</p>
 
       {showResult ? (
         <p>Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}</p>

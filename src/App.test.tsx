@@ -24,7 +24,7 @@ describe('App component', () => {
       expect(screen.getByTestId('quiz')).toBeInTheDocument();
     });
 
-    it('shows the result page after clicking on button to end quiz', () => {
+    it('shows the result page after confirming to end the quiz', () => {
       render(<App data={data}></App>);
 
       const button = screen.getByText(/Complete set/i);
@@ -36,8 +36,39 @@ describe('App component', () => {
       const endButton = screen.getByText(/End quiz/i);
       fireEvent.click(endButton);
 
+      const confirmation = screen.getByText(
+        /Are you sure you want to end the quiz?/i,
+      );
+      expect(confirmation).toBeInTheDocument();
+
+      const confirmButton = screen.getByText(/Yes/i);
+      fireEvent.click(confirmButton);
+
       const result = screen.queryByText(/Result/i);
       expect(result).toBeInTheDocument();
+    });
+
+    it('has the possibility to resume the quiz after not confirming to end the quiz', () => {
+      render(<App data={data}></App>);
+
+      const button = screen.getByText(/Complete set/i);
+      fireEvent.click(button);
+
+      const quiz = screen.queryByTestId('quiz');
+      expect(quiz).toBeInTheDocument();
+
+      const endButton = screen.getByText(/End quiz/i);
+      fireEvent.click(endButton);
+
+      const confirmation = screen.getByText(
+        /Are you sure you want to end the quiz?/i,
+      );
+      expect(confirmation).toBeInTheDocument();
+
+      const confirmButton = screen.getByText(/No/i);
+      fireEvent.click(confirmButton);
+
+      expect(quiz).toBeInTheDocument();
     });
 
     it('shows the result page after answering all questions', () => {
@@ -101,6 +132,9 @@ describe('App component', () => {
 
       const endButton = screen.getByText(/End quiz/i);
       fireEvent.click(endButton);
+
+      const confirmButton = screen.getByText(/Yes/i);
+      fireEvent.click(confirmButton);
 
       const newButton = screen.getByText(/New quiz/i);
       fireEvent.click(newButton);

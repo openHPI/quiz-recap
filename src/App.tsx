@@ -61,18 +61,21 @@ function App({ data }: { data: Data }) {
                   <Button
                     text={`Complete set (all ${completeSet} questions)`}
                     onClickAction={() => startQuiz(completeSet)}
+                    additionalClasses={'qr-w-1/2 qr-mb-2'}
                   />
                 </li>
                 <li>
                   <Button
                     text={`Medium set (${mediumSet} questions)`}
                     onClickAction={() => startQuiz(mediumSet)}
+                    additionalClasses={'qr-w-1/2 qr-mb-2 '}
                   />
                 </li>
                 <li>
                   <Button
                     text={`Quick set (${quickSet} questions)`}
                     onClickAction={() => startQuiz(quickSet)}
+                    additionalClasses={'qr-w-1/2 qr-mb-2 '}
                   />
                 </li>
               </ul>

@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { ResultType } from '../types';
 import { Context } from '../Context';
+import Button from './Button';
 
 const Result = () => {
   const {
@@ -9,7 +10,6 @@ const Result = () => {
     setQuizEnded,
     setQuizStarted,
     setResults,
-    // setNumberOfQuestions,
   } = useContext(Context);
 
   const correctAnswers = results.reduce(
@@ -21,7 +21,7 @@ const Result = () => {
     <>
       <h3 className="qr-pb-2 qr-text-lg">Result</h3>
       {results.length ? (
-        <table className="qr-w-full">
+        <table className="qr-mb-6 qr-w-full">
           <caption className="qr-pb-4 qr-text-lg">
             You answered {correctAnswers} of {numberOfQuestions} correctly.
           </caption>
@@ -48,17 +48,14 @@ const Result = () => {
         <p>You did not answer any questions.</p>
       )}
       <div className="qr-flex qr-justify-end">
-        <button
-          type="button"
-          className="qr-mt-8 qr-rounded qr-bg-success qr-p-2 qr-text-white hover:qr-bg-success-dark focus:qr-bg-success-dark active:qr-bg-success-dark"
-          onClick={() => {
+        <Button
+          text="New Quiz"
+          onClickAction={() => {
             setQuizStarted(false);
             setQuizEnded(false);
             setResults([]);
           }}
-        >
-          New Quiz
-        </button>
+        />
       </div>
     </>
   );

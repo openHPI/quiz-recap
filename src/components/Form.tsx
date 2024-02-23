@@ -129,7 +129,7 @@ const Form = ({
       </div>
       {showConfirmation && (
         <div className="flex-row qr-flex qr-items-center qr-justify-end">
-          <h2 className="qr-mr-5">Are you sure you want to end the quiz?</h2>
+          <p className="qr-mr-5">Are you sure you want to end the quiz?</p>
           <div>
             <Button
               text="No"

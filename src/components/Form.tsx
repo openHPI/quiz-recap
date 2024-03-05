@@ -6,6 +6,7 @@ import Question from './Question';
 import { Context } from '../Context';
 import Button from './Button';
 import styles from './Form.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const Form = ({
   question,
@@ -14,6 +15,8 @@ const Form = ({
   question: QuestionType;
   nextQuestion: () => void;
 }) => {
+  const { t } = useTranslation();
+
   const { results, setResults, setQuizEnded, numberOfQuestions } =
     useContext(Context);
 
@@ -87,7 +90,7 @@ const Form = ({
     <form onSubmit={submitHandler} className={styles.form}>
       <fieldset className={`${styles.form} ${styles.fieldset}`}>
         <legend className={`${styles.form} ${styles.legend}`}>
-          {questionIndexText} of {numberOfQuestions}
+          {questionIndexText} {t('form.of')} {numberOfQuestions}
         </legend>
         <Question
           text={question.text}
@@ -108,7 +111,7 @@ const Form = ({
         {!showConfirmation && (
           <>
             <Button
-              text="End Quiz"
+              text={t('form.endBtn')}
               onClickAction={() => {
                 setShowConfirmation(true);
               }}
@@ -116,13 +119,13 @@ const Form = ({
               additionalClasses={styles.endQuizButton}
             />
 
-            {!submitted && <Button text="Submit Answer" type="submit" />}
+            {!submitted && <Button text={t('form.submitBtn')} type="submit" />}
           </>
         )}
 
         {!showConfirmation && submitted && (
           <Button
-            text="Next Question"
+            text={t('form.nextBtn')}
             type="button"
             onClickAction={handleNextQuestion}
           />
@@ -131,11 +134,11 @@ const Form = ({
       {showConfirmation && (
         <div className={styles.confirmation}>
           <p className={`${styles.confirmation} ${styles.p}`}>
-            Are you sure you want to end the quiz?
+            {t('form.confirmationBtn')}
           </p>
           <div>
             <Button
-              text="No"
+              text={t('form.noBtn')}
               style="neutral"
               additionalClasses={styles.declineButton}
               onClickAction={() => {
@@ -143,7 +146,7 @@ const Form = ({
               }}
             />
             <Button
-              text="Yes"
+              text={t('form.yesBtn')}
               style="danger"
               additionalClasses={styles.confirmButton}
               onClickAction={() => {

@@ -36,7 +36,8 @@ Refer to `src/types.ts` for a detailed specification of the expected data format
 Ensure the inclusion of the following options:
 
 - `elementId` where the app will attach itself
-- `lang` (optional) key for desired localization. Will fall-back to English.
+- `locale` (optional) key for desired localization. Supports English and German. Will fall-back to English for any
+  non-supported language.
 
 ### Example
 

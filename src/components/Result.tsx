@@ -3,6 +3,7 @@ import { ResultType } from '../types';
 import { Context } from '../Context';
 import Button from './Button';
 import styles from './Result.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const Result = () => {
   const {
@@ -12,6 +13,7 @@ const Result = () => {
     setQuizStarted,
     setResults,
   } = useContext(Context);
+  const { t } = useTranslation();
 
   const correctAnswers = results.reduce(
     (accumulator: number, result: ResultType) =>
@@ -20,16 +22,16 @@ const Result = () => {
   );
   return (
     <div className={styles.result}>
-      <h3 className={styles.h3}>Result</h3>
+      <h3 className={styles.h3}>{t('result.title')}</h3>
       {results.length ? (
         <table className={styles.table}>
           <caption className={styles.caption}>
-            You answered {correctAnswers} of {numberOfQuestions} correctly.
+            {t('result.overview', { correctAnswers, numberOfQuestions })}
           </caption>
           <thead>
             <tr>
-              <th aria-label="Correctly answered"></th>
-              <th aria-label="Question Text"></th>
+              <th aria-label={t('result.correct')}></th>
+              <th aria-label={t('result.question')}></th>
             </tr>
           </thead>
           <tbody>
@@ -46,11 +48,11 @@ const Result = () => {
           </tbody>
         </table>
       ) : (
-        <p>You did not answer any questions.</p>
+        <p>{t('result.unanswered')}</p>
       )}
       <div className={styles.buttonBar}>
         <Button
-          text="New Quiz"
+          text={t('result.new')}
           onClickAction={() => {
             setQuizStarted(false);
             setQuizEnded(false);

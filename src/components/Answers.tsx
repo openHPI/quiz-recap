@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AnswerType, QuestionTypes, QuizType } from '../types';
 import styles from './Answers.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const Answers = ({
   type,
@@ -15,6 +16,7 @@ const Answers = ({
   showCorrect: boolean;
   handleSelection: (answer: AnswerType) => void;
 }) => {
+  const { t } = useTranslation();
   const [shuffledAnswers, setShuffledAnswers] = useState(answers);
 
   useEffect(() => {
@@ -55,7 +57,7 @@ const Answers = ({
               {answer.text + ' '}
               {showCorrect && (
                 <small>
-                  {answer.correct ? '- correct answer' : '- incorrect answer'}
+                  {answer.correct ? t('answer.correct') : t('answer.incorrect')}
                 </small>
               )}
             </label>

@@ -7,10 +7,11 @@ import Button from './components/Button';
 import { Context } from './Context';
 import { getRandomSet } from './util';
 import { useTranslation } from 'react-i18next';
+
 import './i18n';
 
 function App({ data, locale = 'en' }: { data: Data; locale?: string }) {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   useEffect(() => {
     i18n.changeLanguage(locale);
   }, [locale, i18n]);
@@ -50,39 +51,29 @@ function App({ data, locale = 'en' }: { data: Data; locale?: string }) {
             <Quiz questions={questions} />
           ) : (
             <>
-              <h2 className={styles.h2}>Quiz recap</h2>
-              <h3 className={styles.h3}>
-                Here you can practice your knowledge!
-              </h3>
+              <h2 className={styles.h2}>{t('app.title')}</h2>
+              <h3 className={styles.h3}>{t('app.practice')}</h3>
 
-              <p className={styles.p}>
-                After you decide for a quiz size you will get a random set of
-                questions. Questions with one correct answer are indicated by a
-                radio button. Those with multiple correct answers are indicated
-                by a checkbox.
-              </p>
-              <p className={styles.p}>
-                Choose a quiz type below depending on how many questions you
-                want to practice.
-              </p>
+              <p className={styles.p}>{t('app.intro')}</p>
+              <p className={styles.p}>{t('app.instructions')}</p>
               <ul className={styles.ul}>
                 <li className={styles.li}>
                   <Button
-                    text={`Complete set (all ${completeSet} questions)`}
+                    text={t('app.completeBtn', { count: completeSet })}
                     onClickAction={() => startQuiz(completeSet)}
                     additionalClasses={styles.button}
                   />
                 </li>
                 <li className={styles.li}>
                   <Button
-                    text={`Medium set (${mediumSet} questions)`}
+                    text={t('app.mediumBtn', { count: mediumSet })}
                     onClickAction={() => startQuiz(mediumSet)}
                     additionalClasses={styles.button}
                   />
                 </li>
                 <li className={styles.li}>
                   <Button
-                    text={`Quick set (${quickSet} questions)`}
+                    text={t('app.quickBtn', { count: quickSet })}
                     onClickAction={() => startQuiz(quickSet)}
                     additionalClasses={styles.button}
                   />

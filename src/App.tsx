@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Data, ResultType } from './types';
 import styles from './App.module.scss';
 
@@ -6,8 +6,15 @@ import Quiz from './components/Quiz';
 import Button from './components/Button';
 import { Context } from './Context';
 import { getRandomSet } from './util';
+import { useTranslation } from 'react-i18next';
+import './i18n';
 
-function App({ data }: { data: Data }) {
+function App({ data, locale = 'en' }: { data: Data; locale?: string }) {
+  const { i18n } = useTranslation();
+  useEffect(() => {
+    i18n.changeLanguage(locale);
+  }, [locale, i18n]);
+
   const [questions, setQuestions] = useState([] as Data);
   const [quizStarted, setQuizStarted] = useState(false);
   const [numberOfQuestions, setNumberOfQuestions] = useState(data.length);
@@ -82,7 +89,7 @@ function App({ data }: { data: Data }) {
                 </li>
               </ul>
             </>
-          )}{' '}
+          )}
         </div>
       </div>
     </Context.Provider>

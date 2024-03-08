@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { ResultType } from '../types';
 import { Context } from '../Context';
 import Button from './Button';
+import styles from './Result.module.scss';
 
 const Result = () => {
   const {
@@ -18,15 +19,15 @@ const Result = () => {
     0,
   );
   return (
-    <>
-      <h3 className="qr-pb-2 qr-text-lg">Result</h3>
+    <div className={styles.result}>
+      <h3 className={styles.h3}>Result</h3>
       {results.length ? (
-        <table className="qr-mb-6 qr-w-full">
-          <caption className="qr-pb-4 qr-text-lg">
+        <table className={styles.table}>
+          <caption className={styles.caption}>
             You answered {correctAnswers} of {numberOfQuestions} correctly.
           </caption>
           <thead>
-            <tr className="qr-border-b qr-border-neutral">
+            <tr>
               <th aria-label="Correctly answered"></th>
               <th aria-label="Question Text"></th>
             </tr>
@@ -34,11 +35,11 @@ const Result = () => {
           <tbody>
             {results.map((result: ResultType) => {
               return (
-                <tr key={result.id} className="qr-border-b qr-border-neutral">
-                  <td className="qr-px-2 qr-py-2">
+                <tr className={styles.tr} key={result.id}>
+                  <td className={styles.td}>
                     {result.correctlyAnswered ? '✅' : '❌'}
                   </td>
-                  <td className="qr-px-2 qr-py-2">{result.question.text}</td>
+                  <td className={styles.td}>{result.question.text}</td>
                 </tr>
               );
             })}
@@ -47,7 +48,7 @@ const Result = () => {
       ) : (
         <p>You did not answer any questions.</p>
       )}
-      <div className="qr-flex qr-justify-end">
+      <div className={styles.buttonBar}>
         <Button
           text="New Quiz"
           onClickAction={() => {
@@ -57,7 +58,7 @@ const Result = () => {
           }}
         />
       </div>
-    </>
+    </div>
   );
 };
 

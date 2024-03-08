@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnswerType, QuestionTypes, QuizType } from '../types';
+import styles from './Answers.module.scss';
 
 const Answers = ({
   type,
@@ -30,33 +31,27 @@ const Answers = ({
   };
 
   return (
-    <div className="qr-pb-2" data-testid="answers">
+    <div className={styles.container} data-testid="answers">
       {shuffledAnswers.map((answer: AnswerType) => {
         const indicatorClass = showCorrect
           ? answer.correct
-            ? ' qr-bg-success-light'
-            : ' qr-bg-danger-light'
-          : ' qr-bg-neutral-light';
+            ? styles.correct
+            : styles.wrong
+          : styles.default;
         return (
           <div
             key={answer.id + '_' + quizId}
-            className={
-              'qr-mb-2 qr-flex qr-items-center qr-rounded qr-p-2' +
-              indicatorClass
-            }
+            className={`${styles.answers} ${indicatorClass}`}
           >
             <input
               id={answer.id}
               type={type === QuestionTypes.SingleChoice ? 'radio' : 'checkbox'}
-              className="qr-peer qr-accent-primary"
+              className={styles.input}
               name={'answer'}
               onChange={handleOnChange}
               disabled={showCorrect}
             ></input>
-            <label
-              className="qr-w-100 qr-ml-2 qr-grow peer-checked:qr-font-bold"
-              htmlFor={answer.id}
-            >
+            <label className={styles.label} htmlFor={answer.id}>
               {answer.text + ' '}
               {showCorrect && (
                 <small>

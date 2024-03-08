@@ -1,0 +1,40 @@
+@use './../variables.scss';
+
+.container {
+  padding-bottom: 8px;
+}
+
+.answers {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  padding: 8px;
+
+  &.default {
+    background-color: variables.$neutral-light;
+  }
+
+  &.correct {
+    background-color: variables.$success-light;
+  }
+
+  &.wrong {
+    background-color: variables.$danger-light;
+  }
+}
+
+.input {
+  accent-color: variables.$primary;
+  margin: 0;
+}
+
+.input:checked + label {
+  font-weight: bold;
+}
+
+.label {
+  flex-grow: 1;
+  margin-left: 8px;
+  width: 100%;
+}

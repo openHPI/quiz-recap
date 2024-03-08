@@ -77,20 +77,20 @@ It outlines the various shades that need to be defined for each color.
 
 ```css
 .quiz-recap {
-  --color-primary: #3b82f6;
-  --color-primary-dark: #2563eb;
+  --qr-color-primary: #3b82f6;
+  --qr-color-primary-dark: #2563eb;
 
-  --color-neutral: #737373;
-  --color-neutral-light: #f5f5f5;
-  --color-neutral-dark: #525252;
+  --qr-color-neutral: #737373;
+  --qr-color-neutral-light: #f5f5f5;
+  --qr-color-neutral-dark: #525252;
 
-  --color-success: #22c55e;
-  --color-success-light: #86efac;
-  --color-success-dark: #16a34a;
+  --qr-color-success: #22c55e;
+  --qr-color-success-light: #86efac;
+  --qr-color-success-dark: #16a34a;
 
-  --color-danger: #ef4444;
-  --color-danger-light: #fca5a5;
-  --color-danger-dark: #dc2626;
+  --qr-color-danger: #ef4444;
+  --qr-color-danger-light: #fca5a5;
+  --qr-color-danger-dark: #dc2626;
 }
 ```
 

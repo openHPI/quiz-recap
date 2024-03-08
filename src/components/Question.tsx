@@ -1,4 +1,5 @@
 import { QuestionTypes, QuizType } from '../types';
+import styles from './Question.module.scss';
 
 const Question = ({
   text,
@@ -12,17 +13,21 @@ const Question = ({
   isCorrect: boolean;
 }) => {
   return (
-    <div className="qr-pb-4">
-      <p className="qr-pb-4 qr-text-lg">{text}</p>
+    <div className={styles.question}>
+      <p className={styles.p}>{text}</p>
 
       {showResult ? (
-        <p>Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}</p>
+        <p className={styles.p}>
+          Your answer was {isCorrect ? ' correct ✅' : ' not correct ❌'}
+        </p>
       ) : (
-        <em>
-          {type === QuestionTypes.MultipleChoice
-            ? 'Select all correct answers.'
-            : 'Select the correct answer.'}
-        </em>
+        <p className={styles.p}>
+          <em>
+            {type === QuestionTypes.MultipleChoice
+              ? 'Select all correct answers.'
+              : 'Select the correct answer.'}
+          </em>
+        </p>
       )}
     </div>
   );

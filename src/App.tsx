@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Data, ResultType } from './types';
+import styles from './App.module.scss';
+
 import Quiz from './components/Quiz';
 import Button from './components/Button';
 import { Context } from './Context';
@@ -36,46 +38,46 @@ function App({ data }: { data: Data }) {
       }}
     >
       <div className="quiz-recap">
-        <div className="qr-rounded qr-bg-white qr-px-5 qr-py-4">
+        <div className={styles.quizRecap}>
           {quizStarted ? (
             <Quiz questions={questions} />
           ) : (
             <>
-              <h2 className="qr-pb-4 qr-text-xl">Quiz recap</h2>
-              <h3 className="qr-pb-4 qr-text-lg">
+              <h2 className={styles.h2}>Quiz recap</h2>
+              <h3 className={styles.h3}>
                 Here you can practice your knowledge!
               </h3>
 
-              <p className="qr-pb-4">
+              <p className={styles.p}>
                 After you decide for a quiz size you will get a random set of
                 questions. Questions with one correct answer are indicated by a
                 radio button. Those with multiple correct answers are indicated
                 by a checkbox.
               </p>
-              <p className="qr-pb-4">
+              <p className={styles.p}>
                 Choose a quiz type below depending on how many questions you
                 want to practice.
               </p>
-              <ul className="qr-pt-4 qr-text-center">
-                <li>
+              <ul className={styles.ul}>
+                <li className={styles.li}>
                   <Button
                     text={`Complete set (all ${completeSet} questions)`}
                     onClickAction={() => startQuiz(completeSet)}
-                    additionalClasses={'qr-w-1/2 qr-mb-2'}
+                    additionalClasses={styles.button}
                   />
                 </li>
-                <li>
+                <li className={styles.li}>
                   <Button
                     text={`Medium set (${mediumSet} questions)`}
                     onClickAction={() => startQuiz(mediumSet)}
-                    additionalClasses={'qr-w-1/2 qr-mb-2'}
+                    additionalClasses={styles.button}
                   />
                 </li>
-                <li>
+                <li className={styles.li}>
                   <Button
                     text={`Quick set (${quickSet} questions)`}
                     onClickAction={() => startQuiz(quickSet)}
-                    additionalClasses={'qr-w-1/2'}
+                    additionalClasses={styles.button}
                   />
                 </li>
               </ul>

@@ -1,0 +1,36 @@
+@use './../variables.scss';
+
+.result {
+  .h3 {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .table {
+    width: 100%;
+    margin-bottom: 24px;
+    border-collapse: collapse;
+  }
+
+  .caption {
+    padding-bottom: 16px;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: left;
+  }
+
+  .tr {
+    border-color: variables.$neutral;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+  }
+
+  .td {
+    padding: 8px;
+  }
+
+  .buttonBar {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -5,6 +5,7 @@ import Answers from './Answers';
 import Question from './Question';
 import { Context } from '../Context';
 import Button from './Button';
+import styles from './Form.module.scss';
 
 const Form = ({
   question,
@@ -83,9 +84,9 @@ const Form = ({
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <fieldset className="qr-rounded qr-bg-white">
-        <legend className="qr-rounded qr-bg-white qr-text-right qr-text-sm">
+    <form onSubmit={submitHandler} className={styles.form}>
+      <fieldset className={`${styles.form} ${styles.fieldset}`}>
+        <legend className={`${styles.form} ${styles.legend}`}>
           {questionIndexText} of {numberOfQuestions}
         </legend>
         <Question
@@ -103,7 +104,7 @@ const Form = ({
         ></Answers>
       </fieldset>
 
-      <div className="qr-flex qr-justify-end">
+      <div className={styles.buttonBar}>
         {!showConfirmation && (
           <>
             <Button
@@ -112,7 +113,7 @@ const Form = ({
                 setShowConfirmation(true);
               }}
               style="neutral"
-              additionalClasses="qr-mr-2"
+              additionalClasses={styles.endQuizButton}
             />
 
             {!submitted && <Button text="Submit Answer" type="submit" />}
@@ -128,13 +129,15 @@ const Form = ({
         )}
       </div>
       {showConfirmation && (
-        <div className="flex-row qr-flex qr-items-center qr-justify-end">
-          <p className="qr-mr-5">Are you sure you want to end the quiz?</p>
+        <div className={styles.confirmation}>
+          <p className={`${styles.confirmation} ${styles.p}`}>
+            Are you sure you want to end the quiz?
+          </p>
           <div>
             <Button
               text="No"
               style="neutral"
-              additionalClasses="qr-m7-2 qr-mr-2 qr-min-w-20"
+              additionalClasses={styles.declineButton}
               onClickAction={() => {
                 setShowConfirmation(false);
               }}
@@ -142,7 +145,7 @@ const Form = ({
             <Button
               text="Yes"
               style="danger"
-              additionalClasses="qr-m7-2 qr-min-w-20"
+              additionalClasses={styles.confirmButton}
               onClickAction={() => {
                 setQuizEnded(true);
               }}

@@ -1,0 +1,43 @@
+.form {
+  .fieldset {
+    border-radius: 4px;
+    background-color: white;
+    border: none;
+  }
+
+  .legend {
+    border-radius: 4px;
+    background-color: white;
+    text-align: right;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.buttonBar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.endQuizButton {
+  margin-right: 2px;
+}
+
+.confirmButton {
+  min-width: 80px;
+}
+
+.declineButton {
+  min-width: 80px;
+  margin-right: 4px;
+}
+
+.confirmation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .p {
+    margin-right: 12px;
+  }
+}

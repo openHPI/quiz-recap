@@ -1,0 +1,46 @@
+@use '../variables.scss';
+
+.button {
+  border-radius: 4px;
+  padding: 8px;
+  color: white;
+  border: none;
+  font-size: 16px;
+  line-height: 22px;
+
+  &.primary {
+    background-color: variables.$primary;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: variables.$primary-dark;
+    }
+  }
+
+  &.neutral {
+    background-color: variables.$neutral;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: variables.$neutral-dark;
+    }
+  }
+
+  &.success {
+    background-color: variables.$success;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: variables.$success-dark;
+    }
+  }
+
+  &.danger {
+    background-color: variables.$danger;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: variables.$danger-dark;
+    }
+  }
+}

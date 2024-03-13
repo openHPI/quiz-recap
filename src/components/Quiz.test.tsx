@@ -2,13 +2,14 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { Data, QuestionTypes } from '../types';
 import Quiz from './Quiz';
 import { Context } from '../Context';
+import { translationsProvider } from '../util';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const customRender = (ui: any, { providerProps, ...renderOptions }: any) => {
-  return render(
-    <Context.Provider {...providerProps}>{ui}</Context.Provider>,
-    renderOptions,
-  );
+  return render(<Context.Provider {...providerProps}>{ui}</Context.Provider>, {
+    wrapper: translationsProvider,
+    ...renderOptions,
+  });
 };
 
 describe('Quiz component', () => {

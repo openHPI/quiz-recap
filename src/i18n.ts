@@ -6,21 +6,20 @@ import de from './locales/de';
 // Translations catalog
 const resources = {
   en: {
-    translationsNS: en,
+    translation: en,
   },
   de: {
-    translationsNS: de,
+    translation: de,
   },
 };
 
-i18n
-  .use(initReactI18next)
-  .init({
-    fallbackLng: 'en',
-    interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
-    },
-    resources,
-  });
+i18n.use(initReactI18next).init({
+  ns: ['translation'],
+  fallbackLng: 'en',
+  interpolation: {
+    escapeValue: false, // not needed for react as it escapes by default
+  },
+  resources,
+});
 
 export default i18n;

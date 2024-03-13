@@ -1,11 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 import { testData as data, testDataWithFourQuestions } from './static/data';
+import { translationsProvider } from './util';
 
 describe('App component', () => {
   describe('basic workflows', () => {
     it('shows start screen on startup', () => {
-      render(<App data={data}></App>);
+      render(<App data={data}></App>, { wrapper: translationsProvider });
 
       const startPage = screen.queryByText(
         /Here you can practice your knowledge!/i,
@@ -14,7 +15,7 @@ describe('App component', () => {
     });
 
     it('shows the quiz after clicking on button to start quiz', () => {
-      render(<App data={data}></App>);
+      render(<App data={data}></App>, { wrapper: translationsProvider });
 
       expect(screen.queryByTestId('quiz')).not.toBeInTheDocument();
 
@@ -25,7 +26,7 @@ describe('App component', () => {
     });
 
     it('shows the result page after confirming to end the quiz', () => {
-      render(<App data={data}></App>);
+      render(<App data={data}></App>, { wrapper: translationsProvider });
 
       const button = screen.getByText(/Complete set/i);
       fireEvent.click(button);
@@ -44,12 +45,12 @@ describe('App component', () => {
       const confirmButton = screen.getByText(/Yes/i);
       fireEvent.click(confirmButton);
 
-      const result = screen.queryByText(/Result/i);
+      const result = screen.queryByText(/Result/);
       expect(result).toBeInTheDocument();
     });
 
     it('has the possibility to resume the quiz after not confirming to end the quiz', () => {
-      render(<App data={data}></App>);
+      render(<App data={data}></App>, { wrapper: translationsProvider });
 
       const button = screen.getByText(/Complete set/i);
       fireEvent.click(button);
@@ -72,7 +73,7 @@ describe('App component', () => {
     });
 
     it('shows the result page after answering all questions', () => {
-      render(<App data={data}></App>);
+      render(<App data={data}></App>, { wrapper: translationsProvider });
       const numberOfQuestions = data.length;
       const button = screen.getByText(/Complete set/i);
       fireEvent.click(button);
@@ -90,13 +91,15 @@ describe('App component', () => {
         fireEvent.click(screen.getByText('Next Question'));
       });
 
-      const result = screen.queryByText(/Result/i);
+      const result = screen.queryByText(/Result/);
 
       expect(result).toBeInTheDocument();
     });
 
     it('shows the result page after answering a quick set of questions', () => {
-      render(<App data={testDataWithFourQuestions}></App>);
+      render(<App data={testDataWithFourQuestions}></App>, {
+        wrapper: translationsProvider,
+      });
       const button = screen.getByText(/Quick set/i);
       fireEvent.click(button);
 
@@ -116,13 +119,13 @@ describe('App component', () => {
         fireEvent.click(screen.getByText('Next Question'));
       }
 
-      const result = screen.queryByText(/Result/i);
+      const result = screen.queryByText(/Result/);
 
       expect(result).toBeInTheDocument();
     });
 
     it('shows the start page again after ending the quiz when starting a new quiz', () => {
-      render(<App data={data}></App>);
+      render(<App data={data}></App>, { wrapper: translationsProvider });
 
       const button = screen.getByText(/Complete set/i);
       fireEvent.click(button);
@@ -147,6 +150,26 @@ describe('App component', () => {
 
       expect(quizAfterEnding).not.toBeInTheDocument();
       expect(newButton).not.toBeInTheDocument();
+      expect(startPage).toBeInTheDocument();
+    });
+
+    it('can be set to German', () => {
+      render(<App data={data} locale="de"></App>, {
+        wrapper: translationsProvider,
+      });
+      const startPage = screen.queryByText(
+        /Hier können Sie Ihr Wissen testen!/i,
+      );
+      expect(startPage).toBeInTheDocument();
+    });
+
+    it('falls back to English if set to a non-supported language', () => {
+      render(<App data={data} locale="es"></App>, {
+        wrapper: translationsProvider,
+      });
+      const startPage = screen.queryByText(
+        /Here you can practice your knowledge!/i,
+      );
       expect(startPage).toBeInTheDocument();
     });
   });

@@ -4,6 +4,7 @@ import { Context } from '../Context';
 import Button from './Button';
 import styles from './Result.module.scss';
 import { useTranslation } from 'react-i18next';
+import Markdown from './Markdown';
 
 const Result = () => {
   const {
@@ -41,7 +42,9 @@ const Result = () => {
                   <td className={styles.td}>
                     {result.correctlyAnswered ? '✅' : '❌'}
                   </td>
-                  <td className={styles.td}>{result.question.text}</td>
+                  <td className={styles.td}>
+                    {<Markdown content={result.question.text}></Markdown>}
+                  </td>
                 </tr>
               );
             })}

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { AnswerType, QuestionTypes, QuizType } from '../types';
 import styles from './Answers.module.scss';
 import { useTranslation } from 'react-i18next';
+import Markdown from './Markdown';
 
 const Answers = ({
   type,
@@ -54,7 +55,7 @@ const Answers = ({
               disabled={showCorrect}
             ></input>
             <label className={styles.label} htmlFor={answer.id}>
-              {answer.text + ' '}
+              <Markdown content={answer.text}></Markdown>
               {showCorrect && (
                 <small>
                   {answer.correct ? t('answer.correct') : t('answer.incorrect')}

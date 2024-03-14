@@ -1,6 +1,7 @@
 import { QuestionTypes, QuizType } from '../types';
 import styles from './Question.module.scss';
 import { useTranslation } from 'react-i18next';
+import Markdown from './Markdown';
 
 const Question = ({
   text,
@@ -16,7 +17,9 @@ const Question = ({
   const { t } = useTranslation();
   return (
     <div className={styles.question}>
-      <p className={styles.p}>{text}</p>
+      <p className={styles.p}>
+        <Markdown content={text}></Markdown>
+      </p>
 
       {showResult ? (
         <p className={styles.p}>

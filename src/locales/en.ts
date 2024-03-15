@@ -41,9 +41,6 @@ const en = {
     correct: '- correct answer',
     incorrect: '- incorrect answer',
   },
-  loading: {
-    text: 'Loading...',
-  },
 };
 
 export default en;

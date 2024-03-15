@@ -40,9 +40,6 @@ const de = {
     correct: '- richtige Antwort',
     incorrect: '- falsche Antwort',
   },
-  loading: {
-    text: 'Laden...',
-  },
 };
 
 export default de;

@@ -42,12 +42,12 @@ Ensure the inclusion of the following options:
 ### Example
 
 ```JS
-  import quizRecap from `quizRecap`;
+  import renderQuizRecap from `quizRecap`;
 
   const selector = 'selector'; // id of DOM element
   const data = [ ... ]; // see `src/types.ts`
 
-  quizRecap(selector, data);
+  renderQuizRecap(selector, data);
 ```
 
 ## Setup
@@ -103,7 +103,6 @@ The feature set is not complete for release.
 
 #### Required for MVP
 
-- Localization
 - "Attempts" feature
 
 #### Nice to have

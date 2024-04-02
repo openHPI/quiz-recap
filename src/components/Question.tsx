@@ -17,16 +17,16 @@ const Question = ({
   const { t } = useTranslation();
   return (
     <div className={styles.question}>
-      <p className={styles.p}>
+      <div className={styles.text}>
         <Markdown content={text}></Markdown>
-      </p>
+      </div>
 
       {showResult ? (
-        <p className={styles.p}>
+        <p className={styles.hint}>
           {isCorrect ? t('question.correct') : t('question.notCorrect')}
         </p>
       ) : (
-        <p className={styles.p}>
+        <p className={styles.hint}>
           <em>
             {type === QuestionTypes.MultipleChoice
               ? t('question.selectAll')

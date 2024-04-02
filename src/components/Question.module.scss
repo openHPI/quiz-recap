@@ -1,8 +1,18 @@
-.question {
-  padding-bottom: 8px;
+@use '../variables.scss';
 
-  .p {
-    font-size: 18px;
-    line-height: 28px;
+.question {
+  font-size: 18px;
+  line-height: 28px;
+
+  .text {
+    background-color: variables.$neutral-light;
+    padding: 8px 8px 8px 16px;
+    border-radius: 4px;
+  }
+
+  .hint {
+    padding: 8px 8px 8px 16px;
+    margin: 8px 0;
+    border-radius: 4px;
   }
 }

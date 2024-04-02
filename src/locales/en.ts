@@ -38,8 +38,8 @@ const en = {
     new: 'New Quiz',
   },
   answer: {
-    correct: '- correct answer',
-    incorrect: '- incorrect answer',
+    correct: ' - correct answer',
+    incorrect: ' - incorrect answer',
   },
 };
 

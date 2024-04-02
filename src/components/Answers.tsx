@@ -41,6 +41,13 @@ const Answers = ({
             ? styles.correct
             : styles.wrong
           : styles.default;
+
+        let text = answer.text;
+
+        if (showCorrect) {
+          text += answer.correct ? t('answer.correct') : t('answer.incorrect');
+        }
+
         return (
           <div
             key={answer.id + '_' + quizId}
@@ -55,12 +62,7 @@ const Answers = ({
               disabled={showCorrect}
             ></input>
             <label className={styles.label} htmlFor={answer.id}>
-              <Markdown content={answer.text}></Markdown>
-              {showCorrect && (
-                <small>
-                  {answer.correct ? t('answer.correct') : t('answer.incorrect')}
-                </small>
-              )}
+              <Markdown content={text}></Markdown>
             </label>
           </div>
         );

@@ -37,8 +37,8 @@ const de = {
     new: 'Neues Quiz',
   },
   answer: {
-    correct: '- richtige Antwort',
-    incorrect: '- falsche Antwort',
+    correct: ' - richtige Antwort',
+    incorrect: ' - falsche Antwort',
   },
 };
 

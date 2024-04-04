@@ -1,8 +1,7 @@
 @use '../variables.scss';
 
 .question {
-  font-size: 18px;
-  line-height: 28px;
+  @include variables.font-m;
 
   .text {
     background-color: variables.$neutral-light;

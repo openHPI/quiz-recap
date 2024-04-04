@@ -1,3 +1,5 @@
+@use './variables.scss';
+
 .quizRecap {
   background-color: white;
   border-radius: 4px;
@@ -8,14 +10,12 @@
 
   .h2 {
     padding-bottom: 8px;
-    font-size: 20px;
-    line-height: 28px;
+    @include variables.font-l;
   }
 
   .h3 {
     padding-bottom: 8px;
-    font-size: 18px;
-    line-height: 28px;
+    @include variables.font-m;
   }
 
   .p {

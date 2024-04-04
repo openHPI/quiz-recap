@@ -6,8 +6,7 @@
   min-height: 32px;
   color: white;
   border: none;
-  font-size: 16px;
-  line-height: 22px;
+  @include variables.font-m;
 
   &.primary {
     background-color: variables.$primary;

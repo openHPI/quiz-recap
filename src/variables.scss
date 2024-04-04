@@ -12,3 +12,17 @@ $success-dark: var(--qr-color-success-dark, hsl(142, 76%, 36%));
 $danger: var(--qr-color-danger, hsl(0, 84%, 60%));
 $danger-light: var(--qr-color-danger-light, hsl(0, 94%, 82%));
 $danger-dark: var(--qr-color-danger-dark, hsl(0, 72%, 51%));
+
+@mixin font-s {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@mixin font-m {
+  font-size: 18px;
+  line-height: 28px;
+}
+@mixin font-l {
+  font-size: 20px;
+  line-height: 28px;
+}

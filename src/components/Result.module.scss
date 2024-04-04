@@ -2,8 +2,7 @@
 
 .result {
   .h3 {
-    font-size: 18px;
-    line-height: 28px;
+    @include variables.font-m;
   }
 
   .table {
@@ -14,8 +13,7 @@
 
   .caption {
     padding-bottom: 16px;
-    font-size: 18px;
-    line-height: 28px;
+    @include variables.font-m;
     text-align: left;
   }
 

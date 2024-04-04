@@ -5,6 +5,7 @@
 }
 
 .answers {
+  min-height: 32px;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -36,7 +37,7 @@
 .label {
   flex-grow: 1;
   width: 100%;
-  padding: 8px;
+  padding: 0 8px;
 
   * {
     margin: 0px;

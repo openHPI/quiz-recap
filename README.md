@@ -21,6 +21,10 @@ The question type can be multiple-choice or single-choices.
 
 After submission, receive immediate feedback with a clear indication of whether your answer was correct.
 
+### Spaced repetition learning technique
+
+A wrong answer will put the question back into the pool up to 3 times, to reinforce memory retention.
+
 ### Results page
 
 A concise summary of your quiz performance on the results page upon completion.

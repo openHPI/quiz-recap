@@ -8,12 +8,14 @@ const Answers = ({
   type,
   quizId,
   answers,
+  attempts,
   showCorrect,
   handleSelection,
 }: {
   type: QuizType;
   quizId: number;
   answers: AnswerType[];
+  attempts: number;
   showCorrect: boolean;
   handleSelection: (answer: AnswerType) => void;
 }) => {
@@ -50,7 +52,7 @@ const Answers = ({
 
         return (
           <div
-            key={answer.id + '_' + quizId}
+            key={answer.id + '_' + quizId + '_' + attempts}
             className={`${styles.answers} ${indicatorClass}`}
           >
             <input

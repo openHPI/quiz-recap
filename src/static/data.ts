@@ -178,7 +178,7 @@ export const testData: Data = [
       {
         id: 'answer_01',
         correct: true,
-        text: 'Answer 1',
+        text: 'Correct Answer',
       },
       {
         id: 'answer_02',
@@ -198,7 +198,7 @@ export const testData: Data = [
       {
         id: 'answer_03',
         correct: true,
-        text: 'Answer 3',
+        text: 'Correct Answer',
       },
       {
         id: 'answer_04',
@@ -216,7 +216,7 @@ export const testData: Data = [
       {
         id: 'answer_05',
         correct: true,
-        text: 'Answer 5',
+        text: 'Correct Answer',
       },
       {
         id: 'answer_06',
@@ -226,7 +226,7 @@ export const testData: Data = [
       {
         id: 'answer_07',
         correct: true,
-        text: 'Answer 7',
+        text: 'Correct Answer',
       },
       {
         id: 'answer_08',
@@ -270,19 +270,19 @@ export const testDataWithFourQuestions: Data = [
     id: 'id-01',
     points: 1,
     type: QuestionTypes.SingleChoice,
-    text: 'What is the answer?',
+    text: 'Q1: What is the answer?',
     courseId: 'courseId-01',
     quizId: 'quizId-01',
     answers: [
       {
         id: 'answer_01',
         correct: true,
-        text: 'Answer 1',
+        text: 'Correct Answer',
       },
       {
         id: 'answer_02',
         correct: false,
-        text: 'Answer 2',
+        text: 'Incorrect Answer',
       },
     ],
   },
@@ -290,19 +290,19 @@ export const testDataWithFourQuestions: Data = [
     id: 'id-02',
     points: 1,
     type: QuestionTypes.SingleChoice,
-    text: 'What is the answer?',
+    text: 'Q2: What is the answer?',
     courseId: 'courseId-01',
     quizId: 'quizId-02',
     answers: [
       {
         id: 'answer_03',
         correct: true,
-        text: 'Answer 3',
+        text: 'Correct Answer',
       },
       {
         id: 'answer_04',
         correct: false,
-        text: 'Answer 4',
+        text: 'Incorrect Answer',
       },
     ],
   },
@@ -310,27 +310,27 @@ export const testDataWithFourQuestions: Data = [
     id: 'id-03',
     points: 1,
     type: QuestionTypes.MultipleChoice,
-    text: 'What is the answer?',
+    text: 'Q3: What is the answer?',
     answers: [
       {
         id: 'answer_05',
         correct: true,
-        text: 'Answer 5',
+        text: 'Correct Answer',
       },
       {
         id: 'answer_06',
         correct: false,
-        text: 'Answer 6',
+        text: 'Incorrect Answer',
       },
       {
         id: 'answer_07',
         correct: true,
-        text: 'Answer 7',
+        text: 'Correct Answer',
       },
       {
         id: 'answer_08',
         correct: false,
-        text: 'Answer 8',
+        text: 'Incorrect Answer',
       },
     ],
   },
@@ -338,27 +338,27 @@ export const testDataWithFourQuestions: Data = [
     id: 'id-04',
     points: 1,
     type: QuestionTypes.MultipleChoice,
-    text: 'What is the answer?',
+    text: 'Q4: What is the answer?',
     answers: [
       {
         id: 'answer_09',
         correct: false,
-        text: 'Answer 9',
+        text: 'Incorrect Answer',
       },
       {
         id: 'answer_10',
         correct: false,
-        text: 'Answer 10',
+        text: 'Incorrect Answer',
       },
       {
         id: 'answer_11',
         correct: false,
-        text: 'Answer 11',
+        text: 'Incorrect Answer',
       },
       {
         id: 'answer_12',
         correct: false,
-        text: 'Answer 12',
+        text: 'Incorrect Answer',
       },
     ],
   },

@@ -52,7 +52,15 @@ describe('Quiz component', () => {
         ],
       },
     ];
-    render(<Quiz questions={testData} />);
+
+    const providerProps = {
+      value: {
+        questionsPool: [],
+        setQuestionsPool: () => {},
+        setQuizEnded: () => {},
+      },
+    };
+    customRender(<Quiz questions={testData} />, { providerProps });
 
     const answers = screen.getByTestId('answers');
 
@@ -116,6 +124,8 @@ describe('Conducting a single choice quiz', () => {
         numberOfQuestions: 2,
         results: [],
         setResults: () => {},
+        questionsPool: [],
+        setQuestionsPool: () => {},
       },
     };
     customRender(<Quiz questions={testData} />, { providerProps });
@@ -231,6 +241,8 @@ describe('Conducting a multiple answer quiz', () => {
         numberOfQuestions: 2,
         results: [],
         setResults: () => {},
+        questionsPool: [],
+        setQuestionsPool: () => {},
       },
     };
     customRender(<Quiz questions={testData} />, { providerProps });

@@ -3,7 +3,7 @@ const de = {
     title: 'Quiz Recap',
     practice: 'Hier können Sie Ihr Wissen testen!',
     intro:
-      'Nachdem Sie sich für eine Größe des Quiz entschieden haben, erhalten Sie eine zufällige Auswahl an Fragen. Fragen mit einer richtigen Antwort werden durch einen Radio Button angezeigt. Fragen mit mehreren richtigen Antworten werden durch eine Checkbox angezeigt.',
+      'Nachdem Sie sich für eine Größe des Quiz entschieden haben, erhalten Sie eine zufällige Auswahl an Fragen. Sie haben 3 Versuche, jede Frage richtig zu beantworten. Fragen mit einer richtigen Antwort werden durch einen Radio Button angezeigt. Fragen mit mehreren richtigen Antworten werden durch eine Checkbox angezeigt.',
     instructions: 'Wählen Sie die Anzahl der Fragen aus die Sie üben möchten:',
     completeBtn_one: 'Komplettes Set ({{count}} Frage)',
     completeBtn_other: 'Komplettes Set (alle {{count}} Fragen)',
@@ -32,7 +32,8 @@ const de = {
     overview:
       'Sie haben {{correctAnswers}} von {{numberOfQuestions}} richtig beantwortet.',
     correct: 'Richtig beantwortet',
-    question: 'Text der Frage',
+    question: 'Frage',
+    attempts: 'Versuche',
     unanswered: 'Sie haben keine einzige Frage beantwortet.',
     new: 'Neues Quiz',
   },

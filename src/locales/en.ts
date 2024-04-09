@@ -3,7 +3,7 @@ const en = {
     title: 'Quiz recap',
     practice: 'Here you can practice your knowledge!',
     intro:
-      'After you decide for a quiz size you will get a random set of questions. Questions with one correct answer are indicated by a radio button. Those with multiple correct answers are indicated by a checkbox.',
+      'After you decide for a quiz size you will get a random set of questions. You have 3 attempts to answer each question correctly. Questions with one correct answer are indicated by a radio button. Those with multiple correct answers are indicated by a checkbox.',
     instructions:
       'Choose a quiz type below depending on how many questions you want to practice.',
     completeBtn_one: 'Complete set ({{count}} question)',
@@ -33,7 +33,8 @@ const en = {
     overview:
       'You answered {{correctAnswers}} of {{numberOfQuestions}} correctly.',
     correct: 'Correctly answered',
-    question: 'Question Text',
+    question: 'Question',
+    attempts: 'Attempts',
     unanswered: 'You did not answer any questions.',
     new: 'New Quiz',
   },

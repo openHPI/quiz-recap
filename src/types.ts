@@ -6,6 +6,8 @@ export type ContextType = {
   numberOfQuestions: number;
   setNumberOfQuestions: React.Dispatch<React.SetStateAction<number>>;
   setQuizStarted: React.Dispatch<React.SetStateAction<boolean>>;
+  questionsPool: QuestionPoolType[];
+  setQuestionsPool: React.Dispatch<React.SetStateAction<QuestionPoolType[]>>;
 };
 
 export enum QuestionTypes {
@@ -27,6 +29,11 @@ export type QuestionType = {
   answers: AnswerType[];
 };
 
+export type QuestionPoolType = QuestionType & {
+  remainingAttempts: number;
+  correctlyAnswered: boolean;
+};
+
 export type AnswerType = {
   id: string;
   correct: boolean;
@@ -35,6 +42,5 @@ export type AnswerType = {
 
 export type ResultType = {
   id: string;
-  question: QuestionType;
-  correctlyAnswered: boolean;
+  question: QuestionPoolType;
 };

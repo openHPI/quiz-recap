@@ -18,7 +18,9 @@ const Result = () => {
 
   const correctAnswers = results.reduce(
     (accumulator: number, result: ResultType) =>
-      result.correctlyAnswered ? (accumulator = accumulator + 1) : accumulator,
+      result.question.correctlyAnswered
+        ? (accumulator = accumulator + 1)
+        : accumulator,
     0,
   );
   return (
@@ -31,19 +33,28 @@ const Result = () => {
           </caption>
           <thead>
             <tr>
-              <th aria-label={t('result.correct')}></th>
-              <th aria-label={t('result.question')}></th>
+              <th className={styles.th} aria-label={t('result.correct')}></th>
+              <th className={styles.th}>{t('result.question')}</th>
+              <th className={`${styles.th} ${styles.centered}`}>
+                {t('result.attempts')}
+              </th>
             </tr>
           </thead>
           <tbody>
-            {results.map((result: ResultType) => {
+            {results.map((result: ResultType, index) => {
               return (
                 <tr className={styles.tr} key={result.id}>
                   <td className={styles.td}>
-                    {result.correctlyAnswered ? '✅' : '❌'}
+                    {result.question.correctlyAnswered ? '✅' : '❌'}
                   </td>
                   <td className={styles.td}>
                     {<Markdown content={result.question.text}></Markdown>}
+                  </td>
+                  <td
+                    className={`${styles.td} ${styles.centered}`}
+                    data-testid={`attempts-question-${index + 1}`}
+                  >
+                    {`${3 - result.question.remainingAttempts}`}
                   </td>
                 </tr>
               );

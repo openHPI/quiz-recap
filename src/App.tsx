@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Data, ResultType } from './types';
+import { Data, ResultType, QuestionPoolType } from './types';
 import styles from './App.module.scss';
 
 import Quiz from './components/Quiz';
@@ -19,6 +19,7 @@ function App({ data, locale = 'en' }: { data: Data; locale?: string }) {
   const [questions, setQuestions] = useState([] as Data);
   const [quizStarted, setQuizStarted] = useState(false);
   const [numberOfQuestions, setNumberOfQuestions] = useState(data.length);
+  const [questionsPool, setQuestionsPool] = useState<QuestionPoolType[]>([]);
 
   const [quizEnded, setQuizEnded] = useState(false);
   const [results, setResults] = useState<ResultType[]>([]);
@@ -43,6 +44,8 @@ function App({ data, locale = 'en' }: { data: Data; locale?: string }) {
         setResults,
         numberOfQuestions,
         setNumberOfQuestions,
+        questionsPool,
+        setQuestionsPool,
       }}
     >
       <div className="quiz-recap">

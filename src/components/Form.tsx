@@ -1,5 +1,5 @@
 import { FormEvent, useContext, useState } from 'react';
-import { QuestionType, AnswerType, QuestionTypes } from '../types';
+import { QuestionPoolType, AnswerType, QuestionTypes } from '../types';
 import { isAlreadySelected, validateSelectionIsCorrect } from '../util';
 import Answers from './Answers';
 import Question from './Question';
@@ -12,13 +12,19 @@ const Form = ({
   question,
   nextQuestion,
 }: {
-  question: QuestionType;
+  question: QuestionPoolType;
   nextQuestion: () => void;
 }) => {
   const { t } = useTranslation();
 
-  const { results, setResults, setQuizEnded, numberOfQuestions } =
-    useContext(Context);
+  const {
+    results,
+    setResults,
+    setQuizEnded,
+    numberOfQuestions,
+    questionsPool,
+    setQuestionsPool,
+  } = useContext(Context);
 
   const [questionIndexText, setQuestionIndexText] = useState(1);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -56,15 +62,26 @@ const Form = ({
     }
   };
 
-  const addToResult = (question: QuestionType, correctlyAnswered: boolean) => {
-    setResults([
-      ...results,
-      {
-        id: `{${question.id}}-${new Date().getTime()}`,
-        question,
-        correctlyAnswered,
-      },
-    ]);
+  const addToResult = (question: QuestionPoolType) => {
+    const questionIndex = results.findIndex(
+      (result) => result.question.id === question.id,
+    );
+
+    if (questionIndex !== -1) {
+      // Update question if already included in results
+      const updatedResults = [...results];
+      updatedResults[questionIndex].question = question;
+      setResults(updatedResults);
+    } else {
+      // Add new question
+      setResults([
+        ...results,
+        {
+          id: `{${question.id}}-${new Date().getTime()}`,
+          question,
+        },
+      ]);
+    }
   };
 
   const submitHandler = (event: FormEvent) => {
@@ -76,12 +93,35 @@ const Form = ({
     );
     setIsCorrect(correctlyAnswered);
     setSubmitted(true);
+    updatePool(correctlyAnswered);
+    addToResult(updatedQuestion(correctlyAnswered));
     setSelections([]);
-    addToResult(question, correctlyAnswered);
+  };
+
+  const updatedQuestion = (correctlyAnswered: boolean) => ({
+    ...question,
+    remainingAttempts: question.remainingAttempts - 1,
+    correctlyAnswered,
+  });
+
+  const updatePool = (correctlyAnswered: boolean) => {
+    const updatedPool: QuestionPoolType[] = questionsPool.map((q) => {
+      if (q.id === question.id) {
+        q = updatedQuestion(correctlyAnswered);
+      }
+      return q;
+    });
+
+    const remainingQuestions = updatedPool.filter(
+      (q) => q.remainingAttempts > 0 && !q.correctlyAnswered,
+    );
+    setQuestionsPool(remainingQuestions);
   };
 
   const handleNextQuestion = () => {
-    setQuestionIndexText(questionIndexText + 1);
+    if (isCorrect) {
+      setQuestionIndexText(questionIndexText + 1);
+    }
     setSubmitted(false);
     nextQuestion();
   };
@@ -102,6 +142,7 @@ const Form = ({
           type={question.type}
           quizId={+question.id}
           answers={question.answers}
+          attempts={question.remainingAttempts}
           showCorrect={submitted}
           handleSelection={handleSelections}
         ></Answers>

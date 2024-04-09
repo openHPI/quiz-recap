@@ -24,6 +24,7 @@ describe('Answers component', () => {
         type={QuestionTypes.SingleChoice}
         quizId={0}
         answers={testData.answers}
+        attempts={3}
         showCorrect={false}
         handleSelection={() => {}}
       />,
@@ -39,6 +40,7 @@ describe('Answers component', () => {
         type={QuestionTypes.MultipleChoice}
         quizId={0}
         answers={testData.answers}
+        attempts={3}
         showCorrect={false}
         handleSelection={() => {}}
       />,

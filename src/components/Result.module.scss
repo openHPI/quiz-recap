@@ -1,8 +1,8 @@
 @use './../variables.scss';
 
 .result {
-  .h3 {
-    @include variables.font-m;
+  .h2 {
+    @include variables.font-l;
   }
 
   .table {
@@ -13,7 +13,7 @@
 
   .caption {
     padding-bottom: 16px;
-    @include variables.font-m;
+    @include variables.font-s;
     text-align: left;
   }
 
@@ -25,7 +25,14 @@
 
   .th {
     text-align: left;
-    padding: 15px 0;
+    padding: 16px 0;
+  }
+
+  .td {
+    padding: 16px 0;
+    * {
+      margin: 0;
+    }
   }
 
   .centered {

@@ -6,7 +6,11 @@
 
 .answers {
   min-height: 32px;
-  margin-bottom: 8px;
+
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
+
   display: flex;
   align-items: center;
   border-radius: 4px;

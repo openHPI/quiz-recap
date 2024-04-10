@@ -14,7 +14,7 @@ $danger-light: var(--qr-color-danger-light, hsl(0, 94%, 82%));
 $danger-dark: var(--qr-color-danger-dark, hsl(0, 72%, 51%));
 
 @mixin font-s {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
 }
 

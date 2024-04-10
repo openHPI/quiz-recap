@@ -25,7 +25,7 @@ const Result = () => {
   );
   return (
     <div className={styles.result}>
-      <h3 className={styles.h3}>{t('result.title')}</h3>
+      <h2 className={styles.h2}>{t('result.title')}</h2>
       {results.length ? (
         <table className={styles.table}>
           <caption className={styles.caption}>

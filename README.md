@@ -107,9 +107,9 @@ The feature set is not complete for release.
 
 #### Required for MVP
 
-- "Attempts" feature
+- Suggest course item on results page (Reference link)
 
 #### Nice to have
 
-- Suggest course item on results page (Reference link)
 - Show answers on Result page
+- Show remaining attempts in quiz

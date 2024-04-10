@@ -9,6 +9,7 @@
   }
 
   .hint {
+    @include variables.font-s;
     padding: 8px 8px 8px 16px;
     margin: 8px 0;
     border-radius: 4px;

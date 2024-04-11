@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState } from 'react';
+import { FormEvent, useContext, useState, useEffect } from 'react';
 import { QuestionPoolType, AnswerType, QuestionTypes } from '../types';
 import { isAlreadySelected, validateSelectionIsCorrect } from '../util';
 import Answers from './Answers';
@@ -31,6 +31,17 @@ const Form = ({
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [selections, setSelections] = useState<AnswerType[]>([]);
+
+  useEffect(() => {
+    if (!submitted) {
+      setQuestionIndexText(numberOfQuestions - questionsPool.length + 1);
+    }
+  }, [
+    numberOfQuestions,
+    questionsPool.length,
+    setQuestionIndexText,
+    submitted,
+  ]);
 
   const deselectAnswer = (selection: AnswerType) => {
     setSelections((val) => {
@@ -119,9 +130,6 @@ const Form = ({
   };
 
   const handleNextQuestion = () => {
-    if (isCorrect) {
-      setQuestionIndexText(questionIndexText + 1);
-    }
     setSubmitted(false);
     nextQuestion();
   };

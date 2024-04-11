@@ -185,8 +185,7 @@ describe('App component', () => {
 
       // Answer wrongly 3 times
       for (let i = 0; i < 3; i++) {
-        fireEvent.click(screen.getAllByText('Incorrect Answer')[0]);
-        fireEvent.click(screen.getByText('Submit Answer'));
+        answerQuestionIncorrectly();
         fireEvent.click(screen.getByText('Next Question'));
       }
 
@@ -226,8 +225,7 @@ describe('App component', () => {
         nextQuestion = screen.getByText(nextQuestionText);
         expect(nextQuestion).toBeInTheDocument();
 
-        fireEvent.click(screen.getAllByText('Incorrect Answer')[0]);
-        fireEvent.click(screen.getByText('Submit Answer'));
+        answerQuestionIncorrectly();
         fireEvent.click(screen.getByText('Next Question'));
       }
 
@@ -243,6 +241,29 @@ describe('App component', () => {
       const attemptsCountQ2 = within(attemptsElementQ2).getByText('3');
       expect(attemptsCountQ2).toBeInTheDocument();
     });
+
+    it('displays the quiz progress', () => {
+      render(<App data={testDataWithFourQuestions}></App>, {
+        wrapper: translationsProvider,
+      });
+
+      const button = screen.getByText(/Medium set/i);
+      fireEvent.click(button);
+
+      // A medium set of a test with four questions contains 2 questions
+      let indexTextEl = screen.getByText('1 of 2');
+
+      for (let i = 0; i < 5; i++) {
+        // The progress count does not change
+        expect(indexTextEl).toBeInTheDocument();
+        answerQuestionIncorrectly();
+        fireEvent.click(screen.getByText('Next Question'));
+      }
+
+      // After the attempts of the first question have expire, the progress is updated
+      indexTextEl = screen.getByText('2 of 2');
+      expect(indexTextEl).toBeInTheDocument();
+    });
   });
 });
 
@@ -251,5 +272,10 @@ const answerQuestionCorrectly = () => {
   correctAnswers.forEach((answer) => {
     fireEvent.click(answer);
   });
+  fireEvent.click(screen.getByText('Submit Answer'));
+};
+
+const answerQuestionIncorrectly = () => {
+  fireEvent.click(screen.getAllByText('Incorrect Answer')[0]);
   fireEvent.click(screen.getByText('Submit Answer'));
 };

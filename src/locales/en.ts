@@ -35,6 +35,8 @@ const en = {
     correct: 'Correctly answered',
     question: 'Question',
     attempts: 'Attempts',
+    reference: 'Reference',
+    referenceLink: 'Link',
     unanswered: 'You did not answer any questions.',
     new: 'New Quiz',
   },

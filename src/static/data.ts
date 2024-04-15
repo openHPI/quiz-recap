@@ -49,6 +49,7 @@ export const exampleData: Data = [
     points: 1,
     type: QuestionTypes.SingleChoice,
     text: 'What is the capital of France?',
+    referenceLink: 'https://en.wikipedia.org/wiki/Paris',
     answers: [
       { id: 'a', correct: false, text: 'Berlin' },
       { id: 'b', correct: true, text: 'Paris' },
@@ -85,6 +86,7 @@ export const exampleData: Data = [
     points: 2,
     type: QuestionTypes.SingleChoice,
     text: 'Who wrote "Romeo and Juliet"?',
+    referenceLink: 'https://en.wikipedia.org/wiki/Romeo_and_Juliet',
     answers: [
       { id: 'a', correct: false, text: 'Charles Dickens' },
       { id: 'b', correct: false, text: 'Jane Austen' },
@@ -97,6 +99,7 @@ export const exampleData: Data = [
     points: 1,
     type: QuestionTypes.SingleChoice,
     text: 'In which year did the Titanic sink?',
+    referenceLink: 'https://en.wikipedia.org/wiki/Titanic',
     answers: [
       { id: 'a', correct: false, text: '1905' },
       { id: 'b', correct: false, text: '1922' },
@@ -157,6 +160,7 @@ export const exampleData: Data = [
     points: 2,
     type: QuestionTypes.SingleChoice,
     text: 'Who painted the Mona Lisa?',
+    referenceLink: 'https://en.wikipedia.org/wiki/Mona_Lisa',
     answers: [
       { id: 'a', correct: false, text: 'Vincent van Gogh' },
       { id: 'b', correct: true, text: 'Leonardo da Vinci' },
@@ -186,6 +190,7 @@ export const testData: Data = [
     points: 1,
     type: QuestionTypes.SingleChoice,
     text: 'What is the answer?',
+    referenceLink: 'https://www.example.com',
     courseId: 'courseId-01',
     quizId: 'quizId-01',
     answers: [

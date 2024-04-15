@@ -23,6 +23,10 @@ const Result = () => {
         : accumulator,
     0,
   );
+
+  const referenceLinkPresent = results.some(
+    (result) => result.question.referenceLink,
+  );
   return (
     <div className={styles.result}>
       <h2 className={styles.h2}>{t('result.title')}</h2>
@@ -38,6 +42,11 @@ const Result = () => {
               <th className={`${styles.th} ${styles.centered}`}>
                 {t('result.attempts')}
               </th>
+              {referenceLinkPresent && (
+                <th className={`${styles.td} ${styles.centered}`}>
+                  {t('result.reference')}
+                </th>
+              )}
             </tr>
           </thead>
           <tbody>
@@ -55,6 +64,13 @@ const Result = () => {
                     data-testid={`attempts-question-${index + 1}`}
                   >
                     {`${3 - result.question.remainingAttempts}`}
+                  </td>
+                  <td className={`${styles.td} ${styles.centered}`}>
+                    {result.question.referenceLink && (
+                      <a target="_blank" href={result.question.referenceLink}>
+                        {t('result.referenceLink')}
+                      </a>
+                    )}
                   </td>
                 </tr>
               );

@@ -92,7 +92,6 @@ describe('App component', () => {
       });
 
       const result = screen.queryByText(/Result/);
-
       expect(result).toBeInTheDocument();
     });
 

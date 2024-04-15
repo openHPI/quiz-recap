@@ -34,6 +34,8 @@ const de = {
     correct: 'Richtig beantwortet',
     question: 'Frage',
     attempts: 'Versuche',
+    reference: 'Referenz',
+    referenceLink: 'Link',
     unanswered: 'Sie haben keine einzige Frage beantwortet.',
     new: 'Neues Quiz',
   },

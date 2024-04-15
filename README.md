@@ -15,7 +15,7 @@ Prior to starting a quiz, choose the desired number of questions.
 
 ### Multiple choice and multiple answers questions
 
-The question type can be multiple-choice or single-choices.
+The question type can be multiple-choice or single-choice.
 
 ### Instant feedback
 
@@ -29,7 +29,17 @@ A wrong answer will put the question back into the pool up to 3 times, to reinfo
 
 A concise summary of your quiz performance on the results page upon completion.
 
-## How to use
+## Development setup
+
+1. Clone the repo
+2. `npm install`
+3. `npm run dev`
+
+### Tests
+
+`npm run test`.
+
+## How to use as a Library
 
 ### Data Specification
 
@@ -39,30 +49,30 @@ Refer to `src/types.ts` for a detailed specification of the expected data format
 
 Ensure the inclusion of the following options:
 
-- `elementId` where the app will attach itself
-- `locale` (optional) key for desired localization. Supports English and German. Will fall-back to English for any
+- `id` of DOM element where the component will attach itself
+- `data` for specification see `Data` type in `src/types.ts`
+- `locale` (optional) key for desired localization. Supports English (`'en'`) and German (`'de'`). Will fall-back to English for any
   non-supported language.
 
 ### Example
 
-```JS
-  import renderQuizRecap from `quizRecap`;
+Install the package:
 
-  const selector = 'selector'; // id of DOM element
-  const data = [ ... ]; // see `src/types.ts`
-
-  renderQuizRecap(selector, data);
+```node
+npm i @openhpi/quiz-recap
 ```
 
-## Setup
+Initialize the component:
 
-1. Check out repo
-2. `npm install`
-3. `npm run dev`
+```JS
+  import renderQuizRecap from `@openhpi/quiz-recap`;
 
-### Tests
+  const id = 'quiz-recap';
+  const data = [ ... ];
+  const lang = 'en';
 
-`npm run test`.
+  renderQuizRecap(id, data, lang);
+```
 
 ## Theming
 
@@ -101,15 +111,13 @@ It outlines the various shades that need to be defined for each color.
 
 ## Todo
 
-### Outstanding Features
+The feature set is not complete for release, yet.
 
-The feature set is not complete for release.
-
-#### Required for MVP
+### Required for MVP
 
 - Suggest course item on results page (Reference link)
 
-#### Nice to have
+### Nice to have
 
 - Show answers on Result page
 - Show remaining attempts in quiz

@@ -39,8 +39,8 @@ const en = {
     new: 'New Quiz',
   },
   answer: {
-    correct: ' - correct answer',
-    incorrect: ' - incorrect answer',
+    correct: 'Correct',
+    incorrect: 'Incorrect',
   },
 };
 

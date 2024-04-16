@@ -29,6 +29,20 @@ A table:
 | Data 3   | Data 4   |
 `;
 
+const markdownAnswer = `
+\`\`\`
+import codeBlock from 'a file';
+
+const bar = {
+  foo: 'bar',
+};
+const foo = codeBlock(bar);
+
+console.log(foo);
+console.log('Markdown is awesome!');
+\`\`\`
+`;
+
 export const exampleData: Data = [
   {
     id: '1',
@@ -156,7 +170,7 @@ export const exampleData: Data = [
     type: QuestionTypes.SingleChoice,
     text: markdownQuestion,
     answers: [
-      { id: 'a', correct: true, text: 'Markdown is pretty **great**!' },
+      { id: 'a', correct: true, text: markdownAnswer },
       {
         id: 'b',
         correct: false,

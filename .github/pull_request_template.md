@@ -13,10 +13,7 @@ _Provide background information on the changes you did like which architectural 
 
 ## Checklist
 
-_Make sure all these items are checked before submitting the pull request_
-
 - [ ] All checks pass successfully
 - [ ] All related commits are squashed together
-- [ ] The code follows the project's coding standards
 - [ ] The changes are properly documented / the relevant documentation is updated (if applicable)
 - [ ] Appropriate labels are added to this pull request

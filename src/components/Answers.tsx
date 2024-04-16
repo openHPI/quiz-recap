@@ -44,11 +44,9 @@ const Answers = ({
             : styles.wrong
           : styles.default;
 
-        let text = answer.text;
-
-        if (showCorrect) {
-          text += answer.correct ? t('answer.correct') : t('answer.incorrect');
-        }
+        const correctHint = answer.correct
+          ? t('answer.correct')
+          : t('answer.incorrect');
 
         return (
           <div
@@ -64,7 +62,8 @@ const Answers = ({
               disabled={showCorrect}
             ></input>
             <label className={styles.label} htmlFor={answer.id}>
-              <Markdown content={text}></Markdown>
+              <Markdown content={answer.text}></Markdown>
+              {showCorrect && <p>{correctHint}</p>}
             </label>
           </div>
         );

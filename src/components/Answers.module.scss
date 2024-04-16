@@ -39,7 +39,9 @@
 }
 
 .label {
-  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: 0 8px;
 

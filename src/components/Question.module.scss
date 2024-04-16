@@ -4,14 +4,12 @@
   @include variables.font-m;
 
   .text {
-    padding: 8px 8px 8px 16px;
-    border-radius: 4px;
+    margin-bottom: 20px;
   }
 
   .hint {
     @include variables.font-s;
-    padding: 8px 8px 8px 16px;
-    margin: 8px 0;
-    border-radius: 4px;
+    margin: 0;
+    padding: 0 0 20px 0;
   }
 }

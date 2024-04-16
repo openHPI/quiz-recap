@@ -20,6 +20,7 @@
 
   .p {
     padding-bottom: 6px;
+    @include variables.font-m;
   }
 
   .ul {

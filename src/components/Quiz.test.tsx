@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Data, QuestionTypes } from '../types';
 import Quiz from './Quiz';
 import { Context } from '../Context';
@@ -77,7 +78,7 @@ describe('Quiz component', () => {
 });
 
 describe('Conducting a single choice quiz', () => {
-  it('shows that the answer was correct or not', () => {
+  it('shows that the answer was correct or not', async () => {
     const testData: Data = [
       {
         id: 'id-01',
@@ -130,15 +131,15 @@ describe('Conducting a single choice quiz', () => {
     };
     customRender(<Quiz questions={testData} />, { providerProps });
 
-    fireEvent.click(screen.getByText('Answer 1'));
-    fireEvent.click(screen.getByText('Submit Answer'));
+    await userEvent.click(screen.getByText('Answer 1'));
+    await userEvent.click(screen.getByText('Submit Answer'));
 
     expect(screen.getByText(/Your answer was correct/i)).toBeInTheDocument();
 
-    fireEvent.click(screen.getByText('Next Question'));
+    await userEvent.click(screen.getByText('Next Question'));
 
-    fireEvent.click(screen.getByText('Answer 2'));
-    fireEvent.click(screen.getByText('Submit Answer'));
+    await userEvent.click(screen.getByText('Answer 2'));
+    await userEvent.click(screen.getByText('Submit Answer'));
 
     expect(
       screen.getByText(/Your answer was not correct/i),
@@ -147,7 +148,7 @@ describe('Conducting a single choice quiz', () => {
 });
 
 describe('Conducting a multiple answer quiz', () => {
-  it('shows that the answer was correct or not', () => {
+  it('shows that the answer was correct or not', async () => {
     const testData: Data = [
       {
         id: 'id-01',
@@ -248,32 +249,32 @@ describe('Conducting a multiple answer quiz', () => {
     customRender(<Quiz questions={testData} />, { providerProps });
 
     // Selecting only one correct answer is not enough to succeed
-    fireEvent.click(screen.getByText('Answer 1'));
-    fireEvent.click(screen.getByText('Submit Answer'));
+    await userEvent.click(screen.getByText('Answer 1'));
+    await userEvent.click(screen.getByText('Submit Answer'));
 
     expect(
       screen.getByText(/Your answer was not correct/i),
     ).toBeInTheDocument();
 
-    fireEvent.click(screen.getByText('Next Question'));
+    await userEvent.click(screen.getByText('Next Question'));
 
     // Selecting one false answer causes quiz to fail
-    fireEvent.click(screen.getByText('Answer 1'));
-    fireEvent.click(screen.getByText('Answer 2'));
-    fireEvent.click(screen.getByText('Answer 3'));
+    await userEvent.click(screen.getByText('Answer 1'));
+    await userEvent.click(screen.getByText('Answer 2'));
+    await userEvent.click(screen.getByText('Answer 3'));
 
-    fireEvent.click(screen.getByText('Submit Answer'));
+    await userEvent.click(screen.getByText('Submit Answer'));
 
     expect(
       screen.getByText(/Your answer was not correct/i),
     ).toBeInTheDocument();
 
-    fireEvent.click(screen.getByText('Next Question'));
+    await userEvent.click(screen.getByText('Next Question'));
 
     // Selecting all correct answers is enough to succeed
-    fireEvent.click(screen.getByText('Answer 1'));
-    fireEvent.click(screen.getByText('Answer 3'));
-    fireEvent.click(screen.getByText('Submit Answer'));
+    await userEvent.click(screen.getByText('Answer 1'));
+    await userEvent.click(screen.getByText('Answer 3'));
+    await userEvent.click(screen.getByText('Submit Answer'));
 
     expect(screen.getByText(/Your answer was correct/i)).toBeInTheDocument();
   });

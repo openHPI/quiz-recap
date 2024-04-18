@@ -20,7 +20,7 @@ describe('Result component', () => {
         question: {
           id: '',
           points: 0,
-          referenceLink: 'https://www.example.com',
+          referenceLink: 'https://testing-library.com',
           type: QuestionTypes.SingleChoice,
           text: '',
           answers: [],
@@ -33,17 +33,17 @@ describe('Result component', () => {
     const providerProps = {
       value: {
         results,
-        numberOfQuestions: 1,
-        setQuizEnded: () => {},
-        setQuizStarted: () => {},
-        setResults: () => {},
       },
     };
 
     customRender(<Result />, { providerProps });
 
     const referenceLink = screen.getByRole('link', { name: 'Link' });
-    expect(referenceLink).toHaveAttribute('href', 'https://www.example.com');
+    expect(referenceLink).toHaveAttribute(
+      'href',
+      'https://testing-library.com',
+    );
+
     const referenceHeading = screen.queryByRole('columnheader', {
       name: 'Reference',
     });
@@ -69,18 +69,14 @@ describe('Result component', () => {
     const providerProps = {
       value: {
         results,
-        numberOfQuestions: 1,
-        setQuizEnded: () => {},
-        setQuizStarted: () => {},
-        setResults: () => {},
       },
     };
 
     customRender(<Result />, { providerProps });
 
-    expect(
-      screen.queryByRole('link', { name: 'Link' }),
-    ).not.toBeInTheDocument();
+    const referenceLink = screen.queryByRole('link', { name: 'Link' });
+    expect(referenceLink).not.toBeInTheDocument();
+
     const referenceHeading = screen.queryByRole('columnheader', {
       name: 'Reference',
     });

@@ -1,8 +1,22 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
 import { within } from '@testing-library/dom';
 import App from './App';
 import { testData as data, testDataWithFourQuestions } from './static/data';
 import { translationsProvider } from './util';
+
+const answerQuestionCorrectly = async (user: UserEvent) => {
+  const correctAnswers = screen.queryAllByText('Correct Answer');
+  correctAnswers.forEach(async (answer) => {
+    await user.click(answer);
+  });
+  await user.click(screen.getByText('Submit Answer'));
+};
+
+const answerQuestionIncorrectly = async (user: UserEvent) => {
+  await user.click(screen.getAllByText('Incorrect Answer')[0]);
+  await user.click(screen.getByText('Submit Answer'));
+};
 
 describe('App component', () => {
   describe('basic workflows', () => {
@@ -15,28 +29,30 @@ describe('App component', () => {
       expect(startPage).toBeInTheDocument();
     });
 
-    it('shows the quiz after clicking on button to start quiz', () => {
+    it('shows the quiz after clicking on button to start quiz', async () => {
+      const user = userEvent.setup();
       render(<App data={data}></App>, { wrapper: translationsProvider });
 
       expect(screen.queryByTestId('quiz')).not.toBeInTheDocument();
 
       const button = screen.getByText(/Complete set/i);
-      fireEvent.click(button);
+      await user.click(button);
 
       expect(screen.getByTestId('quiz')).toBeInTheDocument();
     });
 
-    it('shows the result page after confirming to end the quiz', () => {
+    it('shows the result page after confirming to end the quiz', async () => {
+      const user = userEvent.setup();
       render(<App data={data}></App>, { wrapper: translationsProvider });
 
       const button = screen.getByText(/Complete set/i);
-      fireEvent.click(button);
+      await user.click(button);
 
       const quiz = screen.queryByTestId('quiz');
       expect(quiz).toBeInTheDocument();
 
       const endButton = screen.getByText(/End quiz/i);
-      fireEvent.click(endButton);
+      await user.click(endButton);
 
       const confirmation = screen.getByText(
         /Are you sure you want to end the quiz?/i,
@@ -44,23 +60,24 @@ describe('App component', () => {
       expect(confirmation).toBeInTheDocument();
 
       const confirmButton = screen.getByText(/Yes/i);
-      fireEvent.click(confirmButton);
+      await user.click(confirmButton);
 
       const result = screen.queryByText(/Result/);
       expect(result).toBeInTheDocument();
     });
 
-    it('has the possibility to resume the quiz after not confirming to end the quiz', () => {
+    it('has the possibility to resume the quiz after not confirming to end the quiz', async () => {
+      const user = userEvent.setup();
       render(<App data={data}></App>, { wrapper: translationsProvider });
 
       const button = screen.getByText(/Complete set/i);
-      fireEvent.click(button);
+      await user.click(button);
 
       const quiz = screen.queryByTestId('quiz');
       expect(quiz).toBeInTheDocument();
 
       const endButton = screen.getByText(/End quiz/i);
-      fireEvent.click(endButton);
+      await user.click(endButton);
 
       const confirmation = screen.getByText(
         /Are you sure you want to end the quiz?/i,
@@ -68,77 +85,82 @@ describe('App component', () => {
       expect(confirmation).toBeInTheDocument();
 
       const confirmButton = screen.getByText(/No/i);
-      fireEvent.click(confirmButton);
+      await user.click(confirmButton);
 
       expect(quiz).toBeInTheDocument();
     });
 
-    it('shows the result page after answering all questions', () => {
+    it('shows the result page after answering all questions', async () => {
+      const user = userEvent.setup();
       render(<App data={data}></App>, { wrapper: translationsProvider });
+
       const numberOfQuestions = data.length;
       const button = screen.getByText(/Complete set/i);
-      fireEvent.click(button);
+      await user.click(button);
 
       // conduct a pseudo quiz
-      data.forEach((_, index) => {
-        answerQuestionCorrectly();
+      for (let index = 0; index < data.length; index++) {
+        await answerQuestionCorrectly(user);
 
         // check if shows right progress
         const indexText = `${index + 1} of ${numberOfQuestions}`;
         const indexTextEl = screen.getByText(indexText);
         expect(indexTextEl).toBeInTheDocument();
 
-        fireEvent.click(screen.getByText('Next Question'));
-      });
-
-      const result = screen.queryByText(/Result/);
-      expect(result).toBeInTheDocument();
-    });
-
-    it('shows the result page after answering a quick set of questions', () => {
-      render(<App data={testDataWithFourQuestions}></App>, {
-        wrapper: translationsProvider,
-      });
-      const button = screen.getByText(/Quick set/i);
-      fireEvent.click(button);
-
-      // quick set only contains one question
-      // We conduct the quiz with exactly one question
-      // To test if the App respects the number of questions
-      const numberOfQuestions = 1;
-      for (let index = 0; index < numberOfQuestions; index++) {
-        answerQuestionCorrectly();
-
-        // check if shows right progress
-        const indexText = `${index + 1} of ${numberOfQuestions}`;
-        const indexTextEl = screen.getByText(indexText);
-        expect(indexTextEl).toBeInTheDocument();
-
-        fireEvent.click(screen.getByText('Next Question'));
+        await user.click(screen.getByText('Next Question'));
       }
 
       const result = screen.queryByText(/Result/);
-
       expect(result).toBeInTheDocument();
     });
 
-    it('shows the start page again after ending the quiz when starting a new quiz', () => {
+    it('shows the result page after answering a quick set of questions', async () => {
+      const user = userEvent.setup();
+      render(<App data={testDataWithFourQuestions}></App>, {
+        wrapper: translationsProvider,
+      });
+
+      const button = screen.getByText(/Quick set/i);
+      await user.click(button);
+
+      // Quick set only contains one question
+      // We conduct the quiz with exactly one question
+      // To test if the App respects the number of questions
+      const numberOfQuestions = 1;
+
+      for (let index = 0; index < numberOfQuestions; index++) {
+        await answerQuestionCorrectly(user);
+
+        // Check if shows right progress
+        const indexText = `${index + 1} of ${numberOfQuestions}`;
+        const indexTextEl = screen.getByText(indexText);
+        expect(indexTextEl).toBeInTheDocument();
+
+        await user.click(screen.getByText('Next Question'));
+      }
+
+      const result = screen.queryByText(/Result/);
+      expect(result).toBeInTheDocument();
+    });
+
+    it('shows the start page again after ending the quiz when starting a new quiz', async () => {
+      const user = userEvent.setup();
       render(<App data={data}></App>, { wrapper: translationsProvider });
 
       const button = screen.getByText(/Complete set/i);
-      fireEvent.click(button);
+      await user.click(button);
 
       const quiz = screen.queryByTestId('quiz');
       expect(quiz).toBeInTheDocument();
 
       const endButton = screen.getByText(/End quiz/i);
-      fireEvent.click(endButton);
+      await user.click(endButton);
 
       const confirmButton = screen.getByText(/Yes/i);
-      fireEvent.click(confirmButton);
+      await user.click(confirmButton);
 
       const newButton = screen.getByText(/New quiz/i);
-      fireEvent.click(newButton);
+      await user.click(newButton);
 
       const quizAfterEnding = screen.queryByTestId('quiz');
 
@@ -173,19 +195,21 @@ describe('App component', () => {
   });
 
   describe('multiple attempts feature', () => {
-    it('shows a wrongly answered question again up to 3 times', () => {
+    it('shows a wrongly answered question again up to 3 times', async () => {
+      const user = userEvent.setup();
+
       render(<App data={testDataWithFourQuestions}></App>, {
         wrapper: translationsProvider,
       });
 
       // A quick set of a test with four questions contains 1 question
       const button = screen.getByText(/Quick set/i);
-      fireEvent.click(button);
+      await user.click(button);
 
       // Answer wrongly 3 times
       for (let i = 0; i < 3; i++) {
-        answerQuestionIncorrectly();
-        fireEvent.click(screen.getByText('Next Question'));
+        await answerQuestionIncorrectly(user);
+        await user.click(screen.getByText('Next Question'));
       }
 
       // The results page appears after the 3th time
@@ -193,21 +217,22 @@ describe('App component', () => {
       expect(result).toBeInTheDocument();
     });
 
-    it('shows the attempts needed for each question', () => {
+    it('shows the attempts needed for each question', async () => {
+      const user = userEvent.setup();
       render(<App data={testDataWithFourQuestions}></App>, {
         wrapper: translationsProvider,
       });
 
       const button = screen.getByText(/Medium set/i);
-      fireEvent.click(button);
+      await user.click(button);
 
       // A medium set of a test with four questions contains 2 questions
       let indexTextEl = screen.getByText('1 of 2');
       expect(indexTextEl).toBeInTheDocument();
 
       // Correctly answer the first question
-      answerQuestionCorrectly();
-      fireEvent.click(screen.getByText('Next Question'));
+      await answerQuestionCorrectly(user);
+      await user.click(screen.getByText('Next Question'));
 
       // The progress has been updated
       indexTextEl = screen.getByText('2 of 2');
@@ -224,8 +249,8 @@ describe('App component', () => {
         nextQuestion = screen.getByText(nextQuestionText);
         expect(nextQuestion).toBeInTheDocument();
 
-        answerQuestionIncorrectly();
-        fireEvent.click(screen.getByText('Next Question'));
+        await answerQuestionIncorrectly(user);
+        await user.click(screen.getByText('Next Question'));
       }
 
       // After expiring the permitted attempts the results page appears
@@ -241,13 +266,14 @@ describe('App component', () => {
       expect(attemptsCountQ2).toBeInTheDocument();
     });
 
-    it('displays the quiz progress', () => {
+    it('displays the quiz progress', async () => {
+      const user = userEvent.setup();
       render(<App data={testDataWithFourQuestions}></App>, {
         wrapper: translationsProvider,
       });
 
       const button = screen.getByText(/Medium set/i);
-      fireEvent.click(button);
+      await user.click(button);
 
       // A medium set of a test with four questions contains 2 questions
       let indexTextEl = screen.getByText('1 of 2');
@@ -255,8 +281,8 @@ describe('App component', () => {
       for (let i = 0; i < 5; i++) {
         // The progress count does not change
         expect(indexTextEl).toBeInTheDocument();
-        answerQuestionIncorrectly();
-        fireEvent.click(screen.getByText('Next Question'));
+        await answerQuestionIncorrectly(user);
+        await user.click(screen.getByText('Next Question'));
       }
 
       // After the attempts of the first question have expire, the progress is updated
@@ -265,16 +291,3 @@ describe('App component', () => {
     });
   });
 });
-
-const answerQuestionCorrectly = () => {
-  const correctAnswers = screen.queryAllByText('Correct Answer');
-  correctAnswers.forEach((answer) => {
-    fireEvent.click(answer);
-  });
-  fireEvent.click(screen.getByText('Submit Answer'));
-};
-
-const answerQuestionIncorrectly = () => {
-  fireEvent.click(screen.getAllByText('Incorrect Answer')[0]);
-  fireEvent.click(screen.getByText('Submit Answer'));
-};

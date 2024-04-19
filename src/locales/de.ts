@@ -22,8 +22,10 @@ const de = {
     yesBtn: 'Ja',
   },
   question: {
-    correct: 'Ihre Antwort war richtig ✅',
-    notCorrect: 'Ihre Antwort war nicht richtig ❌',
+    correct: 'Ihre Antwort war richtig.',
+    notCorrect: 'Ihre Antwort war nicht richtig.',
+    remainingAttempts_one: 'Sie haben noch {{count}} Versuch.',
+    remainingAttempts_other: 'Sie haben noch {{count}} Versuche.',
     selectAll: 'Wählen Sie alle richtigen Antworten aus.',
     selectOne: 'Wählen Sie die richtige Antwort aus.',
   },

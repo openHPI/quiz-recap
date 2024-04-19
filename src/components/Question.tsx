@@ -6,11 +6,13 @@ import Markdown from './Markdown';
 const Question = ({
   text,
   type,
+  attempts,
   showResult,
   isCorrect,
 }: {
   text: string;
   type: QuizType;
+  attempts: number;
   showResult: boolean;
   isCorrect: boolean;
 }) => {
@@ -23,7 +25,9 @@ const Question = ({
 
       {showResult ? (
         <p className={styles.hint}>
-          {isCorrect ? t('question.correct') : t('question.notCorrect')}
+          {isCorrect
+            ? t('question.correct')
+            : `${t('question.notCorrect')} ${attempts > 1 ? t('question.remainingAttempts', { count: attempts - 1 }) : ''}`}
         </p>
       ) : (
         <p className={styles.hint}>

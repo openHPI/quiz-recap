@@ -23,8 +23,10 @@ const en = {
     yesBtn: 'Yes',
   },
   question: {
-    correct: 'Your answer was correct ✅',
-    notCorrect: 'Your answer was not correct ❌',
+    correct: 'Your answer was correct.',
+    notCorrect: 'Your answer was not correct.',
+    remainingAttempts_one: 'You have {{count}} attempt left.',
+    remainingAttempts_other: 'You have {{count}} attempts left.',
     selectAll: 'Select all correct answers.',
     selectOne: 'Select the correct answer.',
   },

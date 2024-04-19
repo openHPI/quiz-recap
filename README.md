@@ -2,16 +2,15 @@
 
 Educational app for quiz recapitulation.
 
-![Screenshot showing the component](./docs/assets//quiz-recap.png)
-
-> [!NOTE]
-> This version is a pre-release and breaking changes may be introduced at any time.
+![Screenshot showing the component](./docs/assets//quiz-recap-example.png)
 
 ## Features
 
 ### Choose between set of questions
 
 Prior to starting a quiz, choose the desired number of questions.
+
+![Screenshot showing the component](./docs/assets//quiz-recap-intro.png)
 
 ### Multiple choice and multiple answers questions
 
@@ -21,6 +20,8 @@ The question type can be multiple-choice or single-choice.
 
 After submission, receive immediate feedback with a clear indication of whether your answer was correct.
 
+![Screenshot showing the component](./docs/assets//quiz-recap-feedback.png)
+
 ### Spaced repetition learning technique
 
 A wrong answer will put the question back into the pool up to 3 times, to reinforce memory retention.
@@ -29,32 +30,18 @@ A wrong answer will put the question back into the pool up to 3 times, to reinfo
 
 A concise summary of your quiz performance on the results page upon completion.
 
+![Screenshot showing the component](./docs/assets//quiz-recap-result.png)
+
 ## Development setup
 
 1. Clone the repo
 2. `npm install`
 3. `npm run dev`
 
-### Tests
-
-`npm run test`.
+There are also tests that can be run with `npm run test`.
+Consider running them in watch mode during development `npm run test:watch`.
 
 ## How to use as a Library
-
-### Data Specification
-
-Refer to `src/types.ts` for a detailed specification of the expected data format by the application.
-
-### Options Configuration
-
-Ensure the inclusion of the following options:
-
-- `id` of DOM element where the component will attach itself
-- `data` for specification see `Data` type in `src/types.ts`
-- `locale` (optional) key for desired localization. Supports English (`'en'`) and German (`'de'`). Will fall-back to English for any
-  non-supported language.
-
-### Example
 
 Install the package:
 
@@ -74,9 +61,21 @@ Initialize the component:
   renderQuizRecap(id, data, lang);
 ```
 
-## Theming
+### Data Specification
 
-### Colors
+Refer to `src/types.ts` for a detailed specification of the expected data format by the application.
+Markdown is supported for questions and answers.
+
+### Options Configuration
+
+Ensure the inclusion of the following options:
+
+- `id` of DOM element where the component will attach itself
+- `data` for specification see `Data` type in `src/types.ts`
+- `locale` (optional) key for desired localization. Supports English (`'en'`) and German (`'de'`). Will fall-back to English for any
+  non-supported language.
+
+### Theming
 
 The App comes with a standard color scheme.
 
@@ -109,15 +108,16 @@ It outlines the various shades that need to be defined for each color.
 }
 ```
 
-## Todo
+## Contribute
 
-The feature set is not complete for release, yet.
+If you want to contribute, you can look for the _Good First Issue_ label.
 
-### Required for MVP
+### Bugs
 
-- Suggest course item on results page (Reference link)
+If you discover some unexpected behavior please file an issue for bugs.
+Please make sure to read the existing issues first to avoid duplicates.
 
-### Nice to have
+### Feature Requests
 
-- Show answers on Result page
-- Show remaining attempts in quiz
+Please submit an issue to suggest new features.
+To help maintainers to determine what to prioritize, you can vote on feature requests by giving them a thumbs up.

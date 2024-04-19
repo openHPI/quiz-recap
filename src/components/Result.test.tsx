@@ -19,7 +19,6 @@ describe('Result component', () => {
         id: '',
         question: {
           id: '',
-          points: 0,
           referenceLink: 'https://testing-library.com',
           type: QuestionTypes.SingleChoice,
           text: '',
@@ -56,7 +55,6 @@ describe('Result component', () => {
         id: '',
         question: {
           id: '',
-          points: 0,
           type: QuestionTypes.SingleChoice,
           text: '',
           answers: [],

@@ -23,11 +23,10 @@ export type Data = QuestionType[];
 
 export type QuestionType = {
   id: string;
-  points: number;
-  referenceLink?: string;
   type: QuizType;
   text: string;
   answers: AnswerType[];
+  referenceLink?: string;
 };
 
 export type QuestionPoolType = QuestionType & {

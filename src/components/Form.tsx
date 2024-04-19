@@ -143,6 +143,7 @@ const Form = ({
         <Question
           text={question.text}
           type={question.type}
+          attempts={question.remainingAttempts}
           showResult={submitted}
           isCorrect={isCorrect}
         />

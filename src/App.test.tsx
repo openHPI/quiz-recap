@@ -289,5 +289,31 @@ describe('App component', () => {
       indexTextEl = screen.getByText('2 of 2');
       expect(indexTextEl).toBeInTheDocument();
     });
+
+    it('displays the remaining attempts after wrongly answering a question', async () => {
+      const user = userEvent.setup();
+
+      render(<App data={testDataWithFourQuestions}></App>, {
+        wrapper: translationsProvider,
+      });
+
+      // A quick set of a test with four questions contains 1 question
+      const button = screen.getByText(/Quick set/i);
+      await user.click(button);
+
+      for (let i = 0; i < 2; i++) {
+        await answerQuestionIncorrectly(user);
+        const attemptLeft = i === 1 ? 'attempt' : 'attempts';
+        const notCorrectText = screen.getByText(
+          `Your answer was not correct. You have ${2 - i} ${attemptLeft} left.`,
+        );
+        expect(notCorrectText).toBeInTheDocument();
+        await user.click(screen.getByText('Next Question'));
+      }
+
+      await answerQuestionIncorrectly(user);
+      const lastAttemptText = screen.getByText(`Your answer was not correct.`);
+      expect(lastAttemptText).toBeInTheDocument();
+    });
   });
 });

@@ -18,7 +18,6 @@ describe('Quiz component', () => {
     const testData: Data = [
       {
         id: 'id-01',
-        points: 1,
         type: QuestionTypes.SingleChoice,
         text: 'What is the answer?',
         answers: [
@@ -36,7 +35,6 @@ describe('Quiz component', () => {
       },
       {
         id: 'id-02',
-        points: 1,
         type: QuestionTypes.SingleChoice,
         text: 'What is the answer?',
         answers: [
@@ -82,7 +80,6 @@ describe('Conducting a single choice quiz', () => {
     const testData: Data = [
       {
         id: 'id-01',
-        points: 1,
         type: QuestionTypes.SingleChoice,
         text: 'What is the answer?',
         answers: [
@@ -100,7 +97,6 @@ describe('Conducting a single choice quiz', () => {
       },
       {
         id: 'id-02',
-        points: 1,
         type: QuestionTypes.SingleChoice,
         text: 'What is the answer?',
         answers: [
@@ -152,7 +148,6 @@ describe('Conducting a multiple answer quiz', () => {
     const testData: Data = [
       {
         id: 'id-01',
-        points: 1,
         type: QuestionTypes.MultipleChoice,
         text: 'What is the answer?',
         answers: [
@@ -180,7 +175,6 @@ describe('Conducting a multiple answer quiz', () => {
       },
       {
         id: 'id-02',
-        points: 1,
         type: QuestionTypes.MultipleChoice,
         text: 'What is the answer?',
         answers: [
@@ -208,7 +202,6 @@ describe('Conducting a multiple answer quiz', () => {
       },
       {
         id: 'id-03',
-        points: 1,
         type: QuestionTypes.MultipleChoice,
         text: 'What is the answer?',
         answers: [

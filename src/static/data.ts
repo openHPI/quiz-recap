@@ -46,7 +46,6 @@ console.log('Markdown is awesome!');
 export const exampleData: Data = [
   {
     id: '1',
-    points: 1,
     type: QuestionTypes.SingleChoice,
     text: 'What is the capital of France?',
     referenceLink: 'https://en.wikipedia.org/wiki/Paris',
@@ -59,7 +58,6 @@ export const exampleData: Data = [
   },
   {
     id: '2',
-    points: 2,
     type: QuestionTypes.SingleChoice,
     text: 'Which planet is known as the Red Planet?',
     answers: [
@@ -71,7 +69,6 @@ export const exampleData: Data = [
   },
   {
     id: '3',
-    points: 1,
     type: QuestionTypes.MultipleChoice,
     text: 'What is considered a mammal?',
     answers: [
@@ -83,7 +80,6 @@ export const exampleData: Data = [
   },
   {
     id: '4',
-    points: 2,
     type: QuestionTypes.SingleChoice,
     text: 'Who wrote "Romeo and Juliet"?',
     referenceLink: 'https://en.wikipedia.org/wiki/Romeo_and_Juliet',
@@ -96,7 +92,6 @@ export const exampleData: Data = [
   },
   {
     id: '5',
-    points: 1,
     type: QuestionTypes.SingleChoice,
     text: 'In which year did the Titanic sink?',
     referenceLink: 'https://en.wikipedia.org/wiki/Titanic',
@@ -109,7 +104,6 @@ export const exampleData: Data = [
   },
   {
     id: '6',
-    points: 2,
     type: QuestionTypes.MultipleChoice,
     text: 'What are cities in Japan?',
     answers: [
@@ -121,7 +115,6 @@ export const exampleData: Data = [
   },
   {
     id: '7',
-    points: 1,
     type: QuestionTypes.SingleChoice,
     text: 'Which gas do plants absorb during photosynthesis?',
     answers: [
@@ -133,7 +126,6 @@ export const exampleData: Data = [
   },
   {
     id: '8',
-    points: 2,
     type: QuestionTypes.SingleChoice,
     text: 'Who is known as the "Father of Computer Science"?',
     answers: [
@@ -145,7 +137,6 @@ export const exampleData: Data = [
   },
   {
     id: '9',
-    points: 1,
     type: QuestionTypes.MultipleChoice,
     text: 'What are oceans on Earth?',
     answers: [
@@ -157,7 +148,6 @@ export const exampleData: Data = [
   },
   {
     id: '10',
-    points: 2,
     type: QuestionTypes.SingleChoice,
     text: 'Who painted the Mona Lisa?',
     referenceLink: 'https://en.wikipedia.org/wiki/Mona_Lisa',
@@ -170,7 +160,6 @@ export const exampleData: Data = [
   },
   {
     id: '11',
-    points: 2,
     type: QuestionTypes.SingleChoice,
     text: markdownQuestion,
     answers: [
@@ -187,7 +176,6 @@ export const exampleData: Data = [
 export const testData: Data = [
   {
     id: 'id-01',
-    points: 1,
     type: QuestionTypes.SingleChoice,
     text: 'What is the answer?',
     referenceLink: 'https://www.example.com',
@@ -208,7 +196,6 @@ export const testData: Data = [
   },
   {
     id: 'id-02',
-    points: 1,
     type: QuestionTypes.SingleChoice,
     text: 'What is the answer?',
     courseId: 'courseId-01',
@@ -228,7 +215,6 @@ export const testData: Data = [
   },
   {
     id: 'id-03',
-    points: 1,
     type: QuestionTypes.MultipleChoice,
     text: 'What is the answer?',
     answers: [
@@ -256,7 +242,6 @@ export const testData: Data = [
   },
   {
     id: 'id-04',
-    points: 1,
     type: QuestionTypes.MultipleChoice,
     text: 'What is the answer?',
     answers: [
@@ -287,7 +272,6 @@ export const testData: Data = [
 export const testDataWithFourQuestions: Data = [
   {
     id: 'id-01',
-    points: 1,
     type: QuestionTypes.SingleChoice,
     text: 'Q1: What is the answer?',
     courseId: 'courseId-01',
@@ -307,7 +291,6 @@ export const testDataWithFourQuestions: Data = [
   },
   {
     id: 'id-02',
-    points: 1,
     type: QuestionTypes.SingleChoice,
     text: 'Q2: What is the answer?',
     courseId: 'courseId-01',
@@ -327,7 +310,6 @@ export const testDataWithFourQuestions: Data = [
   },
   {
     id: 'id-03',
-    points: 1,
     type: QuestionTypes.MultipleChoice,
     text: 'Q3: What is the answer?',
     answers: [
@@ -355,7 +337,6 @@ export const testDataWithFourQuestions: Data = [
   },
   {
     id: 'id-04',
-    points: 1,
     type: QuestionTypes.MultipleChoice,
     text: 'Q4: What is the answer?',
     answers: [

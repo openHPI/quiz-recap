@@ -34,10 +34,12 @@ const de = {
     overview:
       'Sie haben {{correctAnswers}} von {{numberOfQuestions}} richtig beantwortet.',
     correct: 'Richtig beantwortet',
+    correctAnswer: 'Ihre Antwort war richtig.',
+    notCorrectAnswer: 'Ihre Antwort war nicht richtig.',
     question: 'Frage',
     attempts: 'Versuche',
     reference: 'Referenz',
-    referenceLink: 'Link',
+    referenceLink: 'In neuem Tab öffnen',
     unanswered: 'Sie haben keine einzige Frage beantwortet.',
     new: 'Neues Quiz',
   },

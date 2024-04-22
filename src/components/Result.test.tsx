@@ -37,7 +37,7 @@ describe('Result component', () => {
 
     customRender(<Result />, { providerProps });
 
-    const referenceLink = screen.getByRole('link', { name: 'Link' });
+    const referenceLink = screen.getByRole('link', { name: 'Open in new tab' });
     expect(referenceLink).toHaveAttribute(
       'href',
       'https://testing-library.com',

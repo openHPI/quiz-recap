@@ -35,10 +35,12 @@ const en = {
     overview:
       'You answered {{correctAnswers}} of {{numberOfQuestions}} correctly.',
     correct: 'Correctly answered',
+    correctAnswer: 'Your answer was correct.',
+    notCorrectAnswer: 'Your answer was not correct.',
     question: 'Question',
     attempts: 'Attempts',
     reference: 'Reference',
-    referenceLink: 'Link',
+    referenceLink: 'Open in new tab',
     unanswered: 'You did not answer any questions.',
     new: 'New Quiz',
   },

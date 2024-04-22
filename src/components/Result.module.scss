@@ -35,6 +35,21 @@
     }
   }
 
+  .linkIcon {
+    color: variables.$neutral-dark;
+    @include variables.font-s;
+  }
+
+  .correctIcon {
+    color: variables.$success;
+    @include variables.font-l;
+  }
+
+  .incorrectIcon {
+    color: variables.$danger;
+    @include variables.font-l;
+  }
+
   .centered {
     text-align: center;
   }

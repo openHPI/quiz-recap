@@ -5,6 +5,12 @@ import Button from './Button';
 import styles from './Result.module.scss';
 import { useTranslation } from 'react-i18next';
 import Markdown from './Markdown';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCircleCheck,
+  faTimesCircle,
+  faArrowUpRightFromSquare,
+} from '@fortawesome/free-solid-svg-icons';
 
 const Result = () => {
   const {
@@ -54,7 +60,21 @@ const Result = () => {
               return (
                 <tr className={styles.tr} key={result.id}>
                   <td className={styles.td}>
-                    {result.question.correctlyAnswered ? '✅' : '❌'}
+                    {result.question.correctlyAnswered ? (
+                      <FontAwesomeIcon
+                        icon={faCircleCheck}
+                        className={styles.correctIcon}
+                        aria-label={t('result.correctAnswer')}
+                        title={t('result.correctAnswer')}
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        icon={faTimesCircle}
+                        className={styles.incorrectIcon}
+                        aria-label={t('result.notCorrectAnswer')}
+                        title={t('result.notCorrectAnswer')}
+                      />
+                    )}
                   </td>
                   <td className={styles.td}>
                     {<Markdown content={result.question.text}></Markdown>}
@@ -68,7 +88,12 @@ const Result = () => {
                   <td className={`${styles.td} ${styles.centered}`}>
                     {result.question.referenceLink && (
                       <a target="_blank" href={result.question.referenceLink}>
-                        {t('result.referenceLink')}
+                        <FontAwesomeIcon
+                          icon={faArrowUpRightFromSquare}
+                          className={styles.linkIcon}
+                          aria-label={t('result.referenceLink')}
+                          title={t('result.referenceLink')}
+                        />
                       </a>
                     )}
                   </td>

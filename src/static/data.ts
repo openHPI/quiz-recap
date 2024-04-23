@@ -171,6 +171,19 @@ export const exampleData: Data = [
       },
     ],
   },
+  {
+    id: '12',
+    type: QuestionTypes.SingleChoice,
+    text: `![Image](https://picsum.photos/600/200)`,
+    answers: [
+      { id: 'a', correct: true, text: 'Nice image' },
+      {
+        id: 'b',
+        correct: false,
+        text: 'Ugly image',
+      },
+    ],
+  },
 ];
 
 export const testData: Data = [

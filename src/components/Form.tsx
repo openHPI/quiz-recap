@@ -79,9 +79,11 @@ const Form = ({
     );
 
     if (questionIndex !== -1) {
-      // Update question if already included in results
       const updatedResults = [...results];
-      updatedResults[questionIndex].question = question;
+      const updatedResult = { ...updatedResults[questionIndex] }; // Copy the existing result
+      updatedResult.question = question; // Update the question
+      updatedResult.selections = selections; // Update the selections
+      updatedResults[questionIndex] = updatedResult; // Replace the existing result with the updated one
       setResults(updatedResults);
     } else {
       // Add new question
@@ -90,6 +92,7 @@ const Form = ({
         {
           id: `{${question.id}}-${new Date().getTime()}`,
           question,
+          selections,
         },
       ]);
     }

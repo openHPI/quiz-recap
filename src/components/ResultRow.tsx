@@ -2,8 +2,9 @@ import { useState } from 'react';
 import styles from './Result.module.scss';
 import { ResultType } from '../types';
 import { useTranslation } from 'react-i18next';
-import Markdown from './Markdown';
+import ResultViewer from './ResultViewer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import {
   faCircleCheck,
   faTimesCircle,
@@ -24,7 +25,7 @@ function ResultRow({ result, rowNum }: { result: ResultType; rowNum: number }) {
   return (
     <tr
       aria-expanded={!collapsed}
-      className={`${styles.tr} ${collapsed ? styles.tdCollapsed : ''} `}
+      className={`${styles.tr} ${collapsed ? styles.collapsed : ''} `}
       key={result.id}
       onClick={toggleCollapsed}
     >
@@ -55,10 +56,12 @@ function ResultRow({ result, rowNum }: { result: ResultType; rowNum: number }) {
           />
         )}
       </td>
-      <td className={`${styles.td} ${styles.questionCell}`}>
-        <div className={styles.questionMarkdown}>
-          {<Markdown content={result.question.text}></Markdown>}
-        </div>
+      <td className={`${styles.td} ${styles.resultViewerCell}`}>
+        <ResultViewer
+          question={result.question}
+          selectedAnswers={result.selections}
+          collapsed={collapsed}
+        />
       </td>
       <td
         className={`${styles.td} ${styles.centered}`}

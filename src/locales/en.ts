@@ -46,6 +46,11 @@ const en = {
     unanswered: 'You did not answer any questions.',
     new: 'New Quiz',
   },
+  viewer: {
+    selected: 'You selected this answer',
+    correct: 'Correct',
+    incorrect: 'Incorrect',
+  },
   answer: {
     correct: 'Correct',
     incorrect: 'Incorrect',

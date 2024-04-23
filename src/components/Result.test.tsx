@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Result from './Result';
 import { Context } from '../Context';
 import { translationsProvider } from '../util';
@@ -26,6 +27,7 @@ describe('Result component', () => {
           remainingAttempts: 0,
           correctlyAnswered: true,
         },
+        selections: [],
       },
     ];
 
@@ -61,6 +63,7 @@ describe('Result component', () => {
           remainingAttempts: 0,
           correctlyAnswered: true,
         },
+        selections: [],
       },
     ];
 
@@ -79,5 +82,64 @@ describe('Result component', () => {
       name: 'Reference',
     });
     expect(referenceHeading).not.toBeInTheDocument();
+  });
+
+  it('shows the answers when expanding a question', async () => {
+    const user = userEvent.setup();
+    const results: ResultType[] = [
+      {
+        id: '1',
+        question: {
+          id: '1',
+          referenceLink: 'https://en.wikipedia.org/wiki/Mars',
+          type: QuestionTypes.SingleChoice,
+          text: 'Which planet is known as the Red Planet?',
+          answers: [
+            { id: 'jupiter', correct: false, text: 'Jupiter' },
+            { id: 'mars', correct: true, text: 'Mars' },
+          ],
+          remainingAttempts: 0,
+          correctlyAnswered: true,
+        },
+        selections: [{ id: 'mars', correct: true, text: 'Mars' }],
+      },
+    ];
+
+    const providerProps = {
+      value: {
+        results,
+      },
+    };
+
+    customRender(<Result />, { providerProps });
+
+    // Answers are initially not visible
+    let answer1 = screen.queryByRole('row', { name: /Mars/ });
+    let answer2 = screen.queryByRole('row', { name: /Jupiter/ });
+
+    expect(answer1).not.toBeInTheDocument();
+    expect(answer2).not.toBeInTheDocument();
+
+    const expandBtn = screen.getByRole('cell', { name: 'Expand' });
+    await user.click(expandBtn);
+
+    // Answers are visible after clicking the expand button
+    answer1 = screen.getByRole('row', { name: /Mars/ });
+    answer2 = screen.getByRole('row', { name: /Jupiter/ });
+
+    expect(answer1).toBeInTheDocument();
+    expect(answer2).toBeInTheDocument();
+
+    const answer1Li = screen.getByText(/Mars/).closest('li');
+    const answer2Li = screen.getByText(/Jupiter/).closest('li');
+
+    expect(answer1Li).toHaveAttribute(
+      'aria-description',
+      'You selected this answer',
+    );
+    expect(answer2Li).not.toHaveAttribute(
+      'aria-description',
+      'You selected this answer',
+    );
   });
 });

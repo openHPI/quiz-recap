@@ -21,7 +21,17 @@
     border-color: variables.$neutral;
     border-bottom: 1px solid;
     border-top: 1px solid;
-    background-color: variables.$neutral-light;
+    background-color: white;
+
+    &:hover {
+      background-color: variables.$neutral-light;
+    }
+  }
+
+  .resultViewerCell {
+    // Trick to make text truncation work
+    width: 100%;
+    max-width: 0;
   }
 
   .th {
@@ -32,37 +42,6 @@
   .td {
     vertical-align: top;
     padding: 16px 8px;
-  }
-
-  .questionCell {
-    width: 100%;
-    max-width: 0;
-
-    .questionMarkdown * {
-      margin: 0;
-      max-width: 100%;
-      @include variables.font-s;
-    }
-  }
-
-  .tdCollapsed {
-    background-color: white;
-    &:hover {
-      background-color: variables.$neutral-light;
-    }
-    // Add truncation
-    .questionCell {
-      white-space: nowrap;
-    }
-    .questionMarkdown {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      // Ensure simple <p> style
-      * {
-        font-weight: normal;
-        display: inline;
-      }
-    }
   }
 
   .iconCell {

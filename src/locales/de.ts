@@ -45,6 +45,11 @@ const de = {
     unanswered: 'Sie haben keine einzige Frage beantwortet.',
     new: 'Neues Quiz',
   },
+  viewer: {
+    selected: 'Sie haben diese Antwort gewählt',
+    correct: 'Richtig',
+    incorrect: 'Falsch',
+  },
   answer: {
     correct: 'Richtig',
     incorrect: 'Falsch',

@@ -1,0 +1,87 @@
+@use './../variables.scss';
+
+.collapsed {
+  .questionMarkdown {
+    // Add truncation
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    // Ensure simple <p> style
+    * {
+      font-weight: normal;
+      text-decoration: none;
+      display: inline;
+    }
+  }
+
+  .answers {
+    display: none;
+  }
+}
+
+.questionMarkdown *,
+.answerMarkdown * {
+  margin: 0;
+  @include variables.font-s;
+  // Ensure elements don't overflow
+  max-width: 100%;
+}
+
+.answers {
+  padding-left: 0;
+}
+
+.answer {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  flex-wrap: nowrap;
+
+  &.selected {
+    font-weight: bold;
+  }
+
+  &.correct {
+    background-color: variables.$success-light;
+  }
+
+  &.wrong {
+    background-color: variables.$danger-light;
+  }
+
+  .icon {
+    color: variables.$neutral;
+    @include variables.font-s;
+    margin: 0 10px 0 4px;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  .answerMarkdown {
+    flex-grow: 1;
+  }
+
+  .correctHint {
+    display: none;
+    @include variables.screen-size-m-and-up {
+      display: block;
+    }
+  }
+
+  code {
+    // Ensure code elements don't overflow
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  img {
+    // Ensure images don't overflow
+    max-width: 100%;
+  }
+}

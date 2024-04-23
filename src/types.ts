@@ -43,4 +43,5 @@ export type AnswerType = {
 export type ResultType = {
   id: string;
   question: QuestionPoolType;
+  selections: AnswerType[];
 };

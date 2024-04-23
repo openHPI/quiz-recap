@@ -33,6 +33,8 @@ const de = {
     title: 'Ergebnisse',
     overview:
       'Sie haben {{correctAnswers}} von {{numberOfQuestions}} richtig beantwortet.',
+    expand: 'Ausklappen',
+    collapse: 'Einklappen',
     correct: 'Richtig beantwortet',
     correctAnswer: 'Ihre Antwort war richtig.',
     notCorrectAnswer: 'Ihre Antwort war nicht richtig.',

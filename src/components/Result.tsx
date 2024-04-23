@@ -4,13 +4,7 @@ import { Context } from '../Context';
 import Button from './Button';
 import styles from './Result.module.scss';
 import { useTranslation } from 'react-i18next';
-import Markdown from './Markdown';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCircleCheck,
-  faTimesCircle,
-  faArrowUpRightFromSquare,
-} from '@fortawesome/free-solid-svg-icons';
+import ResultRow from './ResultRow';
 
 const Result = () => {
   const {
@@ -43,6 +37,7 @@ const Result = () => {
           </caption>
           <thead>
             <tr>
+              <th className={styles.th} aria-label={t('result.expand')}></th>
               <th className={styles.th} aria-label={t('result.correct')}></th>
               <th className={styles.th}>{t('result.question')}</th>
               <th className={`${styles.th} ${styles.centered}`}>
@@ -56,50 +51,9 @@ const Result = () => {
             </tr>
           </thead>
           <tbody>
-            {results.map((result: ResultType, index) => {
-              return (
-                <tr className={styles.tr} key={result.id}>
-                  <td className={styles.td}>
-                    {result.question.correctlyAnswered ? (
-                      <FontAwesomeIcon
-                        icon={faCircleCheck}
-                        className={styles.correctIcon}
-                        aria-label={t('result.correctAnswer')}
-                        title={t('result.correctAnswer')}
-                      />
-                    ) : (
-                      <FontAwesomeIcon
-                        icon={faTimesCircle}
-                        className={styles.incorrectIcon}
-                        aria-label={t('result.notCorrectAnswer')}
-                        title={t('result.notCorrectAnswer')}
-                      />
-                    )}
-                  </td>
-                  <td className={styles.td}>
-                    {<Markdown content={result.question.text}></Markdown>}
-                  </td>
-                  <td
-                    className={`${styles.td} ${styles.centered}`}
-                    data-testid={`attempts-question-${index + 1}`}
-                  >
-                    {`${3 - result.question.remainingAttempts}`}
-                  </td>
-                  <td className={`${styles.td} ${styles.centered}`}>
-                    {result.question.referenceLink && (
-                      <a target="_blank" href={result.question.referenceLink}>
-                        <FontAwesomeIcon
-                          icon={faArrowUpRightFromSquare}
-                          className={styles.linkIcon}
-                          aria-label={t('result.referenceLink')}
-                          title={t('result.referenceLink')}
-                        />
-                      </a>
-                    )}
-                  </td>
-                </tr>
-              );
-            })}
+            {results.map((result: ResultType, index: number) => (
+              <ResultRow result={result} key={index} rowNum={index}></ResultRow>
+            ))}
           </tbody>
         </table>
       ) : (

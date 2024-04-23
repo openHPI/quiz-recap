@@ -34,6 +34,8 @@ const en = {
     title: 'Result',
     overview:
       'You answered {{correctAnswers}} of {{numberOfQuestions}} correctly.',
+    expand: 'Expand',
+    collapse: 'Collapse',
     correct: 'Correctly answered',
     correctAnswer: 'Your answer was correct.',
     notCorrectAnswer: 'Your answer was not correct.',

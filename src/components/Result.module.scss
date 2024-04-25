@@ -72,4 +72,18 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  .hideOnMobile {
+    display: none;
+    @include variables.screen-size-s-and-up {
+      display: block;
+    }
+  }
+
+  .hideOnDesktop {
+    display: block;
+    @include variables.screen-size-s-and-up {
+      display: none;
+    }
+  }
 }

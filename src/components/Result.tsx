@@ -5,6 +5,8 @@ import Button from './Button';
 import styles from './Result.module.scss';
 import { useTranslation } from 'react-i18next';
 import ResultRow from './ResultRow';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRepeat } from '@fortawesome/free-solid-svg-icons';
 
 const Result = () => {
   const {
@@ -41,12 +43,21 @@ const Result = () => {
               <th className={styles.th} aria-label={t('result.correct')}></th>
               <th className={styles.th}>{t('result.question')}</th>
               <th className={`${styles.th} ${styles.centered}`}>
-                {t('result.attempts')}
+                <FontAwesomeIcon
+                  icon={faRepeat}
+                  className={styles.hideOnDesktop}
+                  aria-label={t('result.attempts')}
+                  title={t('result.attempts')}
+                />
+                <span className={styles.hideOnMobile}>
+                  {t('result.attempts')}
+                </span>
               </th>
               {referenceLinkPresent && (
-                <th className={`${styles.td} ${styles.centered}`}>
-                  {t('result.reference')}
-                </th>
+                <th
+                  className={styles.td}
+                  aria-label={t('result.reference')}
+                ></th>
               )}
             </tr>
           </thead>

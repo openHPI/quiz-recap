@@ -63,7 +63,9 @@ const Answers = ({
             ></input>
             <label className={styles.label} htmlFor={answer.id}>
               <Markdown content={answer.text}></Markdown>
-              {showCorrect && <p>{correctHint}</p>}
+              {showCorrect && (
+                <p className={styles.correctHint}>{correctHint}</p>
+              )}
             </label>
           </div>
         );

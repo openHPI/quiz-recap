@@ -12,10 +12,11 @@
       }
 
       .container {
-        max-width: 850px;
-        margin: auto;
-        margin-top: 20px;
-        padding: 20px;
+        @media screen and (min-width: 580px) {
+          max-width: 850px;
+          margin: 20px auto;
+          padding: 20px;
+        }
       }
     </style>
   </head>

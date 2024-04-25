@@ -5,6 +5,10 @@
 
   .text {
     margin-bottom: 20px;
+    img {
+      // Ensure images don't overflow
+      max-width: 100%;
+    }
   }
 
   .hint {

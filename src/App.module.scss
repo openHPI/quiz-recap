@@ -31,6 +31,10 @@
   }
 
   .button {
-    width: 50%;
+    width: 100%;
+
+    @include variables.screen-size-s-and-up {
+      width: 50%;
+    }
   }
 }

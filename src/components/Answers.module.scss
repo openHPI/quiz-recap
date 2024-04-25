@@ -44,8 +44,30 @@
   align-items: center;
   width: 100%;
   padding: 15px;
+  flex-wrap: wrap;
+
+  > *:first-child {
+    margin-right: 10px;
+  }
 
   * {
     margin: 0px;
+  }
+
+  .correctHint {
+    display: none;
+    @include variables.screen-size-m-and-up {
+      display: block;
+    }
+  }
+
+  code {
+    // Ensure code elements don't overflow
+    white-space: pre-wrap;
+  }
+
+  img {
+    // Ensure images don't overflow
+    max-width: 100%;
   }
 }

@@ -26,3 +26,15 @@ $danger-dark: var(--qr-color-danger-dark, hsl(0, 72%, 51%));
   font-size: 20px;
   line-height: 28px;
 }
+
+@mixin screen-size-s-and-up($width: 580px) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin screen-size-m-and-up($width: 800px) {
+  @media (min-width: $width) {
+    @content;
+  }
+}

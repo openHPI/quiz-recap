@@ -53,14 +53,16 @@ const ResultViewer = ({
             className={`${styles.answer} ${indicatorClass(answer)} ${selectedClass(answer)}`}
             aria-description={wasSelected(answer) ? t('viewer.selected') : ''}
           >
-            <FontAwesomeIcon
-              icon={icon(answer)}
-              className={styles.icon}
-              aria-label={correctHint(answer)}
-              title={correctHint(answer)}
-            />
-            <div className={styles.answerMarkdown}>
-              <Markdown content={answer.text} />
+            <div className={styles.iconAndAnswer}>
+              <FontAwesomeIcon
+                icon={icon(answer)}
+                className={styles.icon}
+                aria-label={correctHint(answer)}
+                title={correctHint(answer)}
+              />
+              <div className={styles.answerMarkdown}>
+                <Markdown content={answer.text} />
+              </div>
             </div>
             <p className={styles.correctHint}>{correctHint(answer)}</p>
           </li>

@@ -67,6 +67,7 @@
   code {
     // Ensure code elements don't overflow
     white-space: pre-wrap;
+    word-break: break-all;
   }
 
   img {

@@ -5,6 +5,12 @@
 
   .text {
     margin-bottom: 20px;
+    code {
+      // Ensure code elements don't overflow
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
     img {
       // Ensure images don't overflow
       max-width: 100%;

@@ -6,6 +6,9 @@
 
 .answers {
   min-height: 32px;
+  * {
+    @include variables.font-s;
+  }
 
   &:not(:last-child) {
     margin-bottom: 8px;

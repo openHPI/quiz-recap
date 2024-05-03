@@ -6,7 +6,7 @@
   min-height: 32px;
   color: white;
   border: none;
-  @include variables.font-m;
+  @include variables.font-s;
 
   &.primary {
     background-color: variables.$primary;

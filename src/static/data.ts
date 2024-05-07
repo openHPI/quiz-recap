@@ -192,8 +192,6 @@ export const testData: Data = [
     type: QuestionTypes.SingleChoice,
     text: 'What is the answer?',
     referenceLink: 'https://www.example.com',
-    courseId: 'courseId-01',
-    quizId: 'quizId-01',
     answers: [
       {
         id: 'answer_01',
@@ -211,8 +209,6 @@ export const testData: Data = [
     id: 'id-02',
     type: QuestionTypes.SingleChoice,
     text: 'What is the answer?',
-    courseId: 'courseId-01',
-    quizId: 'quizId-02',
     answers: [
       {
         id: 'answer_03',
@@ -307,8 +303,6 @@ export const testDataWithTwoQuestion: Data = [
     id: 'id-01',
     type: QuestionTypes.SingleChoice,
     text: 'Q1: What is the answer?',
-    courseId: 'courseId-01',
-    quizId: 'quizId-01',
     answers: [
       {
         id: 'answer_01',
@@ -326,8 +320,6 @@ export const testDataWithTwoQuestion: Data = [
     id: 'id-02',
     type: QuestionTypes.SingleChoice,
     text: 'Q2: What is the answer?',
-    courseId: 'courseId-01',
-    quizId: 'quizId-02',
     answers: [
       {
         id: 'answer_03',

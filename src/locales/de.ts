@@ -7,6 +7,8 @@ const de = {
     instructions: 'Wählen Sie die Anzahl der Fragen aus die Sie üben möchten:',
     completeBtn_one: 'Komplettes Set ({{count}} Frage)',
     completeBtn_other: 'Komplettes Set (alle {{count}} Fragen)',
+    largeBtn_one: 'Großes Set ({{count}} Frage)',
+    largeBtn_other: 'Großes Set ({{count}} Fragen)',
     mediumBtn_one: 'Mittleres Set ({{count}} Frage)',
     mediumBtn_other: 'Mittleres Set ({{count}} Fragen)',
     quickBtn_one: 'Schnelles Set ({{count}} Frage)',

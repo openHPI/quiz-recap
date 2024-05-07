@@ -30,9 +30,28 @@ function App({ data, locale = 'en' }: { data: Data; locale?: string }) {
     setQuestions(getRandomSet(data, questionsCount));
   };
 
-  const completeSet = data.length;
-  const mediumSet = Math.ceil(completeSet / 2);
-  const quickSet = Math.ceil(completeSet / 5);
+  const completeSet = {
+    text: t('app.completeBtn', { count: data.length }),
+    count: data.length,
+  };
+  const largeSet = {
+    text: t('app.largeBtn', { count: 50 }),
+    count: 50,
+  };
+  const mediumSet = {
+    text: t('app.mediumBtn', { count: 20 }),
+    count: 20,
+  };
+  const quickSet = {
+    text: t('app.quickBtn', { count: 10 }),
+    count: 10,
+  };
+
+  const fixedSets = [quickSet, mediumSet, largeSet].filter(
+    (set) => set.count < completeSet.count,
+  );
+
+  const buttons = [...fixedSets, completeSet];
 
   return (
     <Context.Provider
@@ -60,27 +79,15 @@ function App({ data, locale = 'en' }: { data: Data; locale?: string }) {
               <p className={styles.p}>{t('app.intro')}</p>
               <p className={styles.p}>{t('app.instructions')}</p>
               <ul className={styles.ul}>
-                <li className={styles.li}>
-                  <Button
-                    text={t('app.completeBtn', { count: completeSet })}
-                    onClickAction={() => startQuiz(completeSet)}
-                    additionalClasses={styles.button}
-                  />
-                </li>
-                <li className={styles.li}>
-                  <Button
-                    text={t('app.mediumBtn', { count: mediumSet })}
-                    onClickAction={() => startQuiz(mediumSet)}
-                    additionalClasses={styles.button}
-                  />
-                </li>
-                <li className={styles.li}>
-                  <Button
-                    text={t('app.quickBtn', { count: quickSet })}
-                    onClickAction={() => startQuiz(quickSet)}
-                    additionalClasses={styles.button}
-                  />
-                </li>
+                {buttons.map((button, i) => (
+                  <li className={styles.li} key={i}>
+                    <Button
+                      text={button.text}
+                      onClickAction={() => startQuiz(button.count)}
+                      additionalClasses={styles.button}
+                    />
+                  </li>
+                ))}
               </ul>
             </>
           )}

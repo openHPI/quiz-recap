@@ -282,7 +282,27 @@ export const testData: Data = [
   },
 ] as Data;
 
-export const testDataWithFourQuestions: Data = [
+export const testDataWithOneQuestion: Data = [
+  {
+    id: 'id-01',
+    type: QuestionTypes.SingleChoice,
+    text: 'Q1: What is the answer?',
+    answers: [
+      {
+        id: 'answer_01',
+        correct: true,
+        text: 'Correct Answer',
+      },
+      {
+        id: 'answer_02',
+        correct: false,
+        text: 'Incorrect Answer',
+      },
+    ],
+  },
+] as Data;
+
+export const testDataWithTwoQuestion: Data = [
   {
     id: 'id-01',
     type: QuestionTypes.SingleChoice,
@@ -316,60 +336,6 @@ export const testDataWithFourQuestions: Data = [
       },
       {
         id: 'answer_04',
-        correct: false,
-        text: 'Incorrect Answer',
-      },
-    ],
-  },
-  {
-    id: 'id-03',
-    type: QuestionTypes.MultipleChoice,
-    text: 'Q3: What is the answer?',
-    answers: [
-      {
-        id: 'answer_05',
-        correct: true,
-        text: 'Correct Answer',
-      },
-      {
-        id: 'answer_06',
-        correct: false,
-        text: 'Incorrect Answer',
-      },
-      {
-        id: 'answer_07',
-        correct: true,
-        text: 'Correct Answer',
-      },
-      {
-        id: 'answer_08',
-        correct: false,
-        text: 'Incorrect Answer',
-      },
-    ],
-  },
-  {
-    id: 'id-04',
-    type: QuestionTypes.MultipleChoice,
-    text: 'Q4: What is the answer?',
-    answers: [
-      {
-        id: 'answer_09',
-        correct: false,
-        text: 'Incorrect Answer',
-      },
-      {
-        id: 'answer_10',
-        correct: false,
-        text: 'Incorrect Answer',
-      },
-      {
-        id: 'answer_11',
-        correct: false,
-        text: 'Incorrect Answer',
-      },
-      {
-        id: 'answer_12',
         correct: false,
         text: 'Incorrect Answer',
       },

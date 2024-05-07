@@ -8,6 +8,8 @@ const en = {
       'Choose a quiz type below depending on how many questions you want to practice.',
     completeBtn_one: 'Complete set ({{count}} question)',
     completeBtn_other: 'Complete set ({{count}} questions)',
+    largeBtn_one: 'Large set ({{count}} question)',
+    largeBtn_other: 'Large set ({{count}} questions)',
     mediumBtn_one: 'Medium set ({{count}} question)',
     mediumBtn_other: 'Medium set ({{count}} questions)',
     quickBtn_one: 'Quick set ({{count}} question)',

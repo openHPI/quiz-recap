@@ -2,7 +2,11 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 import { within } from '@testing-library/dom';
 import App from './App';
-import { testData as data, testDataWithFourQuestions } from './static/data';
+import {
+  testData as data,
+  testDataWithOneQuestion,
+  testDataWithTwoQuestion,
+} from './static/data';
 import { translationsProvider } from './util';
 
 const answerQuestionCorrectly = async (user: UserEvent) => {
@@ -114,16 +118,15 @@ describe('App component', () => {
       expect(result).toBeInTheDocument();
     });
 
-    it('shows the result page after answering a quick set of questions', async () => {
+    it('shows the result page after answering all questions', async () => {
       const user = userEvent.setup();
-      render(<App data={testDataWithFourQuestions}></App>, {
+      render(<App data={testDataWithOneQuestion}></App>, {
         wrapper: translationsProvider,
       });
 
-      const button = screen.getByText(/Quick set/i);
+      const button = screen.getByText(/Complete set/i);
       await user.click(button);
 
-      // Quick set only contains one question
       // We conduct the quiz with exactly one question
       // To test if the App respects the number of questions
       const numberOfQuestions = 1;
@@ -194,16 +197,57 @@ describe('App component', () => {
     });
   });
 
+  describe('quiz sets', () => {
+    it('has 4 available sets when the quiz has more than 50 questions', () => {
+      const testDataWith52Questions = data.flatMap((item) =>
+        Array(13).fill(item),
+      );
+      render(<App data={testDataWith52Questions}></App>, {
+        wrapper: translationsProvider,
+      });
+
+      const completeSet = screen.getByRole('button', {
+        name: /Complete set/i,
+      });
+      const largeSet = screen.getByRole('button', { name: /Large set/i });
+      const mediumSet = screen.getByRole('button', { name: /Medium set/i });
+      const quickSet = screen.getByRole('button', { name: /Quick set/i });
+      expect(completeSet).toBeInTheDocument();
+      expect(largeSet).toBeInTheDocument();
+      expect(mediumSet).toBeInTheDocument();
+      expect(quickSet).toBeInTheDocument();
+    });
+
+    it('does not show any set with more questions than the complete one', () => {
+      const testDataWith16Questions = data.flatMap((item) =>
+        Array(4).fill(item),
+      );
+      render(<App data={testDataWith16Questions}></App>, {
+        wrapper: translationsProvider,
+      });
+
+      const completeSet = screen.getByRole('button', {
+        name: /Complete set/i,
+      });
+      const largeSet = screen.queryByRole('button', { name: /Large set/i });
+      const mediumSet = screen.queryByRole('button', { name: /Medium set/i });
+      const quickSet = screen.getByRole('button', { name: /Quick set/i });
+      expect(completeSet).toBeInTheDocument();
+      expect(largeSet).not.toBeInTheDocument();
+      expect(mediumSet).not.toBeInTheDocument();
+      expect(quickSet).toBeInTheDocument();
+    });
+  });
+
   describe('multiple attempts feature', () => {
     it('shows a wrongly answered question again up to 3 times', async () => {
       const user = userEvent.setup();
 
-      render(<App data={testDataWithFourQuestions}></App>, {
+      render(<App data={testDataWithOneQuestion}></App>, {
         wrapper: translationsProvider,
       });
 
-      // A quick set of a test with four questions contains 1 question
-      const button = screen.getByText(/Quick set/i);
+      const button = screen.getByText(/Complete set/i);
       await user.click(button);
 
       // Answer wrongly 3 times
@@ -219,14 +263,13 @@ describe('App component', () => {
 
     it('shows the attempts needed for each question', async () => {
       const user = userEvent.setup();
-      render(<App data={testDataWithFourQuestions}></App>, {
+      render(<App data={testDataWithTwoQuestion}></App>, {
         wrapper: translationsProvider,
       });
 
-      const button = screen.getByText(/Medium set/i);
+      const button = screen.getByText(/Complete set/i);
       await user.click(button);
 
-      // A medium set of a test with four questions contains 2 questions
       let indexTextEl = screen.getByText('1 of 2');
       expect(indexTextEl).toBeInTheDocument();
 
@@ -268,14 +311,13 @@ describe('App component', () => {
 
     it('displays the quiz progress', async () => {
       const user = userEvent.setup();
-      render(<App data={testDataWithFourQuestions}></App>, {
+      render(<App data={testDataWithTwoQuestion}></App>, {
         wrapper: translationsProvider,
       });
 
-      const button = screen.getByText(/Medium set/i);
+      const button = screen.getByText(/Complete set/i);
       await user.click(button);
 
-      // A medium set of a test with four questions contains 2 questions
       let indexTextEl = screen.getByText('1 of 2');
 
       for (let i = 0; i < 5; i++) {
@@ -293,12 +335,11 @@ describe('App component', () => {
     it('displays the remaining attempts after wrongly answering a question', async () => {
       const user = userEvent.setup();
 
-      render(<App data={testDataWithFourQuestions}></App>, {
+      render(<App data={testDataWithOneQuestion}></App>, {
         wrapper: translationsProvider,
       });
 
-      // A quick set of a test with four questions contains 1 question
-      const button = screen.getByText(/Quick set/i);
+      const button = screen.getByText(/Complete set/i);
       await user.click(button);
 
       for (let i = 0; i < 2; i++) {

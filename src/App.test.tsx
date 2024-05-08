@@ -277,17 +277,26 @@ describe('App component', () => {
 
       // A medium set of a test with four questions contains 2 questions
       let indexTextEl = screen.getByText('1 of 2');
+      const progressBar = screen.getByRole('progressbar', {
+        name: 'Quiz progress',
+      });
 
       for (let i = 0; i < 5; i++) {
         // The progress count does not change
         expect(indexTextEl).toBeInTheDocument();
+        expect(progressBar).toHaveValue(0);
         await answerQuestionIncorrectly(user);
         await user.click(screen.getByText('Next Question'));
       }
 
       // After the attempts of the first question have expire, the progress is updated
+      expect(progressBar).toHaveValue(50);
       indexTextEl = screen.getByText('2 of 2');
       expect(indexTextEl).toBeInTheDocument();
+
+      await answerQuestionCorrectly(user);
+      //After submitting the answer the progress bar updates
+      expect(progressBar).toHaveValue(100);
     });
 
     it('displays the remaining attempts after wrongly answering a question', async () => {

@@ -1,0 +1,45 @@
+@use './../variables.scss';
+
+$initialBarWidth: 15px;
+
+.initialProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: $initialBarWidth;
+  background-color: variables.$primary;
+}
+
+.progressBar[value] {
+  height: 5px;
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+  width: calc(100% - $initialBarWidth);
+  position: absolute;
+  top: 0;
+  left: $initialBarWidth;
+
+  /* Firefox */
+  background: white;
+  border: none; /* Firefox adds a default border */
+
+  /* Chrome and Safari */
+  &::-webkit-progress-bar {
+    background: white;
+  }
+
+  &::-webkit-progress-value {
+    background-color: variables.$primary;
+  }
+
+  /* Firefox */
+  &::-moz-progress-bar {
+    background-color: variables.$primary;
+  }
+
+  &::-webkit-progress-value {
+    transition: width 1s ease-in-out;
+  }
+}

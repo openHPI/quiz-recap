@@ -2,11 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 import { within } from '@testing-library/dom';
 import App from './App';
-import {
-  testData as data,
-  testDataWithOneQuestion,
-  testDataWithTwoQuestion,
-} from './static/data';
+import { testData as data } from './static/data';
 import { translationsProvider } from './util';
 
 const answerQuestionCorrectly = async (user: UserEvent) => {
@@ -120,7 +116,8 @@ describe('App component', () => {
 
     it('shows the result page after answering all questions', async () => {
       const user = userEvent.setup();
-      render(<App data={testDataWithOneQuestion}></App>, {
+      const testDataWith1Question = data.slice(0, 1);
+      render(<App data={testDataWith1Question}></App>, {
         wrapper: translationsProvider,
       });
 
@@ -242,8 +239,8 @@ describe('App component', () => {
   describe('multiple attempts feature', () => {
     it('shows a wrongly answered question again up to 3 times', async () => {
       const user = userEvent.setup();
-
-      render(<App data={testDataWithOneQuestion}></App>, {
+      const testDataWith1Question = data.slice(0, 1);
+      render(<App data={testDataWith1Question}></App>, {
         wrapper: translationsProvider,
       });
 
@@ -263,7 +260,8 @@ describe('App component', () => {
 
     it('shows the attempts needed for each question', async () => {
       const user = userEvent.setup();
-      render(<App data={testDataWithTwoQuestion}></App>, {
+      const testDataWith2Questions = data.slice(0, 2);
+      render(<App data={testDataWith2Questions}></App>, {
         wrapper: translationsProvider,
       });
 
@@ -311,7 +309,8 @@ describe('App component', () => {
 
     it('displays the quiz progress', async () => {
       const user = userEvent.setup();
-      render(<App data={testDataWithTwoQuestion}></App>, {
+      const testDataWith2Questions = data.slice(0, 2);
+      render(<App data={testDataWith2Questions}></App>, {
         wrapper: translationsProvider,
       });
 
@@ -334,8 +333,8 @@ describe('App component', () => {
 
     it('displays the remaining attempts after wrongly answering a question', async () => {
       const user = userEvent.setup();
-
-      render(<App data={testDataWithOneQuestion}></App>, {
+      const testDataWith1Question = data.slice(0, 1);
+      render(<App data={testDataWith1Question}></App>, {
         wrapper: translationsProvider,
       });
 

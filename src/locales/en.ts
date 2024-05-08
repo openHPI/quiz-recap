@@ -24,6 +24,9 @@ const en = {
     noBtn: 'No',
     yesBtn: 'Yes',
   },
+  progress: {
+    ariaLabel: 'Quiz progress',
+  },
   question: {
     correct: 'Your answer was correct.',
     notCorrect: 'Your answer was not correct.',

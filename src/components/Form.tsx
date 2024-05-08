@@ -3,6 +3,7 @@ import { QuestionPoolType, AnswerType, QuestionTypes } from '../types';
 import { isAlreadySelected, validateSelectionIsCorrect } from '../util';
 import Answers from './Answers';
 import Question from './Question';
+import ProgressBar from './ProgressBar';
 import { Context } from '../Context';
 import Button from './Button';
 import styles from './Form.module.scss';
@@ -31,6 +32,7 @@ const Form = ({
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [selections, setSelections] = useState<AnswerType[]>([]);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     if (!submitted) {
@@ -98,6 +100,12 @@ const Form = ({
     }
   };
 
+  const handleProgressBar = (question: QuestionPoolType) => {
+    if (question.correctlyAnswered || question.remainingAttempts === 0) {
+      setProgress(progress + 100 / numberOfQuestions);
+    }
+  };
+
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
 
@@ -109,6 +117,7 @@ const Form = ({
     setSubmitted(true);
     updatePool(correctlyAnswered);
     addToResult(updatedQuestion(correctlyAnswered));
+    handleProgressBar(updatedQuestion(correctlyAnswered));
     setSelections([]);
   };
 
@@ -139,6 +148,7 @@ const Form = ({
 
   return (
     <form onSubmit={submitHandler} className={styles.form}>
+      <ProgressBar progress={progress} />
       <fieldset className={`${styles.form} ${styles.fieldset}`}>
         <legend className={`${styles.form} ${styles.legend}`}>
           {questionIndexText} {t('form.of')} {numberOfQuestions}

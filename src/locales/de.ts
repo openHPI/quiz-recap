@@ -23,6 +23,9 @@ const de = {
     noBtn: 'Nein',
     yesBtn: 'Ja',
   },
+  progress: {
+    ariaLabel: 'Quiz-Fortschritt',
+  },
   question: {
     correct: 'Ihre Antwort war richtig.',
     notCorrect: 'Ihre Antwort war nicht richtig.',

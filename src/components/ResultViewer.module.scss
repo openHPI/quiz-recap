@@ -45,6 +45,7 @@
   margin: 5px 0;
   box-sizing: border-box;
   flex-wrap: nowrap;
+  background-color: variables.$neutral-light;
 
   &.selected {
     font-weight: bold;

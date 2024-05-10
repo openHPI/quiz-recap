@@ -28,7 +28,11 @@
   }
 
   &.wrong {
-    background-color: variables.$danger-light;
+    background-color: variables.$neutral-light;
+
+    &:has(> input:checked) {
+      background-color: variables.$danger-light;
+    }
   }
 }
 

@@ -24,8 +24,11 @@ const ResultViewer = ({
   const wasSelected = (answer: AnswerType) =>
     selectedAnswers.some((sel) => sel.id === answer.id);
 
-  const indicatorClass = (answer: AnswerType) =>
-    answer.correct ? styles.correct : styles.wrong;
+  const indicatorClass = (answer: AnswerType) => {
+    if (answer.correct) return styles.correct;
+
+    if (wasSelected(answer) && !answer.correct) return styles.wrong;
+  };
 
   const selectedClass = (answer: AnswerType) =>
     wasSelected(answer) ? styles.selected : '';

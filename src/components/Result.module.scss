@@ -25,7 +25,7 @@
     @include variables.font-s;
 
     &:hover {
-      background-color: hsl(0, 0%, 99%);
+      background-color: variables.$neutral-light;
     }
   }
 
@@ -54,6 +54,7 @@
   .chevronIcon {
     color: variables.$neutral-dark;
     @include variables.font-s;
+    cursor: pointer;
   }
 
   .correctIcon {

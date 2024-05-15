@@ -5,6 +5,8 @@ $neutral: var(--qr-color-neutral, hsl(0, 0%, 45%));
 $neutral-light: var(--qr-color-neutral-light, hsl(0, 0%, 96%));
 $neutral-dark: var(--qr-color-neutral-dark, hsl(0, 0%, 32%));
 
+$border-neutral: hsl(from $neutral-light h s 80%);
+
 $success: var(--qr-color-success, hsl(142, 71%, 45%));
 $success-light: var(--qr-color-success-light, hsl(142, 77%, 73%));
 $success-dark: var(--qr-color-success-dark, hsl(142, 76%, 36%));

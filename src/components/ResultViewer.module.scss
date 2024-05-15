@@ -45,18 +45,26 @@
   margin: 5px 0;
   box-sizing: border-box;
   flex-wrap: nowrap;
-  background-color: variables.$neutral-light;
+  background-color: white;
+  border: 1px solid;
+  border-color: variables.$border-neutral;
 
   &.selected {
     font-weight: bold;
+
+    .icon {
+      color: variables.$neutral-dark;
+    }
   }
 
   &.correct {
     background-color: variables.$success-light;
+    border-color: variables.$success;
   }
 
   &.wrong {
     background-color: variables.$danger-light;
+    border-color: variables.$danger;
   }
 
   .icon {

@@ -1,6 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", "schedule:nonOfficeHours"],
+  "extends": [
+    "config:recommended",
+    ":preserveSemverRanges",
+    "schedule:nonOfficeHours"
+  ],
   "labels": ["maintenance 🛠️", "dependency 🧱"],
   "rangeStrategy": "pin",
   "lockFileMaintenance": { "enabled": true }

@@ -177,11 +177,18 @@ export const exampleData: Data = [
     text: `![Image](https://picsum.photos/600/200)`,
     answers: [
       { id: 'a', correct: true, text: 'Nice image' },
-      {
-        id: 'b',
-        correct: false,
-        text: 'Ugly image',
-      },
+      { id: 'b', correct: false, text: 'Ugly image' },
+    ],
+  },
+  {
+    id: '13',
+    type: QuestionTypes.SingleChoice,
+    text: `Is this a picture of a cat?
+
+![Image](https://picsum.photos/id/275/600/300)`,
+    answers: [
+      { id: 'a', correct: true, text: "That's not a cat." },
+      { id: 'b', correct: false, text: 'Yes, nice cat.' },
     ],
   },
 ];

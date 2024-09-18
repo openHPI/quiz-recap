@@ -1,6 +1,6 @@
 {
   "name": "@openhpi/quiz-recap",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Component for quiz recapitulation in education.",
   "keywords": [
     "quiz",

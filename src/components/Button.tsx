@@ -24,7 +24,7 @@ const Button = ({
       type={type}
       className={`${styles.button} + ${classesBasedOnType[style]} + ${additionalClasses}`}
       onClick={() => {
-        onClickAction && onClickAction();
+        onClickAction?.();
       }}
     >
       {text}

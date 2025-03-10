@@ -32,7 +32,11 @@ function Quiz({ questions }: { questions: Data }) {
 
   const nextQuestion = () => {
     // Go to next question or end quiz
-    questionsPool.length > 0 ? setNewIndex() : setQuizEnded(true);
+    if (questionsPool.length > 0) {
+      setNewIndex();
+    } else {
+      setQuizEnded(true);
+    }
   };
 
   return (

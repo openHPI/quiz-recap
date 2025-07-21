@@ -12,6 +12,15 @@ export default defineConfig({
       name: 'QuizRecap',
       fileName: 'quiz-recap',
     },
+    rollupOptions: {
+      external: ['react', 'react-dom'],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+        },
+      },
+    }
   },
   test: {
     environment: 'jsdom',

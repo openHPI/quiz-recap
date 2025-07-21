@@ -20,7 +20,7 @@ export default defineConfig({
           'react-dom': 'ReactDOM',
         },
       },
-    }
+    },
   },
   test: {
     environment: 'jsdom',

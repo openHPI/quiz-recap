@@ -71,11 +71,14 @@ function ResultRow({ result, rowNum }: { result: ResultType; rowNum: number }) {
       </td>
       <td className={`${styles.td} ${styles.centered}`}>
         {result.question.referenceLink && (
-          <a target="_blank" href={result.question.referenceLink}>
+          <a
+            target="_blank"
+            href={result.question.referenceLink}
+            aria-label={t('result.referenceLink')}
+          >
             <FontAwesomeIcon
               icon={faArrowUpRightFromSquare}
               className={styles.linkIcon}
-              aria-label={t('result.referenceLink')}
               title={t('result.referenceLink')}
             />
           </a>

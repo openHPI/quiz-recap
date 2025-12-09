@@ -19,7 +19,13 @@ export default defineConfig({
       fileName: 'quiz-recap',
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: [
+        'react',
+        'react-dom',
+        'react-dom/client',
+        'react/jsx-runtime',
+        'react/jsx-dev-runtime',
+      ],
       output: {
         globals: {
           react: 'React',

@@ -30,6 +30,9 @@ export default defineConfig({
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          'react-dom/client': 'ReactDOM',
+          'react/jsx-runtime': 'jsxRuntime',
+          'react/jsx-dev-runtime': 'jsxRuntime',
         },
       },
     },

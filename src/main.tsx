@@ -6,12 +6,20 @@ import { Data } from './types';
 import './i18n';
 
 const renderQuizRecap = (id: string, data: Data, locale = 'en') => {
-  const root = ReactDOM.createRoot(document.getElementById(id) as HTMLElement);
+  const element = document.getElementById(id);
+
+  if (!element) {
+    throw new Error(`Quiz Recap element #${id} was not found`);
+  }
+
+  const root = ReactDOM.createRoot(element);
   root.render(
     <React.StrictMode>
       <App data={data} locale={locale} />
     </React.StrictMode>,
   );
+
+  return root;
 };
 
 // Exclude demo page setup from build

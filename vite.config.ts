@@ -16,6 +16,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/main.tsx'),
       name: 'QuizRecap',
+      formats: ['es'],
       fileName: 'quiz-recap',
     },
     rollupOptions: {
@@ -26,15 +27,6 @@ export default defineConfig({
         'react/jsx-runtime',
         'react/jsx-dev-runtime',
       ],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'react-dom/client': 'ReactDOM',
-          'react/jsx-runtime': 'jsxRuntime',
-          'react/jsx-dev-runtime': 'jsxRuntime',
-        },
-      },
     },
   },
   test: {

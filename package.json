@@ -1,6 +1,6 @@
 {
   "name": "@openhpi/quiz-recap",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "Component for quiz recapitulation in education.",
   "keywords": [
     "quiz",
@@ -16,12 +16,13 @@
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/quiz-recap.d.ts",
       "import": "./dist/quiz-recap.js",
-      "require": "./dist/quiz-recap.umd.cjs"
+      "default": "./dist/quiz-recap.js"
     },
     "./dist/style.css": "./dist/quiz-recap.css"
   },
-  "main": "./dist/quiz-recap.umd.cjs",
+  "main": "./dist/quiz-recap.js",
   "module": "./dist/quiz-recap.js",
   "types": "dist/quiz-recap.d.ts",
   "files": [

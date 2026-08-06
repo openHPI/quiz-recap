@@ -16,8 +16,7 @@ export enum QuestionTypes {
 }
 
 export type QuizType =
-  | QuestionTypes.MultipleChoice
-  | QuestionTypes.SingleChoice;
+  QuestionTypes.MultipleChoice | QuestionTypes.SingleChoice;
 
 export type Data = QuestionType[];
 
